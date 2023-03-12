@@ -1,0 +1,10 @@
+# venv related
+bin/
+lib/
+include/
+pyvenv.cfg
+
+# jupyter related
+share/
+etc/
+
