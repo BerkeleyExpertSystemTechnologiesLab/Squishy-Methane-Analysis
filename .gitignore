@@ -1,3 +1,6 @@
+# ds store
+**/.DS_Store
+
 # venv related
 bin/
 lib/
@@ -7,4 +10,7 @@ pyvenv.cfg
 # jupyter related
 share/
 etc/
+
+# exclude dataset
+MethaneCNN/Extracted_Videos_BS/
 
