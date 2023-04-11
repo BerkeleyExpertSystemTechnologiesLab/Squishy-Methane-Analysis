@@ -12,5 +12,10 @@ share/
 etc/
 
 # exclude dataset
+MethaneCNN/data/train/*
+MethaneCNN/data/test/*
+MethaneCNN/frame_data/train/*
+MethaneCNN/frame_data/test/*
 MethaneCNN/Extracted_Videos_BS/
+
 
