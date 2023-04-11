@@ -8,4 +8,4 @@ Download and put video data in `MethaneCNN/data`, in subdirectories called `Meth
 
 WIP: Currently everything below the warning message in the notebook.
 
-These videos can be found in the [GasVid](https://drive.google.com/drive/folders/1JKEMtCGPSq2IqGk4uXZP9A6gr8fyJsGC?usp=sharing) shared GDrive folder.
+These videos can be found in the [Splitted_Videos](https://drive.google.com/drive/folders/1dez8FgBlnj6aGQcQwd0dKy5K2bzMz9T_?usp=sharing) shared GDrive folder (it can also be found in `Methane_Teams`).
