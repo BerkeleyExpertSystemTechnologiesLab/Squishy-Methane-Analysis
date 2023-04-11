@@ -1,5 +1,5 @@
 tensorflow>=2.11.0; sys_platform == 'linux'
-tensorflow-macos>=2.11.0; sys_platform == 'darwin'
+tensorflow-macos; sys_platform == 'darwin'
 keras>=2.11.0
 pillow>=9.4.0
 opencv-python>=4.7.0.72
