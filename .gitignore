@@ -21,5 +21,13 @@ MethaneCNN/data/test/*
 MethaneCNN/frame_data/train/*
 MethaneCNN/frame_data/test/*
 MethaneCNN/Extracted_Videos_BS/
-
-
+MethaneCNN/frame_data_movingAvg/*
+Extracted_Videos/*
+Data_images/*
+data 3/*
+MethaneCNN/frame_data_movingAvg_Adam/*
+frame_data_movingAvgBESTLAB/*
+Squishy-Methane-Analysis[BESTLABCOMPUTER/*
+MethaneCNN/train/*
+MethaneCNN/NewTrain(Ignore)/*
+MethaneCNN/train(ignore)/*
