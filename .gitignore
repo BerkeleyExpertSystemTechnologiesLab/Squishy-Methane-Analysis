@@ -31,3 +31,5 @@ Squishy-Methane-Analysis[BESTLABCOMPUTER/*
 MethaneCNN/train/*
 MethaneCNN/NewTrain(Ignore)/*
 MethaneCNN/train(ignore)/*
+
+MethaneModel/data/*
