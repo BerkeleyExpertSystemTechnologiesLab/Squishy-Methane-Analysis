@@ -77,14 +77,13 @@ def extractImages(args):
 
     '''
     #setting up moving average list
-    prev_imgs = []
-    prev_limit = 210 #210 in paper
 
     start = range[0] * 1000 # converting seconds to milliseconds
     end = range[1] * 1000
     cap = cv2.VideoCapture(pathIn)
     cap.set(cv2.CAP_PROP_POS_MSEC, start)
     success = True
+    fgbg = cv2.createBackgroundSubtractorMOG2()
 
     if cap.isOpened():
       while success and start < end:
@@ -92,11 +91,10 @@ def extractImages(args):
           if success:
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             start = cap.get(cv2.CAP_PROP_POS_MSEC)
-            prev_imgs.append(image)
-            if len(prev_imgs) > prev_limit:
-                prev_imgs.pop(0)
 
-            processed_img = doMovingAverageBGS(image, prev_imgs) #to generalize might need to make this function as a parameter
+            fgmask = fgbg.apply(image)
+
+            processed_img = cv2.erode(fgmask, np.ones((3,3), dtype=np.uint8))
 
             if isLeak:
                 cv2.imwrite(os.path.join(pathOut, "leak.frame%d.jpg" % uuid.uuid4()), processed_img)     # save frame as JPEG file
@@ -124,7 +122,7 @@ def read_frames_from_dir(dir_path, output_path, ranges, max_vids=None):
     currNonLeakCount = 0
     currLeakCount = 0
 
-    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())  # Use all available CPU cores
+    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count() // 2)  # Use all available CPU cores
     print(f'Using {multiprocessing.cpu_count()} CPU Cores')
 
     # Create a list of arguments for the worker function
@@ -181,7 +179,7 @@ def main():
     train_data_dir = os.path.join(data_dir, 'train')
     test_data_dir = os.path.join(data_dir, 'test')
 
-    frame_data_dir = os.path.join(dir_path, 'frame_data_movingAvg')
+    frame_data_dir = os.path.join(dir_path, 'frame_data_mog')
     frame_train_data_dir = os.path.join(frame_data_dir, 'train')
     frame_test_data_dir = os.path.join(frame_data_dir, 'test')
 

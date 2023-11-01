@@ -15,13 +15,21 @@ Include/
 share/
 etc/
 
+# exclude models
+*.pth
+*.h5
+*.ckpt
+*.model
+
 # exclude dataset
+0 - GasNet/
+
 MethaneCNN/data/train/*
 MethaneCNN/data/test/*
 MethaneCNN/frame_data/train/*
 MethaneCNN/frame_data/test/*
 MethaneCNN/Extracted_Videos_BS/
-MethaneCNN/frame_data_movingAvg/*
+MethaneCNN/frame_data_*/
 Extracted_Videos/*
 Data_images/*
 data 3/*
@@ -33,4 +41,4 @@ MethaneCNN/NewTrain(Ignore)/*
 MethaneCNN/train(ignore)/*
 
 MethaneModel/data/*
-MethaneModel/frame_data_movingAvg/*
+MethaneModel/frame_data_*/
