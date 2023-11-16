@@ -5,7 +5,6 @@ import cv2
 from sklearn.mixture import GaussianMixture
 from tqdm import tqdm
 import multiprocessing
-import uuid
 
 import re
 
@@ -48,75 +47,77 @@ def doMOGBGS(image, all_frames):
   image = cv2.absdiff(image, gmm_background)
   return image
 
-def extractImages(args):
+#Updated design for extract_images and its much easier to read
 
-  '''
-  Input:
-    String: pathIn should be the path of the video
-    String: pathOut should be the path of the folder where data is being stored for testing or training
-    Tuple: range of leak frames from video
-    Tuple: range of nonleak frames from video
-
-  Output:
-    creates two subfolders in pathOut called Leaks and Nonleaks
-      Leaks folder contains the frames where there are leaks
-      Nonleaks folder contains the frames where there are noleaks
-  '''
-  # this is for parallelization
-  pathIn, pathOut, leakRange, nonleakRange, currCountLeak, currCountNonLeak = args
-
-  leakPath = os.path.join(pathOut, "Leak")
-  nonleakPath = os.path.join(pathOut, "Nonleaks")
-
-  os.makedirs(leakPath, exist_ok=True)
-  os.makedirs(nonleakPath, exist_ok=True)
-
-  def helper(pathIn, pathOut, range, isLeak, currCountLeak, currCountNonLeak):
+def extract_images(args):
     '''
-    Might need to clean this up, but this was extracted from the original extractImages from the previous implementation
+    Input:
+        extract_images(path_in, path_out, leak_range, nonleak_range, curr_count_leak, curr_count_nonleak)
 
+        path_in (str): The path of the video.
+        path_out (str): The path of the folder where data is being stored for testing or training.
+        leak_range (tuple): Range of leak frames from the video.
+        nonleak_range (tuple): Range of nonleak frames from the video.
+        curr_count_leak (int): Current count of leak frames.
+        curr_count_nonleak (int): Current count of nonleak frames.
+
+    Output:
+        (curr_count_nonleak, curr_count_leak)
+
+    Description:
+        Given the path of the video, `path_in`, this function will perform moving average background subtraction
+        on the entire video. Based on `leak_range` and `nonleak_range`, it will save those frames into
+        `path_out/Leak` and `path_out/Nonleak` folders respectively. The function will output the updated
+        `curr_count_leak` and `curr_count_nonleak`.
     '''
-    #setting up moving average list
+     # this is for parallelization
+    path_in, path_out, leak_range, nonleak_range, curr_count_leak, curr_count_nonleak = args
+
+    leak_path = os.path.join(path_out, "Leak")
+    nonleak_path = os.path.join(path_out, "Nonleaks")
+
+    os.makedirs(leak_path, exist_ok=True)
+    os.makedirs(nonleak_path, exist_ok=True)
+
     prev_imgs = []
-    prev_limit = 210 #210 in paper
+    prev_limit = 210 
 
-    start = range[0] * 1000 # converting seconds to milliseconds
-    end = range[1] * 1000
-    cap = cv2.VideoCapture(pathIn)
-    cap.set(cv2.CAP_PROP_POS_MSEC, start)
+    cap = cv2.VideoCapture(path_in)
+  
     success = True
+    count = 0
 
     if cap.isOpened():
-      while success and start < end:
-          success, image = cap.read()
-          if success:
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            start = cap.get(cv2.CAP_PROP_POS_MSEC)
-            prev_imgs.append(image)
-            if len(prev_imgs) > prev_limit:
-                prev_imgs.pop(0)
+        while success: # Iterate through entire video
+            success, image = cap.read()
+            if success:
+                curr_frame_time = cap.get(cv2.CAP_PROP_POS_MSEC)
+                gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-            processed_img = doMovingAverageBGS(image, prev_imgs) #to generalize might need to make this function as a parameter
+                prev_imgs.append(gray_image)
+                if len(prev_imgs) > prev_limit:
+                    prev_imgs.pop(0)
 
-            if isLeak:
-                cv2.imwrite(os.path.join(pathOut, "leak.frame%d.jpg" % uuid.uuid4()), processed_img)     # save frame as JPEG file
-                currCountLeak += 1
+                processed_img = doMovingAverageBGS(gray_image, prev_imgs) 
+
+                if nonleak_range[0] * 1000 <= curr_frame_time <= nonleak_range[1] * 1000: # If frame in nonleak range, save it
+                    cv2.imwrite(os.path.join(nonleak_path, "nonleak.frame%d.jpg" % curr_count_nonleak), processed_img)
+                    curr_count_nonleak += 1
+                elif leak_range[0] * 1000 <= curr_frame_time <= leak_range[1] * 1000: # If frame in leak range, save it
+                    cv2.imwrite(os.path.join(leak_path, "leak.frame%d.jpg" % curr_count_leak), processed_img)
+                    curr_count_leak += 1
+              
+                count += 1
             else:
-                cv2.imwrite(os.path.join(pathOut, "nonleak.frame%d.jpg" % uuid.uuid4()), processed_img)
-                currCountNonLeak += 1
-          else:
-            break
-      cap.release()
+                if count == int(cap.get(cv2.CAP_PROP_FRAME_COUNT)):
+                    print("Extracted All Frames!!!")
+                else:
+                    print("Last frame viewed", count)
+                    print("Last mms that we grabbed", curr_frame_time)
+                break
+        cap.release()
     cv2.destroyAllWindows()
-    if isLeak:
-       return currCountLeak
-    else:
-       return currCountNonLeak
-  # call helper for both nonLeak and leak and get updated counts
-  updated_currCountNonLeak = helper(pathIn, nonleakPath, nonleakRange, isLeak=False, currCountLeak=currCountLeak, currCountNonLeak=currCountNonLeak)
-  updated_currCountLeak = helper(pathIn, leakPath, leakRange, isLeak=True,currCountLeak=currCountLeak, currCountNonLeak=currCountNonLeak)
-
-  return updated_currCountNonLeak, updated_currCountLeak
+    return curr_count_nonleak, curr_count_leak
 
 
 def read_frames_from_dir(dir_path, output_path, ranges, max_vids=None):
@@ -143,23 +144,20 @@ def read_frames_from_dir(dir_path, output_path, ranges, max_vids=None):
         leak_start = ranges[vid_id][1][0]
         leak_end = ranges[vid_id][1][1]
 
-        # currNonLeakCount, currLeakCount = extractImages(vid_path, output_path, (leak_start, leak_end), (nonleak_start, nonleak_end), currLeakCount, currNonLeakCount)
         args_list.append((vid_path, output_path, (leak_start, leak_end), (nonleak_start, nonleak_end), currLeakCount, currNonLeakCount))
-        # print("Video", vid_id)
-        # print("Current NonLeak Count", currNonLeakCount)
-        # print("Current Leak Count", currLeakCount)
-
-        # print('Done with', cur_count, "video(s)")
         cur_count += 1
       
     # Use tqdm to create a progress bar
     progress_bar = tqdm(total=len(args_list), desc="Processing Videos")
 
     # Use the pool to map the arguments to the worker function with tqdm progress tracking
-    results = list(pool.imap(extractImages, args_list))
-
+    print("Starting video:", vid_id)
+    results = list(pool.imap(extract_images, args_list))
+    print("Done with video:", vid_id)
     # Update the progress bar as processes complete
-    for nonleak_count, leak_count in results:
+    #results should equal to the two ouputs from extract_images
+
+    for nonleak_count, leak_count in results: 
         currNonLeakCount += nonleak_count
         currLeakCount += leak_count
         progress_bar.update(1)  # Increment the progress bar
@@ -173,10 +171,10 @@ def read_frames_from_dir(dir_path, output_path, ranges, max_vids=None):
 def main():
    # get generic path to directory
     print('Start extraction')
+    # get generic path to directory
     dir_path = os.path.dirname(os.path.realpath("__file__"))
-
-    # get all raw video data directories
-    data_dir = os.path.join(dir_path, 'data')
+    
+    data_dir = os.path.join("/home/bestlab/Desktop/Squishy-Methane-Analysis/0 - GasNet/", 'data')
 
     train_data_dir = os.path.join(data_dir, 'train')
     test_data_dir = os.path.join(data_dir, 'test')
@@ -190,9 +188,9 @@ def main():
     ranges = list(zip(raw_data[:, 0], raw_data[:, 1:3], raw_data[:, 3:5])) #need to upload new ranges
     ranges = {ranges[i][0] : (ranges[i][1], ranges[i][2]) for i in range(len(ranges))}
 
-    vid_count = None # Smaller on local computer to limit computer resources #max =>15
+    vid_count = 1 # Smaller on local computer to limit computer resources #max => 15
 
-    test_count = None #Smaller on local computer to limit computer resources #max =>10
+    test_count = 1 #Smaller on local computer to limit computer resources #max => 10
 
     total_train_NonLeak, total_train_Leak = read_frames_from_dir(train_data_dir, frame_train_data_dir, ranges, vid_count)
     print("Done with Training Data")
