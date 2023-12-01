@@ -5,6 +5,7 @@ import cv2
 from sklearn.mixture import GaussianMixture
 from tqdm import tqdm
 import multiprocessing
+import uuid
 
 import re
 
@@ -72,7 +73,6 @@ def extract_images(args):
     '''
      # this is for parallelization
     path_in, path_out, leak_range, nonleak_range, curr_count_leak, curr_count_nonleak = args
-
     leak_path = os.path.join(path_out, "Leak")
     nonleak_path = os.path.join(path_out, "Nonleaks")
 
@@ -101,17 +101,21 @@ def extract_images(args):
                 processed_img = doMovingAverageBGS(gray_image, prev_imgs) 
 
                 if nonleak_range[0] * 1000 <= curr_frame_time <= nonleak_range[1] * 1000: # If frame in nonleak range, save it
-                    cv2.imwrite(os.path.join(nonleak_path, "nonleak.frame%d.jpg" % curr_count_nonleak), processed_img)
+                    cv2.imwrite(os.path.join(nonleak_path, "nonleak.frame%d.jpg" % uuid.uuid4()), processed_img)
                     curr_count_nonleak += 1
                 elif leak_range[0] * 1000 <= curr_frame_time <= leak_range[1] * 1000: # If frame in leak range, save it
-                    cv2.imwrite(os.path.join(leak_path, "leak.frame%d.jpg" % curr_count_leak), processed_img)
+                    # reason for using uuid now is because calling this function in parallel - so can't have sequential data from
+                    # previous calls
+                    cv2.imwrite(os.path.join(leak_path, "leak.frame%d.jpg" % uuid.uuid4()), processed_img) 
                     curr_count_leak += 1
               
                 count += 1
             else:
                 if count == int(cap.get(cv2.CAP_PROP_FRAME_COUNT)):
+                    print()
                     print("Extracted All Frames!!!")
                 else:
+                    print()
                     print("Last frame viewed", count)
                     print("Last mms that we grabbed", curr_frame_time)
                 break
@@ -124,6 +128,9 @@ def read_frames_from_dir(dir_path, output_path, ranges, max_vids=None):
     cur_count = 1
     currNonLeakCount = 0
     currLeakCount = 0
+
+    total_leak = 0
+    total_nonleak = 0
 
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())  # Use all available CPU cores
     print(f'Using {multiprocessing.cpu_count()} CPU Cores')
@@ -143,54 +150,56 @@ def read_frames_from_dir(dir_path, output_path, ranges, max_vids=None):
         nonleak_end = ranges[vid_id][0][1]
         leak_start = ranges[vid_id][1][0]
         leak_end = ranges[vid_id][1][1]
-
         args_list.append((vid_path, output_path, (leak_start, leak_end), (nonleak_start, nonleak_end), currLeakCount, currNonLeakCount))
         cur_count += 1
-      
+    
     # Use tqdm to create a progress bar
+    # But whole process works
     progress_bar = tqdm(total=len(args_list), desc="Processing Videos")
 
     # Use the pool to map the arguments to the worker function with tqdm progress tracking
-    print("Starting video:", vid_id)
-    results = list(pool.imap(extract_images, args_list))
-    print("Done with video:", vid_id)
+    results = pool.imap(extract_images, args_list)
     # Update the progress bar as processes complete
-    #results should equal to the two ouputs from extract_images
+    # results should equal to the two ouputs from extract_images
+    # The pool.imap function in Python's multiprocessing module is lazy, meaning it starts processing the items 
+    # in the iterable (args_list in this case) only when you start iterating over the results 
+    # The function returns an iterator, and the actual computation is performed on-demand during the iteration
 
-    for nonleak_count, leak_count in results: 
-        currNonLeakCount += nonleak_count
-        currLeakCount += leak_count
-        progress_bar.update(1)  # Increment the progress bar
+    for result in results:
+        nonleak_count, leak_count = result
+        total_nonleak += nonleak_count
+        total_leak += leak_count
+        progress_bar.update(1) # Increment the progress bar
 
     pool.close()
     pool.join()
 
     progress_bar.close()  # Close the progress bar when done
-    return currNonLeakCount, currLeakCount
+    return total_nonleak, total_leak
 
 def main():
    # get generic path to directory
     print('Start extraction')
-    # get generic path to directory
     dir_path = os.path.dirname(os.path.realpath("__file__"))
-    
-    data_dir = os.path.join("/home/bestlab/Desktop/Squishy-Methane-Analysis/0 - GasNet/", 'data')
 
+    # get all raw video data directories
+    data_dir = os.path.join("/home/bestlab/Desktop/Squishy-Methane-Analysis/MethaneModel", 'data')
+    
     train_data_dir = os.path.join(data_dir, 'train')
     test_data_dir = os.path.join(data_dir, 'test')
 
-    frame_data_dir = os.path.join(dir_path, 'frame_data_movingAvg')
+    frame_data_dir = os.path.join(dir_path, 'frame_data_movingAvgC1C2')
     frame_train_data_dir = os.path.join(frame_data_dir, 'train')
     frame_test_data_dir = os.path.join(frame_data_dir, 'test')
 
-    raw_data = np.loadtxt(os.path.join(dir_path, 'GasVid_Ranges_Seconds.csv'), skiprows=1, delimiter=',', dtype=int)
+    raw_data = np.loadtxt(os.path.join(dir_path, 'GasVid_Ranges_C1C2.csv'), skiprows=1, delimiter=',', dtype=int)
 
     ranges = list(zip(raw_data[:, 0], raw_data[:, 1:3], raw_data[:, 3:5])) #need to upload new ranges
     ranges = {ranges[i][0] : (ranges[i][1], ranges[i][2]) for i in range(len(ranges))}
 
-    vid_count = 1 # Smaller on local computer to limit computer resources #max => 15
+    vid_count = 15 # Smaller on local computer to limit computer resources #max => 15
 
-    test_count = 1 #Smaller on local computer to limit computer resources #max => 10
+    test_count = 10 #Smaller on local computer to limit computer resources #max => 10
 
     total_train_NonLeak, total_train_Leak = read_frames_from_dir(train_data_dir, frame_train_data_dir, ranges, vid_count)
     print("Done with Training Data")
