@@ -34,3 +34,7 @@ MethaneCNN/train(ignore)/*
 
 MethaneModel/data/*
 MethaneModel/frame_data_movingAvg/*
+
+.idea
+
+source-localization/data
