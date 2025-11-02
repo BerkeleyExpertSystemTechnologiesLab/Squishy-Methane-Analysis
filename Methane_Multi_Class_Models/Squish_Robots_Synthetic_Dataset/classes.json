@@ -1,0 +1,52 @@
+{
+  "classes": {
+    "0": {
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1
+    },
+    "1": {
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1
+    },
+    "2": {
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6
+    },
+    "3": {
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1
+    },
+    "4": {
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3
+    },
+    "5": {
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8
+    },
+    "6": {
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4
+    },
+    "7": {
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0
+    }
+  }
+}

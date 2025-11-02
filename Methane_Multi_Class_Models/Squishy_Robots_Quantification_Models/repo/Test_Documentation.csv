@@ -1,0 +1,10 @@
+﻿Trial,Date,Results
+1,26-Oct-25,"Imported the numpy files generated from my laptop to a google colab. I was able to import and process them. I then made a basic CNN structure and tested them with Optuna for hyperparameter searching. The results were poor with 16% accuracy for my initial random parameters and then 21% accuracy for Optuna searched parameters (Including optimizer type, learning rate, momentum, batch size, hidden size). 
+Next steps are:
+1. To make the ML model multimodal and integrate the distance, ppm, wind speed, into the model. Looking at simple mixing in with the Fully Connected layer. 
+2. Will also test cleaning the data a bit more, trying to remove clouds and making a dedicated background image for each mp4 and each class.
+3. Simply generate more data. Both from the original gasvid dataset and from an altered gasvid dataset (Altered to break up CNN from learning just what gasvid looks like)"
+2,28-Oct-25,"Modified the model to resemble VideoGasNet, added another convolutional block, but received even worse performance (14% accuracy). I need to double check that my synthetic dataset is being generate appropriately. Despite changing the background subtraction methods  to focus on 3 minute intervals I am still catching clouds in my processed data. I might hand make background for the subtraction method."
+3,29-Oct-25,"Testing 3 minute background intervals and doubled the size of the dataset generated. Testing
+Need to add print statements to track testing and validation accuracy during and after epochs to ensure that optuna is behaving as expected and is properly chasing maximum accuracy. 
+After running a test with lr = 0.000011, optimizer = Adelita, Batch = 16, hidden = 91 I received a final test accuracy of 29% and Validation accuracy of 20%"
