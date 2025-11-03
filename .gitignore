@@ -37,4 +37,7 @@ MethaneModel/frame_data_movingAvg/*
 
 .idea
 
-source-localization/data
+source_localization/dataset/original_gasvid_dataset/*
+source_localization/dataset/gasvid_comparison_videos/*
+source_localization/dataset/plume_video_dataset/*
+source_localization/dataset/plume_image_dataset/*

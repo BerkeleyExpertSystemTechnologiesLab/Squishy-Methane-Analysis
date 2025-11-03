@@ -5,20 +5,23 @@ Based on the LangGas paper (arXiv:2503.02910v1)
 
 This script implements the background subtraction method described in Section 4.1
 of the paper for detecting gas leaks in infrared video.
+
+This version processes full videos from the GasVid dataset.
 """
 
 import cv2
 import numpy as np
 import argparse
 from pathlib import Path
+from typing import Optional, Tuple, Union
 
 
-def enhance_difference(diff_image, alpha=15):
+def enhance_difference(diff_image: np.ndarray, alpha: float = 15) -> Tuple[np.ndarray, float]:
     """
     Enhance the difference image with adaptive enhancement factor.
 
     Based on Equation 1 from the paper:
-    α = min(255 / (μ + σ), 15)
+    adaptive_alpha = min(255 / (mean + std), alpha)
 
     Args:
         diff_image: Absolute difference between background and current frame
@@ -42,7 +45,7 @@ def enhance_difference(diff_image, alpha=15):
     return enhanced, adaptive_alpha
 
 
-def apply_morphological_operations(mask, kernel_size=30):
+def apply_morphological_operations(mask: np.ndarray, kernel_size: int = 30) -> np.ndarray:
     """
     Apply morphological operations to refine the mask.
 
@@ -65,8 +68,16 @@ def apply_morphological_operations(mask, kernel_size=30):
     return mask
 
 
-def process_video(video_path, output_path=None, output_subtracted=None, history=30,
-                  threshold=40, morph_kernel_size=30, enhancement_factor=15, show_preview=True):
+def process_video(
+    video_path: Path,
+    output_path: Optional[Union[str, Path]] = None,
+    output_subtracted: Optional[Union[str, Path]] = None,
+    history: int = 30,
+    threshold: int = 40,
+    morph_kernel_size: int = 30,
+    enhancement_factor: float = 15,
+    show_preview: bool = True
+    ) -> None:
     """
     Process video using background subtraction for gas leak detection.
 
@@ -93,6 +104,7 @@ def process_video(video_path, output_path=None, output_subtracted=None, history=
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     print(f"Video properties:")
+    print(f"  Video path: {video_path}")
     print(f"  Resolution: {width}x{height}")
     print(f"  FPS: {fps}")
     print(f"  Total frames: {total_frames}")
@@ -105,8 +117,8 @@ def process_video(video_path, output_path=None, output_subtracted=None, history=
     # Initialize MOG2 background subtractor
     # Using the parameters from the paper
     back_sub = cv2.createBackgroundSubtractorMOG2(
-        history=history,
-        varThreshold=16,  # Default value
+        history=history,    # LangGas paper uses 30 frames
+        varThreshold=16,    # Default value
         detectShadows=False
     )
 
@@ -129,6 +141,7 @@ def process_video(video_path, output_path=None, output_subtracted=None, history=
     frame_count = 0
 
     try:
+        # Process all frames from the beginning
         while True:
             ret, frame = cap.read()
 
@@ -205,9 +218,9 @@ def process_video(video_path, output_path=None, output_subtracted=None, history=
                     cv2.waitKey(0)
 
             # Print progress
-            if frame_count % 30 == 0:
-                progress = (frame_count / total_frames) * 100
-                print(f"Progress: {progress:.1f}% ({frame_count}/{total_frames})")
+            # if frame_count % 30 == 0:
+            #     progress = (frame_count / total_frames) * 100
+            #     print(f"Progress: {progress:.1f}% ({frame_count}/{total_frames})")
 
     finally:
         # Cleanup
@@ -223,26 +236,109 @@ def process_video(video_path, output_path=None, output_subtracted=None, history=
         print(f"Total frames processed: {frame_count}")
 
 
-def main():
+def process_dataset(
+    dataset_dir: Path,
+    comparison_output_dir: Path,
+    plume_output_dir: Path,
+    history: int = 30,
+    threshold: int = 40,
+    morph_kernel_size: int = 30,
+    enhancement_factor: float = 15,
+    show_preview: bool = False
+) -> None:
+    """
+    Process all videos in the dataset directory.
+
+    Args:
+        dataset_dir: Directory containing the video files
+        comparison_output_dir: Directory to save comparison videos
+        plume_output_dir: Directory to save plume videos
+        history: Number of frames for background model history
+        threshold: Threshold for binary mask creation
+        morph_kernel_size: Size of morphological closing kernel
+        enhancement_factor: Default enhancement factor
+        show_preview: Whether to show live preview for each video
+    """
+    # Create output directories if they don't exist
+    comparison_output_dir.mkdir(parents=True, exist_ok=True)
+    plume_output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Find all video files in dataset directory
+    video_files = list(dataset_dir.glob("MOV_*.mp4"))
+    print(f"Found {len(video_files)} video files in dataset directory")
+
+    # Process each video
+    processed_count = 0
+    skipped_count = 0
+    total_videos = len(video_files)
+
+    for idx, video_path in enumerate(sorted(video_files), 1):
+        print(f"Processing video {idx}/{total_videos}: {video_path.name}")
+        
+        # Extract video number from filename (e.g., MOV_1237.mp4 -> 1237)
+        try:
+            video_no = int(video_path.stem.split('_')[1])
+        except (IndexError, ValueError):
+            print(f"  Warning: Could not parse video number, skipping")
+            skipped_count += 1
+            continue
+
+        # Set up output paths
+        comparison_output_path = comparison_output_dir / f"MOV_{video_no}_comparison.mp4"
+        plume_output_path = plume_output_dir / f"MOV_{video_no}_plume.mp4"
+
+        # Process video
+        try:
+            process_video(
+                video_path=video_path,
+                output_path=comparison_output_path,
+                output_subtracted=plume_output_path,
+                history=history,
+                threshold=threshold,
+                morph_kernel_size=morph_kernel_size,
+                enhancement_factor=enhancement_factor,
+                show_preview=show_preview
+            )
+            processed_count += 1
+            print(f"  ✓ Completed")
+        except Exception as e:
+            print(f"  ✗ Error: {e}")
+            import traceback
+            traceback.print_exc()
+            skipped_count += 1
+
+    print(f"\n{'='*60}")
+    print(f"Batch processing complete!")
+    print(f"  Processed: {processed_count} videos")
+    print(f"  Skipped: {skipped_count} videos")
+    print(f"  Comparison videos saved to: {comparison_output_dir}")
+    print(f"  Plume videos saved to: {plume_output_dir}")
+
+
+def main() -> int:
     parser = argparse.ArgumentParser(
         description='Background subtraction for gas leak detection (LangGas method)',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  # Process single video
   python background_subtraction.py test.mp4
   python background_subtraction.py test.mp4 -o output_sidebyside.mp4
-  python background_subtraction.py test.mp4 -s output_subtracted.mp4
-  python background_subtraction.py test.mp4 -o sidebyside.mp4 -s subtracted.mp4
-  python background_subtraction.py test.mp4 --history 50 --threshold 30
-  python background_subtraction.py test.mp4 --no-preview -o output.mp4
+  
+  # Process entire GasVid dataset
+  python background_subtraction.py --dataset
+  python background_subtraction.py --dataset --history 50 --threshold 30
         """
     )
 
-    parser.add_argument('video', type=str, help='Input video file path')
+    parser.add_argument('video', type=str, nargs='?', default=None,
+                        help='Input video file path (for single video processing)')
+    parser.add_argument('--dataset', action='store_true',
+                        help='Process entire GasVid dataset from original_gasvid_dataset directory')
     parser.add_argument('-o', '--output', type=str, default=None,
-                        help='Output video file path for side-by-side view (optional)')
+                        help='Output video file path for side-by-side view (optional, single video mode only)')
     parser.add_argument('-s', '--subtracted', type=str, default=None,
-                        help='Output video file path for background-subtracted view only (optional)')
+                        help='Output video file path for background-subtracted view only (optional, single video mode only)')
     parser.add_argument('--history', type=int, default=30,
                         help='Background model history (default: 30)')
     parser.add_argument('--threshold', type=int, default=40,
@@ -253,33 +349,77 @@ Examples:
                         help='Enhancement factor (default: 15)')
     parser.add_argument('--no-preview', action='store_true',
                         help='Disable live preview window')
+    parser.add_argument('--dataset-dir', type=str, default=None,
+                        help='Path to dataset directory (default: source_localization/dataset/original_gasvid_dataset)')
 
     args = parser.parse_args()
 
-    # Check if input file exists
-    video_path = Path(args.video)
-    if not video_path.exists():
-        print(f"Error: Video file not found: {video_path}")
-        return 1
+    # Dataset processing mode
+    if args.dataset:
+        # Determine paths
+        script_dir = Path(__file__).parent
+        if args.dataset_dir:
+            dataset_dir = Path(args.dataset_dir)
+        else:
+            dataset_dir = script_dir / 'original_gasvid_dataset'
 
-    # Process video
-    try:
-        process_video(
-            video_path=video_path,
-            output_path=args.output,
-            output_subtracted=args.subtracted,
-            history=args.history,
-            threshold=args.threshold,
-            morph_kernel_size=args.morph_kernel,
-            enhancement_factor=args.enhancement,
-            show_preview=not args.no_preview
-        )
-        return 0
-    except Exception as e:
-        print(f"Error processing video: {e}")
-        import traceback
-        traceback.print_exc()
-        return 1
+        # Output directories
+        comparison_output_dir = script_dir / 'gasvid_comparison_videos'
+        plume_output_dir = script_dir / 'plume_video_dataset'
+
+        # Validate paths
+        if not dataset_dir.exists():
+            print(f"Error: Dataset directory not found: {dataset_dir}")
+            return 1
+
+        # Process dataset
+        try:
+            process_dataset(
+                dataset_dir=dataset_dir,
+                comparison_output_dir=comparison_output_dir,
+                plume_output_dir=plume_output_dir,
+                history=args.history,
+                threshold=args.threshold,
+                morph_kernel_size=args.morph_kernel,
+                enhancement_factor=args.enhancement,
+                show_preview=not args.no_preview
+            )
+            return 0
+        except Exception as e:
+            print(f"Error processing dataset: {e}")
+            import traceback
+            traceback.print_exc()
+            return 1
+
+    # Single video processing mode
+    else:
+        if not args.video:
+            parser.error("Either provide a video file path or use --dataset flag")
+
+        # Check if input file exists
+        video_path = Path(args.video)
+        if not video_path.exists():
+            print(f"Error: Video file not found: {video_path}")
+            return 1
+
+        # Process video
+        try:
+            process_video(
+                video_path=video_path,
+                output_path=args.output,
+                output_subtracted=args.subtracted,
+                history=args.history,
+                threshold=args.threshold,
+                morph_kernel_size=args.morph_kernel,
+                enhancement_factor=args.enhancement,
+                show_preview=not args.no_preview
+            )
+            return 0
+        except Exception as e:
+            print(f"Error processing video: {e}")
+            import traceback
+            traceback.print_exc()
+            return 1
 
 
 if __name__ == '__main__':
