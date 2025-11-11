@@ -1,0 +1,16 @@
+__pycache__/
+Original_Dataset/
+Processed_Dataset/
+Dataset_Backups/
+Backup_Datasets/
+Exportable_Dataset/
+Final_Dataset/
+
+
+
+*.mp4
+*.pyc 
+*.npy #numpy array files
+*.zip
+
+
