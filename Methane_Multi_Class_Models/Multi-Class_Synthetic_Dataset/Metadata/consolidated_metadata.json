@@ -1,0 +1,2298 @@
+{
+  "1237": {
+    "class_0": {
+      "video_number": "1237",
+      "class": 0,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.1261214421268985
+    },
+    "class_1": {
+      "video_number": "1237",
+      "class": 1,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 7.062800759106318
+    },
+    "class_2": {
+      "video_number": "1237",
+      "class": 2,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 18.161487666273388
+    },
+    "class_3": {
+      "video_number": "1237",
+      "class": 3,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 24.425519291909342
+    },
+    "class_4": {
+      "video_number": "1237",
+      "class": 4,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 28.629567362805965
+    },
+    "class_5": {
+      "video_number": "1237",
+      "class": 5,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 35.39808475694952
+    },
+    "class_6": {
+      "video_number": "1237",
+      "class": 6,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 46.03432637631796
+    },
+    "class_7": {
+      "video_number": "1237",
+      "class": 7,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 52.25631752124495
+    }
+  },
+  "1238": {
+    "class_0": {
+      "video_number": "1238",
+      "class": 0,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.062522301745748
+    },
+    "class_1": {
+      "video_number": "1238",
+      "class": 1,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 3.5012488977618887
+    },
+    "class_2": {
+      "video_number": "1238",
+      "class": 2,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 9.003211451387712
+    },
+    "class_3": {
+      "video_number": "1238",
+      "class": 3,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 12.10848577142653
+    },
+    "class_4": {
+      "video_number": "1238",
+      "class": 4,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 14.192562496284792
+    },
+    "class_5": {
+      "video_number": "1238",
+      "class": 5,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 17.547926023306605
+    },
+    "class_6": {
+      "video_number": "1238",
+      "class": 6,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 22.82064013719802
+    },
+    "class_7": {
+      "video_number": "1238",
+      "class": 7,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 25.905073689988253
+    }
+  },
+  "1239": {
+    "class_0": {
+      "video_number": "1239",
+      "class": 0,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0378221331548352
+    },
+    "class_1": {
+      "video_number": "1239",
+      "class": 1,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 2.1180394566707723
+    },
+    "class_2": {
+      "video_number": "1239",
+      "class": 2,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 5.446387174296271
+    },
+    "class_3": {
+      "video_number": "1239",
+      "class": 3,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 7.324886454319754
+    },
+    "class_4": {
+      "video_number": "1239",
+      "class": 4,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 8.585624226147594
+    },
+    "class_5": {
+      "video_number": "1239",
+      "class": 5,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 10.615412038790415
+    },
+    "class_6": {
+      "video_number": "1239",
+      "class": 6,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 13.805078601514852
+    },
+    "class_7": {
+      "video_number": "1239",
+      "class": 7,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 15.670970503820056
+    }
+  },
+  "1240": {
+    "class_0": {
+      "video_number": "1240",
+      "class": 0,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0246739063924294
+    },
+    "class_1": {
+      "video_number": "1240",
+      "class": 1,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 1.3817387579760514
+    },
+    "class_2": {
+      "video_number": "1240",
+      "class": 2,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 3.5530425205098464
+    },
+    "class_3": {
+      "video_number": "1240",
+      "class": 3,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 4.778513204667178
+    },
+    "class_4": {
+      "video_number": "1240",
+      "class": 4,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 5.600976751081493
+    },
+    "class_5": {
+      "video_number": "1240",
+      "class": 5,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 6.925143060808543
+    },
+    "class_6": {
+      "video_number": "1240",
+      "class": 6,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 9.005975833236763
+    },
+    "class_7": {
+      "video_number": "1240",
+      "class": 7,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 10.22322188192995
+    }
+  },
+  "1241": {
+    "class_0": {
+      "video_number": "1241",
+      "class": 0,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0173564627692844
+    },
+    "class_1": {
+      "video_number": "1241",
+      "class": 1,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 0.971961915079928
+    },
+    "class_2": {
+      "video_number": "1241",
+      "class": 2,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 2.4993306387769576
+    },
+    "class_3": {
+      "video_number": "1241",
+      "class": 3,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 3.3613682896514168
+    },
+    "class_4": {
+      "video_number": "1241",
+      "class": 4,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 3.939917048627565
+    },
+    "class_5": {
+      "video_number": "1241",
+      "class": 5,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 4.871380550579162
+    },
+    "class_6": {
+      "video_number": "1241",
+      "class": 6,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 6.335108910788815
+    },
+    "class_7": {
+      "video_number": "1241",
+      "class": 7,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 7.191361074073512
+    }
+  },
+  "1242": {
+    "class_0": {
+      "video_number": "1242",
+      "class": 0,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.2837732448
+    },
+    "class_1": {
+      "video_number": "1242",
+      "class": 1,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 15.891301707989223
+    },
+    "class_2": {
+      "video_number": "1242",
+      "class": 2,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 40.86334724911514
+    },
+    "class_3": {
+      "video_number": "1242",
+      "class": 3,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 54.95741840679605
+    },
+    "class_4": {
+      "video_number": "1242",
+      "class": 4,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 64.41652656631345
+    },
+    "class_5": {
+      "video_number": "1242",
+      "class": 5,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 79.64569070313645
+    },
+    "class_6": {
+      "video_number": "1242",
+      "class": 6,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 103.57723434671544
+    },
+    "class_7": {
+      "video_number": "1242",
+      "class": 7,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 117.5767144228012
+    }
+  },
+  "1467": {
+    "class_0": {
+      "video_number": "1467",
+      "class": 0,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.2837732448
+    },
+    "class_1": {
+      "video_number": "1467",
+      "class": 1,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 15.891301707989223
+    },
+    "class_2": {
+      "video_number": "1467",
+      "class": 2,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 40.86334724911514
+    },
+    "class_3": {
+      "video_number": "1467",
+      "class": 3,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 54.95741840679605
+    },
+    "class_4": {
+      "video_number": "1467",
+      "class": 4,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 64.41652656631345
+    },
+    "class_5": {
+      "video_number": "1467",
+      "class": 5,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 79.64569070313645
+    },
+    "class_6": {
+      "video_number": "1467",
+      "class": 6,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 103.57723434671544
+    },
+    "class_7": {
+      "video_number": "1467",
+      "class": 7,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 117.5767144228012
+    }
+  },
+  "1468": {
+    "class_0": {
+      "video_number": "1468",
+      "class": 0,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.1261214421268985
+    },
+    "class_1": {
+      "video_number": "1468",
+      "class": 1,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 7.062800759106318
+    },
+    "class_2": {
+      "video_number": "1468",
+      "class": 2,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 18.161487666273388
+    },
+    "class_3": {
+      "video_number": "1468",
+      "class": 3,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 24.425519291909342
+    },
+    "class_4": {
+      "video_number": "1468",
+      "class": 4,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 28.629567362805965
+    },
+    "class_5": {
+      "video_number": "1468",
+      "class": 5,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 35.39808475694952
+    },
+    "class_6": {
+      "video_number": "1468",
+      "class": 6,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 46.03432637631796
+    },
+    "class_7": {
+      "video_number": "1468",
+      "class": 7,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 52.25631752124495
+    }
+  },
+  "1469": {
+    "class_0": {
+      "video_number": "1469",
+      "class": 0,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.062522301745748
+    },
+    "class_1": {
+      "video_number": "1469",
+      "class": 1,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 3.5012488977618887
+    },
+    "class_2": {
+      "video_number": "1469",
+      "class": 2,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 9.003211451387712
+    },
+    "class_3": {
+      "video_number": "1469",
+      "class": 3,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 12.10848577142653
+    },
+    "class_4": {
+      "video_number": "1469",
+      "class": 4,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 14.192562496284792
+    },
+    "class_5": {
+      "video_number": "1469",
+      "class": 5,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 17.547926023306605
+    },
+    "class_6": {
+      "video_number": "1469",
+      "class": 6,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 22.82064013719802
+    },
+    "class_7": {
+      "video_number": "1469",
+      "class": 7,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 25.905073689988253
+    }
+  },
+  "1470": {
+    "class_0": {
+      "video_number": "1470",
+      "class": 0,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0378221331548352
+    },
+    "class_1": {
+      "video_number": "1470",
+      "class": 1,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 2.1180394566707723
+    },
+    "class_2": {
+      "video_number": "1470",
+      "class": 2,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 5.446387174296271
+    },
+    "class_3": {
+      "video_number": "1470",
+      "class": 3,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 7.324886454319754
+    },
+    "class_4": {
+      "video_number": "1470",
+      "class": 4,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 8.585624226147594
+    },
+    "class_5": {
+      "video_number": "1470",
+      "class": 5,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 10.615412038790415
+    },
+    "class_6": {
+      "video_number": "1470",
+      "class": 6,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 13.805078601514852
+    },
+    "class_7": {
+      "video_number": "1470",
+      "class": 7,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 15.670970503820056
+    }
+  },
+  "1471": {
+    "class_0": {
+      "video_number": "1471",
+      "class": 0,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0246739063924294
+    },
+    "class_1": {
+      "video_number": "1471",
+      "class": 1,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 1.3817387579760514
+    },
+    "class_2": {
+      "video_number": "1471",
+      "class": 2,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 3.5530425205098464
+    },
+    "class_3": {
+      "video_number": "1471",
+      "class": 3,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 4.778513204667178
+    },
+    "class_4": {
+      "video_number": "1471",
+      "class": 4,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 5.600976751081493
+    },
+    "class_5": {
+      "video_number": "1471",
+      "class": 5,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 6.925143060808543
+    },
+    "class_6": {
+      "video_number": "1471",
+      "class": 6,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 9.005975833236763
+    },
+    "class_7": {
+      "video_number": "1471",
+      "class": 7,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 10.22322188192995
+    }
+  },
+  "1472": {
+    "class_0": {
+      "video_number": "1472",
+      "class": 0,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0173564627692844
+    },
+    "class_1": {
+      "video_number": "1472",
+      "class": 1,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 0.971961915079928
+    },
+    "class_2": {
+      "video_number": "1472",
+      "class": 2,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 2.4993306387769576
+    },
+    "class_3": {
+      "video_number": "1472",
+      "class": 3,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 3.3613682896514168
+    },
+    "class_4": {
+      "video_number": "1472",
+      "class": 4,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 3.939917048627565
+    },
+    "class_5": {
+      "video_number": "1472",
+      "class": 5,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 4.871380550579162
+    },
+    "class_6": {
+      "video_number": "1472",
+      "class": 6,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 6.335108910788815
+    },
+    "class_7": {
+      "video_number": "1472",
+      "class": 7,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 7.191361074073512
+    }
+  },
+  "2559": {
+    "class_0": {
+      "video_number": "2559",
+      "class": 0,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.1261214421268985
+    },
+    "class_1": {
+      "video_number": "2559",
+      "class": 1,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 7.062800759106318
+    },
+    "class_2": {
+      "video_number": "2559",
+      "class": 2,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 18.161487666273388
+    },
+    "class_3": {
+      "video_number": "2559",
+      "class": 3,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 24.425519291909342
+    },
+    "class_4": {
+      "video_number": "2559",
+      "class": 4,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 28.629567362805965
+    },
+    "class_5": {
+      "video_number": "2559",
+      "class": 5,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 35.39808475694952
+    },
+    "class_6": {
+      "video_number": "2559",
+      "class": 6,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 46.03432637631796
+    },
+    "class_7": {
+      "video_number": "2559",
+      "class": 7,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 52.25631752124495
+    }
+  },
+  "2560": {
+    "class_0": {
+      "video_number": "2560",
+      "class": 0,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.062522301745748
+    },
+    "class_1": {
+      "video_number": "2560",
+      "class": 1,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 3.5012488977618887
+    },
+    "class_2": {
+      "video_number": "2560",
+      "class": 2,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 9.003211451387712
+    },
+    "class_3": {
+      "video_number": "2560",
+      "class": 3,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 12.10848577142653
+    },
+    "class_4": {
+      "video_number": "2560",
+      "class": 4,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 14.192562496284792
+    },
+    "class_5": {
+      "video_number": "2560",
+      "class": 5,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 17.547926023306605
+    },
+    "class_6": {
+      "video_number": "2560",
+      "class": 6,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 22.82064013719802
+    },
+    "class_7": {
+      "video_number": "2560",
+      "class": 7,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 25.905073689988253
+    }
+  },
+  "2561": {
+    "class_0": {
+      "video_number": "2561",
+      "class": 0,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0378221331548352
+    },
+    "class_1": {
+      "video_number": "2561",
+      "class": 1,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 2.1180394566707723
+    },
+    "class_2": {
+      "video_number": "2561",
+      "class": 2,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 5.446387174296271
+    },
+    "class_3": {
+      "video_number": "2561",
+      "class": 3,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 7.324886454319754
+    },
+    "class_4": {
+      "video_number": "2561",
+      "class": 4,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 8.585624226147594
+    },
+    "class_5": {
+      "video_number": "2561",
+      "class": 5,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 10.615412038790415
+    },
+    "class_6": {
+      "video_number": "2561",
+      "class": 6,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 13.805078601514852
+    },
+    "class_7": {
+      "video_number": "2561",
+      "class": 7,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 15.670970503820056
+    }
+  },
+  "2562": {
+    "class_0": {
+      "video_number": "2562",
+      "class": 0,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0246739063924294
+    },
+    "class_1": {
+      "video_number": "2562",
+      "class": 1,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 1.3817387579760514
+    },
+    "class_2": {
+      "video_number": "2562",
+      "class": 2,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 3.5530425205098464
+    },
+    "class_3": {
+      "video_number": "2562",
+      "class": 3,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 4.778513204667178
+    },
+    "class_4": {
+      "video_number": "2562",
+      "class": 4,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 5.600976751081493
+    },
+    "class_5": {
+      "video_number": "2562",
+      "class": 5,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 6.925143060808543
+    },
+    "class_6": {
+      "video_number": "2562",
+      "class": 6,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 9.005975833236763
+    },
+    "class_7": {
+      "video_number": "2562",
+      "class": 7,
+      "distance_m": 15.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 10.22322188192995
+    }
+  },
+  "2563": {
+    "class_0": {
+      "video_number": "2563",
+      "class": 0,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0173564627692844
+    },
+    "class_1": {
+      "video_number": "2563",
+      "class": 1,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 0.971961915079928
+    },
+    "class_2": {
+      "video_number": "2563",
+      "class": 2,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 2.4993306387769576
+    },
+    "class_3": {
+      "video_number": "2563",
+      "class": 3,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 3.3613682896514168
+    },
+    "class_4": {
+      "video_number": "2563",
+      "class": 4,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 3.939917048627565
+    },
+    "class_5": {
+      "video_number": "2563",
+      "class": 5,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 4.871380550579162
+    },
+    "class_6": {
+      "video_number": "2563",
+      "class": 6,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 6.335108910788815
+    },
+    "class_7": {
+      "video_number": "2563",
+      "class": 7,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 7.191361074073512
+    }
+  },
+  "2564": {
+    "class_0": {
+      "video_number": "2564",
+      "class": 0,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.2837732448
+    },
+    "class_1": {
+      "video_number": "2564",
+      "class": 1,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 15.891301707989223
+    },
+    "class_2": {
+      "video_number": "2564",
+      "class": 2,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 40.86334724911514
+    },
+    "class_3": {
+      "video_number": "2564",
+      "class": 3,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 54.95741840679605
+    },
+    "class_4": {
+      "video_number": "2564",
+      "class": 4,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 64.41652656631345
+    },
+    "class_5": {
+      "video_number": "2564",
+      "class": 5,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 79.64569070313645
+    },
+    "class_6": {
+      "video_number": "2564",
+      "class": 6,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 103.57723434671544
+    },
+    "class_7": {
+      "video_number": "2564",
+      "class": 7,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 117.5767144228012
+    }
+  },
+  "2566": {
+    "class_0": {
+      "video_number": "2566",
+      "class": 0,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.2837732448
+    },
+    "class_1": {
+      "video_number": "2566",
+      "class": 1,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 15.891301707989223
+    },
+    "class_2": {
+      "video_number": "2566",
+      "class": 2,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 40.86334724911514
+    },
+    "class_3": {
+      "video_number": "2566",
+      "class": 3,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 54.95741840679605
+    },
+    "class_4": {
+      "video_number": "2566",
+      "class": 4,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 64.41652656631345
+    },
+    "class_5": {
+      "video_number": "2566",
+      "class": 5,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 79.64569070313645
+    },
+    "class_6": {
+      "video_number": "2566",
+      "class": 6,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 103.57723434671544
+    },
+    "class_7": {
+      "video_number": "2566",
+      "class": 7,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 117.5767144228012
+    }
+  },
+  "2567": {
+    "class_0": {
+      "video_number": "2567",
+      "class": 0,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.1261214421268985
+    },
+    "class_1": {
+      "video_number": "2567",
+      "class": 1,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 7.062800759106318
+    },
+    "class_2": {
+      "video_number": "2567",
+      "class": 2,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 18.161487666273388
+    },
+    "class_3": {
+      "video_number": "2567",
+      "class": 3,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 24.425519291909342
+    },
+    "class_4": {
+      "video_number": "2567",
+      "class": 4,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 28.629567362805965
+    },
+    "class_5": {
+      "video_number": "2567",
+      "class": 5,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 35.39808475694952
+    },
+    "class_6": {
+      "video_number": "2567",
+      "class": 6,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 46.03432637631796
+    },
+    "class_7": {
+      "video_number": "2567",
+      "class": 7,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 52.25631752124495
+    }
+  },
+  "2568": {
+    "class_0": {
+      "video_number": "2568",
+      "class": 0,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.062522301745748
+    },
+    "class_1": {
+      "video_number": "2568",
+      "class": 1,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 3.5012488977618887
+    },
+    "class_2": {
+      "video_number": "2568",
+      "class": 2,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 9.003211451387712
+    },
+    "class_3": {
+      "video_number": "2568",
+      "class": 3,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 12.10848577142653
+    },
+    "class_4": {
+      "video_number": "2568",
+      "class": 4,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 14.192562496284792
+    },
+    "class_5": {
+      "video_number": "2568",
+      "class": 5,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 17.547926023306605
+    },
+    "class_6": {
+      "video_number": "2568",
+      "class": 6,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 22.82064013719802
+    },
+    "class_7": {
+      "video_number": "2568",
+      "class": 7,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 25.905073689988253
+    }
+  },
+  "2569": {
+    "class_0": {
+      "video_number": "2569",
+      "class": 0,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0378221331548352
+    },
+    "class_1": {
+      "video_number": "2569",
+      "class": 1,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 2.1180394566707723
+    },
+    "class_2": {
+      "video_number": "2569",
+      "class": 2,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 5.446387174296271
+    },
+    "class_3": {
+      "video_number": "2569",
+      "class": 3,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 7.324886454319754
+    },
+    "class_4": {
+      "video_number": "2569",
+      "class": 4,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 8.585624226147594
+    },
+    "class_5": {
+      "video_number": "2569",
+      "class": 5,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 10.615412038790415
+    },
+    "class_6": {
+      "video_number": "2569",
+      "class": 6,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 13.805078601514852
+    },
+    "class_7": {
+      "video_number": "2569",
+      "class": 7,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 15.670970503820056
+    }
+  },
+  "2571": {
+    "class_0": {
+      "video_number": "2571",
+      "class": 0,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0173564627692844
+    },
+    "class_1": {
+      "video_number": "2571",
+      "class": 1,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 0.971961915079928
+    },
+    "class_2": {
+      "video_number": "2571",
+      "class": 2,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 2.4993306387769576
+    },
+    "class_3": {
+      "video_number": "2571",
+      "class": 3,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 3.3613682896514168
+    },
+    "class_4": {
+      "video_number": "2571",
+      "class": 4,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 3.939917048627565
+    },
+    "class_5": {
+      "video_number": "2571",
+      "class": 5,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 4.871380550579162
+    },
+    "class_6": {
+      "video_number": "2571",
+      "class": 6,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 6.335108910788815
+    },
+    "class_7": {
+      "video_number": "2571",
+      "class": 7,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 7.191361074073512
+    }
+  },
+  "2578": {
+    "class_0": {
+      "video_number": "2578",
+      "class": 0,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.2837732448
+    },
+    "class_1": {
+      "video_number": "2578",
+      "class": 1,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 15.891301707989223
+    },
+    "class_2": {
+      "video_number": "2578",
+      "class": 2,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 40.86334724911514
+    },
+    "class_3": {
+      "video_number": "2578",
+      "class": 3,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 54.95741840679605
+    },
+    "class_4": {
+      "video_number": "2578",
+      "class": 4,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 64.41652656631345
+    },
+    "class_5": {
+      "video_number": "2578",
+      "class": 5,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 79.64569070313645
+    },
+    "class_6": {
+      "video_number": "2578",
+      "class": 6,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 103.57723434671544
+    },
+    "class_7": {
+      "video_number": "2578",
+      "class": 7,
+      "distance_m": 4.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 117.5767144228012
+    }
+  },
+  "2579": {
+    "class_0": {
+      "video_number": "2579",
+      "class": 0,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.1261214421268985
+    },
+    "class_1": {
+      "video_number": "2579",
+      "class": 1,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 7.062800759106318
+    },
+    "class_2": {
+      "video_number": "2579",
+      "class": 2,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 18.161487666273388
+    },
+    "class_3": {
+      "video_number": "2579",
+      "class": 3,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 24.425519291909342
+    },
+    "class_4": {
+      "video_number": "2579",
+      "class": 4,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 28.629567362805965
+    },
+    "class_5": {
+      "video_number": "2579",
+      "class": 5,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 35.39808475694952
+    },
+    "class_6": {
+      "video_number": "2579",
+      "class": 6,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 46.03432637631796
+    },
+    "class_7": {
+      "video_number": "2579",
+      "class": 7,
+      "distance_m": 6.9,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 52.25631752124495
+    }
+  },
+  "2580": {
+    "class_0": {
+      "video_number": "2580",
+      "class": 0,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.062522301745748
+    },
+    "class_1": {
+      "video_number": "2580",
+      "class": 1,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 3.5012488977618887
+    },
+    "class_2": {
+      "video_number": "2580",
+      "class": 2,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 9.003211451387712
+    },
+    "class_3": {
+      "video_number": "2580",
+      "class": 3,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 12.10848577142653
+    },
+    "class_4": {
+      "video_number": "2580",
+      "class": 4,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 14.192562496284792
+    },
+    "class_5": {
+      "video_number": "2580",
+      "class": 5,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 17.547926023306605
+    },
+    "class_6": {
+      "video_number": "2580",
+      "class": 6,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 22.82064013719802
+    },
+    "class_7": {
+      "video_number": "2580",
+      "class": 7,
+      "distance_m": 9.8,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 25.905073689988253
+    }
+  },
+  "2581": {
+    "class_0": {
+      "video_number": "2581",
+      "class": 0,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0378221331548352
+    },
+    "class_1": {
+      "video_number": "2581",
+      "class": 1,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 2.1180394566707723
+    },
+    "class_2": {
+      "video_number": "2581",
+      "class": 2,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 5.446387174296271
+    },
+    "class_3": {
+      "video_number": "2581",
+      "class": 3,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 7.324886454319754
+    },
+    "class_4": {
+      "video_number": "2581",
+      "class": 4,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 8.585624226147594
+    },
+    "class_5": {
+      "video_number": "2581",
+      "class": 5,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 10.615412038790415
+    },
+    "class_6": {
+      "video_number": "2581",
+      "class": 6,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 13.805078601514852
+    },
+    "class_7": {
+      "video_number": "2581",
+      "class": 7,
+      "distance_m": 12.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 15.670970503820056
+    }
+  },
+  "2583": {
+    "class_0": {
+      "video_number": "2583",
+      "class": 0,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 0.3,
+      "leak_rate_scfh_std_dev": 0.0,
+      "leak_rate_gh": 5.3,
+      "leak_rate_gh_std_dev": 0.1,
+      "ppm": 0.0173564627692844
+    },
+    "class_1": {
+      "video_number": "2583",
+      "class": 1,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 16.8,
+      "leak_rate_scfh_std_dev": 0.1,
+      "leak_rate_gh": 277.7,
+      "leak_rate_gh_std_dev": 1.1,
+      "ppm": 0.971961915079928
+    },
+    "class_2": {
+      "video_number": "2583",
+      "class": 2,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 43.2,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 713.1,
+      "leak_rate_gh_std_dev": 2.6,
+      "ppm": 2.4993306387769576
+    },
+    "class_3": {
+      "video_number": "2583",
+      "class": 3,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 58.1,
+      "leak_rate_scfh_std_dev": 0.2,
+      "leak_rate_gh": 958.8,
+      "leak_rate_gh_std_dev": 3.1,
+      "ppm": 3.3613682896514168
+    },
+    "class_4": {
+      "video_number": "2583",
+      "class": 4,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 68.1,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1124.3,
+      "leak_rate_gh_std_dev": 4.3,
+      "ppm": 3.939917048627565
+    },
+    "class_5": {
+      "video_number": "2583",
+      "class": 5,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 84.2,
+      "leak_rate_scfh_std_dev": 0.3,
+      "leak_rate_gh": 1389.8,
+      "leak_rate_gh_std_dev": 4.8,
+      "ppm": 4.871380550579162
+    },
+    "class_6": {
+      "video_number": "2583",
+      "class": 6,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 109.5,
+      "leak_rate_scfh_std_dev": 2.5,
+      "leak_rate_gh": 1806.1,
+      "leak_rate_gh_std_dev": 41.4,
+      "ppm": 6.335108910788815
+    },
+    "class_7": {
+      "video_number": "2583",
+      "class": 7,
+      "distance_m": 18.6,
+      "leak_rate_scfh": 124.3,
+      "leak_rate_scfh_std_dev": 2.9,
+      "leak_rate_gh": 2051.6,
+      "leak_rate_gh_std_dev": 48.0,
+      "ppm": 7.191361074073512
+    }
+  }
+}
