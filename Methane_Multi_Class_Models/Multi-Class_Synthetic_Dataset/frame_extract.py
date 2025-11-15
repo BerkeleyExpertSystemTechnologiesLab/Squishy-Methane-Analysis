@@ -97,8 +97,11 @@ def subtract_background(background_path, frame_path, output_path):
             # print(f"Error: Shape mismatch - background: {background.shape}, frame: {frame.shape}")
             return False
         
-        # Subtract background
-        diff = cv2.absdiff(frame, background)
+        # Subtract background (one-directional: only removes values, no addition)
+        # cv2.subtract saturates at 0, preventing negative values
+        # This ensures background additions don't create false plumes
+        # https://www.geeksforgeeks.org/python/how-to-subtract-two-images-using-python-opencv/
+        diff = cv2.subtract(frame, background)
         
         # Use raw difference for nuanced grayscale result
         mask = diff
