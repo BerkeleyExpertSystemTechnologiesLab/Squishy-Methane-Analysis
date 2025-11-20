@@ -1,15 +1,35 @@
-These two directories were made to work together.
+# Methane Multi-Class Models
 
-Multi-Class_Synthetic_Dataset directory contains all the code necessary to generate a dataset of 2-channel numpy arrays. 2-Channel refers to the "layers" in the image, for reference a standard RGB image has 3-channels, and a Greyscale image has 1 channel. 
+## Overview
 
-By running the code inside Multi-Class_Synthetic_Dataset you will get 2-channel numpy arrays that can be fed into the models in Multi-Class_Quantification_Models.
+This repository contains two interconnected directories that work together for multi-class methane quantification:
 
-These models are prototypes to experiment what techniques currently work best on the data. 
+1. **Multi-Class_Synthetic_Dataset** - Dataset generation
+2. **Multi-Class_Quantification_Models** - Model training and experimentation
 
-The Models are labeled with the higher numbers being the most recent experiments, however I have not removed any models that may have been improved upon, to go back and look at past experiments. 
+## Dataset Generation
 
-Contact my email for further questions
+The `Multi-Class_Synthetic_Dataset` directory contains all the code necessary to generate 2-channel numpy arrays.
 
-Joseph G. Berry
-joseph.g.berry@berkeley.edu
-joseph.g.berry@gmail.com
+**What are 2-channel arrays?**
+- "Channels" refer to the layers in an image
+- Standard RGB images have 3 channels
+- Greyscale images have 1 channel
+- Our datasets use 2 channels
+
+## Model Training
+
+The `Multi-Class_Quantification_Models` directory contains prototype models for experimentation. Running the dataset generation code will produce 2-channel numpy arrays that can be fed directly into these models.
+
+### Model Versioning
+
+- Higher model numbers indicate more recent experiments
+- Older models are retained for reference and comparison of past experiments
+
+## Contact
+
+For further questions, please reach out:
+
+**Joseph G. Berry**
+- joseph.g.berry@berkeley.edu
+- joseph.g.berry@gmail.com
