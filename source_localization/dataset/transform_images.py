@@ -87,7 +87,6 @@ def enhance_contrast(image: np.ndarray, contrast_factor: float = 1.2) -> np.ndar
     
     return enhanced_img
 
-
 def translate_image(
     image: np.ndarray,
     translation: Tuple[int, int]
@@ -190,6 +189,39 @@ def generate_random_translation(max_pixels: int = 100) -> Tuple[int, int]:
     
     return (tx, ty)
 
+def bitplane_slice(image: np.ndarray, bit_pos: int) -> np.ndarray: 
+    """ 
+    Extract bitplane slice of the bit at index
+
+    Args: 
+        image: input np array image 
+        bit_pos: index of desired bitplane slice (0, 1, ..., 8)
+    Output: 
+        bitplane slice of original image in np array form 
+    """ 
+    mask = 1 << bit_pos
+    # print(mask)
+    bit_plane_slice = (image & mask)
+    return bit_plane_slice
+
+def xor_bitplanes(image: np.ndarray, bit_pos1: int, bit_pos2: int) -> np.ndarray: 
+    """ 
+    Xor the bitplane1 with bitplane 2
+
+    Args: 
+        image: input np array image 
+        bit_pos1: index of first bitplane slice (0, 1, ..., 8)
+        bit_pos2: index of second bitplane slice (0, 1, ..., 8)
+
+    Output: 
+        xored bitplane slice of original image in np array form 
+    """
+    bitplane1 = bitplane_slice(image, bit_pos1)
+    bitplane2 = bitplane_slice(image, bit_pos2)
+
+    # Xor the bit planes
+    xored_bitplane = bitplane1 ^ bitplane2
+    return xored_bitplane
 
 def transform_images(
     source_images_dir: Path,
@@ -198,7 +230,8 @@ def transform_images(
     max_translation: int = 100,
     num_transforms: int = 1,
     contrast_factor: float = 1.2,
-    seed: Optional[int] = None
+    seed: Optional[int] = None,
+    bitplane_xor: float = 0.2
 ) -> None:
     """
     Transform all images with random translation and contrast enhancement.
@@ -304,10 +337,10 @@ def transform_images(
                 base_name = image_name.replace('.png', '')
                 new_image_name = f"{base_name}_trans{translation[0]}_{translation[1]}.png"
                 new_image_path = output_dir / new_image_name
-                
+
                 # Save transformed image to output directory
                 cv2.imwrite(str(new_image_path), transformed_image)
-                
+
                 # Create new label entry
                 new_label = label.copy()
                 new_label['image_name'] = new_image_name
@@ -326,6 +359,41 @@ def transform_images(
                 new_label['image_path'] = str(relative_path).replace('\\', '/')
                 
                 transformed_labels.append(new_label)
+                
+                # Add bit plane sliced image to dataset as well with with random frequency
+                if (bitplane_xor > 0 and random.random() < bitplane_xor and transformed_image.dtype in (np.uint8, np.uint16)): 
+                    # Make bitplane xor-ed slice (4th and 5th bit)
+                    bitplane_xor_image = xor_bitplanes(transformed_image, 4, 5)
+                    bitplane_xor_image = xor_bitplanes(transformed_image, 4, 5)
+                    if transformed_image.dtype == np.uint8:
+                        bitplane_xor_image = (bitplane_xor_image > 0).astype(np.uint8) * 255
+                    else:
+                        bitplane_xor_image = (bitplane_xor_image > 0).astype(np.uint16) * 65535
+                    # Add to output dir (denoted with "_bpx")
+                    bpx_base_name = image_name.replace('.png', '')
+                    bpx_new_image_name = f"{bpx_base_name}_trans{translation[0]}_{translation[1]}_bpx.png"
+                    bpx_new_image_path = output_dir / bpx_new_image_name
+                    cv2.imwrite(str(bpx_new_image_path), bitplane_xor_image)
+                    # Create new label entry
+                    bpx_new_label = label.copy()
+                    bpx_new_label['image_name'] = bpx_new_image_name
+                    bpx_new_label['rotation'] = 0
+                    bpx_new_label['translation'] = list(translation)
+                    bpx_new_label['image_size'] = [original_width, original_height]
+                    bpx_new_label['bbox'] = transformed_bbox
+                    
+                    # Update image_path to point to new location
+                    if project_root:
+                        bpx_relative_path = bpx_new_image_path.relative_to(project_root)
+                    else:
+                        # Fallback: construct path manually
+                        relative_path = Path('source_localization') / 'dataset' / 'plume_image_dataset' / 'transformed_images' / bpx_new_image_name
+                    
+                    bpx_new_label['image_path'] = str(bpx_relative_path).replace('\\', '/')
+                    
+                    transformed_labels.append(bpx_new_label)
+                    # transformed_count += 1
+
                 transformed_count += 1
         
         except Exception as e:
@@ -385,6 +453,7 @@ Examples:
                         help='Contrast enhancement factor (default: 1.2 = 20%% increase)')
     parser.add_argument('--seed', type=int, default=None,
                         help='Random seed for reproducibility (default: None)')
+    parser.add_argument('--bitplane_xor', type=float, default=0.2, help='Percent of transformed images that will transformed into bitplane xored images as well')
 
     args = parser.parse_args()
 
@@ -424,7 +493,8 @@ Examples:
             max_translation=args.max_translation,
             num_transforms=args.num_transforms,
             contrast_factor=args.contrast_factor,
-            seed=args.seed
+            seed=args.seed,
+            bitplane_xor=args.bitplane_xor
         )
         return 0
     except Exception as e:
