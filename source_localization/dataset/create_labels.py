@@ -9,8 +9,53 @@ with image metadata including name, path, size, channels, format, bbox, rotation
 import cv2
 import json
 import argparse
+import csv
+import re
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Optional
+
+
+def parse_source_bboxes(csv_path: Path) -> Dict[int, List[int]]:
+    """
+    Parse source bounding boxes from CSV file.
+
+    Args:
+        csv_path: Path to source_bbox.csv file
+
+    Returns:
+        Dictionary mapping video numbers to [x, y, width, height] bbox lists
+    """
+    bboxes = {}
+    with open(csv_path, 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            video_no = int(row['video_number'])
+            x = int(row['x'])
+            y = int(row['y'])
+            width = int(row['width'])
+            height = int(row['height'])
+            bboxes[video_no] = [x, y, width, height]
+    return bboxes
+
+
+def extract_video_number(image_filename: str) -> Optional[int]:
+    """
+    Extract video number from image filename.
+    
+    Expected format: MOV_<video_number>_plume_frame_<frame_number>.png
+    or: MOV_<video_number>_frame_<frame_number>.png
+    
+    Args:
+        image_filename: Name of the image file
+        
+    Returns:
+        Video number if found, None otherwise
+    """
+    # Match patterns like MOV_1237_plume_frame_000099.png or MOV_1237_frame_000099.png
+    match = re.search(r'MOV_(\d+)', image_filename)
+    if match:
+        return int(match.group(1))
+    return None
 
 
 def get_image_properties(image_path: Path) -> Dict:
@@ -55,16 +100,33 @@ def get_image_properties(image_path: Path) -> Dict:
 def create_labels(
     images_dir: Path,
     output_path: Path,
-    bbox: List[int] = [170, 120, 20, 10]
+    bbox_csv_path: Optional[Path] = None,
+    default_bbox: List[int] = [170, 120, 20, 10]
 ) -> None:
     """
     Create labels.json file with metadata for all images.
+    Uses per-video bounding boxes from source_bbox.csv if available.
 
     Args:
         images_dir: Directory containing image files
         output_path: Path to save labels.json file
-        bbox: Bounding box in xywh format [x, y, width, height]
+        bbox_csv_path: Path to source_bbox.csv file (default: metadata/source_bbox.csv)
+        default_bbox: Default bounding box in xywh format [x, y, width, height]
+                     used for videos not found in CSV
     """
+    # Load bbox mappings from CSV
+    if bbox_csv_path is None:
+        script_dir = Path(__file__).parent
+        bbox_csv_path = script_dir / 'metadata' / 'source_bbox.csv'
+    
+    bboxes = {}
+    if bbox_csv_path.exists():
+        print(f"Loading bounding boxes from: {bbox_csv_path}")
+        bboxes = parse_source_bboxes(bbox_csv_path)
+        print(f"Loaded {len(bboxes)} video bounding boxes")
+    else:
+        print(f"Warning: Bbox CSV not found at {bbox_csv_path}, using default bbox for all images")
+    
     # Find all PNG images
     image_files = sorted(images_dir.glob("*.png"))
     
@@ -73,10 +135,11 @@ def create_labels(
         return
     
     print(f"Found {len(image_files)} images")
-    print(f"Creating labels.json at: {output_path}")
-    print(f"Using bbox: {bbox} (xywh format)\n")
+    print(f"Creating labels.json at: {output_path}\n")
     
     labels = []
+    videos_with_bbox = set()
+    videos_without_bbox = set()
     
     for image_path in image_files:
         print(f"Processing: {image_path.name}", end='\r')
@@ -84,6 +147,18 @@ def create_labels(
         try:
             # Get image properties
             props = get_image_properties(image_path)
+            
+            # Extract video number from filename
+            video_no = extract_video_number(image_path.name)
+            
+            # Get bbox for this video, or use default
+            if video_no is not None and video_no in bboxes:
+                bbox = bboxes[video_no]
+                videos_with_bbox.add(video_no)
+            else:
+                bbox = default_bbox
+                if video_no is not None:
+                    videos_without_bbox.add(video_no)
             
             # Create path relative to project root
             # Expected format: source_localization/dataset/plume_image_dataset/all_images/...
@@ -135,6 +210,9 @@ def create_labels(
     
     print(f"\n\nSuccessfully created labels.json")
     print(f"  Total images processed: {len(labels)}")
+    print(f"  Videos with bbox from CSV: {len(videos_with_bbox)}")
+    if videos_without_bbox:
+        print(f"  Videos using default bbox: {len(videos_without_bbox)} ({sorted(videos_without_bbox)})")
     print(f"  Output file: {output_path}")
 
 
@@ -144,14 +222,17 @@ def main() -> int:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Create labels.json with default paths
+  # Create labels.json with default paths (uses source_bbox.csv for per-video bboxes)
   python create_labels.py
 
   # Create labels.json with custom paths
   python create_labels.py --images-dir /path/to/images --output /path/to/labels.json
 
-  # Custom bbox
-  python create_labels.py --bbox 100 100 50 50
+  # Use custom bbox CSV file
+  python create_labels.py --bbox-csv /path/to/source_bbox.csv
+
+  # Custom default bbox for videos not in CSV
+  python create_labels.py --default-bbox 100 100 50 50
         """
     )
 
@@ -159,9 +240,11 @@ Examples:
                         help='Directory containing image files (default: source_localization/dataset/plume_image_dataset/all_images)')
     parser.add_argument('--output', type=str, default=None,
                         help='Path to save labels.json (default: source_localization/dataset/plume_image_dataset/labels.json)')
-    parser.add_argument('--bbox', type=int, nargs=4, default=[170, 120, 20, 10],
+    parser.add_argument('--bbox-csv', type=str, default=None,
+                        help='Path to source_bbox.csv file (default: source_localization/dataset/metadata/source_bbox.csv)')
+    parser.add_argument('--default-bbox', type=int, nargs=4, default=[170, 120, 20, 10],
                         metavar=('X', 'Y', 'W', 'H'),
-                        help='Bounding box in xywh format (default: 170 120 20 10)')
+                        help='Default bounding box in xywh format for videos not in CSV (default: 170 120 20 10)')
 
     args = parser.parse_args()
 
@@ -176,7 +259,12 @@ Examples:
     if args.output:
         output_path = Path(args.output)
     else:
-        output_path = script_dir / 'plume_image_dataset' / 'labels.json'
+        output_path = script_dir / 'plume_image_dataset' / 'all_images' / 'labels.json'
+
+    if args.bbox_csv:
+        bbox_csv_path = Path(args.bbox_csv)
+    else:
+        bbox_csv_path = None  # Will use default path in create_labels
 
     # Validate paths
     if not images_dir.exists():
@@ -188,7 +276,8 @@ Examples:
         create_labels(
             images_dir=images_dir,
             output_path=output_path,
-            bbox=args.bbox
+            bbox_csv_path=bbox_csv_path,
+            default_bbox=args.default_bbox
         )
         return 0
     except Exception as e:

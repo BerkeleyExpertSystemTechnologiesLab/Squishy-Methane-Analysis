@@ -2,7 +2,7 @@
 """
 Transform images in the plume_image_dataset.
 
-This script applies random translations (0-100 pixels in random direction) and
+This script applies random translations (separate x and y axis limits) and
 increases contrast by 20% to images while maintaining the original image size.
 Out-of-bounds pixels are dropped and empty areas are filled with 0.
 """
@@ -170,23 +170,28 @@ def translate_image(
     return output
 
 
-def generate_random_translation(max_pixels: int = 100) -> Tuple[int, int]:
+def generate_random_translation(
+    min_x: int = -129,
+    max_x: int = 78,
+    min_y: int = -88,
+    max_y: int = 11
+) -> Tuple[int, int]:
     """
-    Generate random translation in a random direction.
+    Generate random translation with separate x and y axis ranges.
 
     Args:
-        max_pixels: Maximum translation distance in pixels
+        min_x: Minimum translation distance in x-axis (pixels, can be negative, default: -129)
+        max_x: Maximum translation distance in x-axis (pixels, default: 78)
+        min_y: Minimum translation distance in y-axis (pixels, can be negative, default: -88)
+        max_y: Maximum translation distance in y-axis (pixels, default: 11)
 
     Returns:
         Tuple of (tx, ty) translation values
     """
-    # Random angle in radians
-    angle = random.uniform(0, 2 * math.pi)
-    # Random distance between 0 and max_pixels
-    distance = random.uniform(0, max_pixels)
-    
-    tx = int(distance * math.cos(angle))
-    ty = int(distance * math.sin(angle))
+    # Random translation in x direction within specified range
+    tx = random.randint(min_x, max_x)
+    # Random translation in y direction within specified range
+    ty = random.randint(min_y, max_y)
     
     return (tx, ty)
 
@@ -195,7 +200,10 @@ def transform_images(
     source_images_dir: Path,
     source_labels_path: Path,
     output_dir: Path,
-    max_translation: int = 100,
+    min_translation_x: int = -129,
+    max_translation_x: int = 78,
+    min_translation_y: int = -88,
+    max_translation_y: int = 11,
     num_transforms: int = 1,
     contrast_factor: float = 1.2,
     seed: Optional[int] = None
@@ -207,7 +215,10 @@ def transform_images(
         source_images_dir: Directory containing original image files
         source_labels_path: Path to source labels.json file
         output_dir: Directory to save transformed images and new labels.json
-        max_translation: Maximum translation distance in pixels (default: 100)
+        min_translation_x: Minimum translation distance in x-axis (pixels, default: -129)
+        max_translation_x: Maximum translation distance in x-axis (pixels, default: 78)
+        min_translation_y: Minimum translation distance in y-axis (pixels, default: -88)
+        max_translation_y: Maximum translation distance in y-axis (pixels, default: 11)
         num_transforms: Number of random transformations to apply per image (default: 1)
         contrast_factor: Contrast enhancement factor (default: 1.2 = 20% increase)
         seed: Random seed for reproducibility (None = no seed)
@@ -231,7 +242,7 @@ def transform_images(
     print(f"Loaded {len(source_labels)} image labels")
     print(f"Source images directory: {source_images_dir}")
     print(f"Output directory: {output_dir}")
-    print(f"Max translation: {max_translation} pixels")
+    print(f"Translation range: x=[{min_translation_x}, {max_translation_x}]px, y=[{min_translation_y}, {max_translation_y}]px")
     print(f"Contrast enhancement: {(contrast_factor - 1) * 100:.1f}% increase")
     print(f"Transforms per image: {num_transforms}")
     if seed is not None:
@@ -282,7 +293,12 @@ def transform_images(
             # Apply multiple transformations to the same image
             for _ in range(num_transforms):
                 # Generate random translation
-                translation = generate_random_translation(max_translation)
+                translation = generate_random_translation(
+                    min_x=min_translation_x,
+                    max_x=max_translation_x,
+                    min_y=min_translation_y,
+                    max_y=max_translation_y
+                )
                 
                 # Apply translation to image
                 transformed_image = translate_image(image, translation)
@@ -354,11 +370,11 @@ def main() -> int:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Transform images with default settings (translation + 20% contrast increase)
+  # Transform images with default settings (x: -129 to +78, y: -88 to +11, 20% contrast increase)
   python transform_images.py
 
-  # Transform with custom max translation
-  python transform_images.py --max-translation 50
+  # Custom translation ranges
+  python transform_images.py --min-translation-x -50 --max-translation-x 50 --min-translation-y -30 --max-translation-y 30
 
   # Apply 3 random transformations to each image
   python transform_images.py --num-transforms 3
@@ -377,8 +393,14 @@ Examples:
                         help='Path to source labels.json (default: source_localization/dataset/plume_image_dataset/all_images/labels.json)')
     parser.add_argument('--output-dir', type=str, default=None,
                         help='Directory to save transformed images and labels.json (default: source_localization/dataset/plume_image_dataset/transformed_images)')
-    parser.add_argument('--max-translation', type=int, default=100,
-                        help='Maximum translation distance in pixels (default: 100)')
+    parser.add_argument('--min-translation-x', type=int, default=-129,
+                        help='Minimum translation distance in x-axis (pixels, default: -129)')
+    parser.add_argument('--max-translation-x', type=int, default=78,
+                        help='Maximum translation distance in x-axis (pixels, default: 78)')
+    parser.add_argument('--min-translation-y', type=int, default=-88,
+                        help='Minimum translation distance in y-axis (pixels, default: -88)')
+    parser.add_argument('--max-translation-y', type=int, default=11,
+                        help='Maximum translation distance in y-axis (pixels, default: 11)')
     parser.add_argument('--num-transforms', type=int, default=1,
                         help='Number of random transformations to apply per image (default: 1)')
     parser.add_argument('--contrast-factor', type=float, default=1.2,
@@ -421,7 +443,10 @@ Examples:
             source_images_dir=source_images_dir,
             source_labels_path=source_labels_path,
             output_dir=output_dir,
-            max_translation=args.max_translation,
+            min_translation_x=args.min_translation_x,
+            max_translation_x=args.max_translation_x,
+            min_translation_y=args.min_translation_y,
+            max_translation_y=args.max_translation_y,
             num_transforms=args.num_transforms,
             contrast_factor=args.contrast_factor,
             seed=args.seed

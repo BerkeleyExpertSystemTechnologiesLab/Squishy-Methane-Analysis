@@ -13,6 +13,40 @@ import csv
 from pathlib import Path
 from typing import Optional, Dict, Tuple
 
+# Constants for background subtraction delay
+# Background subtractor uses 30 frames of history (from background_subtraction.py)
+# These frames are skipped in the output video, causing a delay
+BACKGROUND_SUBTRACTION_DELAY_FRAMES = 30
+DEFAULT_FPS = 14.0  # Default FPS for delay calculation
+
+
+def adjust_leak_range_for_delay(
+    leak_start_sec: float,
+    leak_end_sec: float,
+    delay_frames: int = BACKGROUND_SUBTRACTION_DELAY_FRAMES,
+    fps: float = DEFAULT_FPS
+) -> Tuple[float, float]:
+    """
+    Adjust leak range times to account for delay in background-subtracted videos.
+    
+    Background-subtracted videos skip the first N frames (where N is the history
+    parameter), causing a delay. This function adjusts the leak range times to
+    compensate for this delay.
+    
+    Args:
+        leak_start_sec: Original leak start time in seconds
+        leak_end_sec: Original leak end time in seconds
+        delay_frames: Number of frames delayed (default: 30)
+        fps: Frames per second for converting delay to seconds (default: 14.0)
+    
+    Returns:
+        Tuple of (adjusted_leak_start_sec, adjusted_leak_end_sec)
+    """
+    delay_seconds = delay_frames / fps
+    adjusted_start = max(0.0, leak_start_sec - delay_seconds)
+    adjusted_end = max(0.0, leak_end_sec - delay_seconds)
+    return adjusted_start, adjusted_end
+
 
 def parse_leak_ranges(csv_path: Path) -> Dict[int, Tuple[int, int]]:
     """
@@ -150,6 +184,10 @@ def extract_frames_from_dataset(
     """
     Extract frames from plume videos in the dataset, only extracting frames
     within the leak ranges specified in leak_range.csv.
+    
+    Note: Leak ranges are automatically adjusted to account for the 30-frame delay
+    in background-subtracted videos (the first 30 frames are skipped during
+    background subtraction, causing a temporal offset).
 
     Args:
         plume_video_dir: Directory containing plume video files
@@ -205,8 +243,7 @@ def extract_frames_from_dataset(
             skipped_count += 1
             continue
 
-        leak_start_sec, leak_end_sec = leak_ranges[video_no]
-        print(f"Processing video {processed_count + 1}: {video_path.name} (leak: {leak_start_sec}s-{leak_end_sec}s)")
+        leak_start_sec_raw, leak_end_sec_raw = leak_ranges[video_no]
 
         # Get video FPS to convert seconds to frames
         cap_temp = cv2.VideoCapture(str(video_path))
@@ -218,7 +255,19 @@ def extract_frames_from_dataset(
         fps = cap_temp.get(cv2.CAP_PROP_FPS)
         cap_temp.release()
 
-        # Convert seconds to frame numbers
+        # Adjust leak ranges to account for 30-frame delay in background-subtracted videos
+        leak_start_sec, leak_end_sec = adjust_leak_range_for_delay(
+            leak_start_sec_raw,
+            leak_end_sec_raw,
+            delay_frames=BACKGROUND_SUBTRACTION_DELAY_FRAMES,
+            fps=DEFAULT_FPS
+        )
+        
+        print(f"Processing video {processed_count + 1}: {video_path.name}")
+        print(f"  Original leak range: {leak_start_sec_raw}s-{leak_end_sec_raw}s")
+        print(f"  Adjusted leak range: {leak_start_sec:.1f}s-{leak_end_sec:.1f}s (accounting for {BACKGROUND_SUBTRACTION_DELAY_FRAMES}-frame delay)")
+
+        # Convert seconds to frame numbers (using actual video FPS)
         leak_start_frame = seconds_to_frame_number(leak_start_sec, fps)
         leak_end_frame = seconds_to_frame_number(leak_end_sec, fps)
 
@@ -232,9 +281,9 @@ def extract_frames_from_dataset(
             )
             total_frames += frames_extracted
             processed_count += 1
-            print(f"  ✓ Extracted {frames_extracted} frames")
+            print(f"Extracted {frames_extracted} frames")
         except Exception as e:
-            print(f"  ✗ Error: {e}")
+            print(f"Error: {e}")
             import traceback
             traceback.print_exc()
             skipped_count += 1
@@ -291,7 +340,7 @@ Examples:
     if args.csv_path:
         csv_path = Path(args.csv_path)
     else:
-        csv_path = script_dir / 'original_gasvid_dataset' / 'leak_range.csv'
+        csv_path = script_dir / 'metadata' / 'leak_range.csv'
 
     # Validate paths
     if not plume_video_dir.exists():
