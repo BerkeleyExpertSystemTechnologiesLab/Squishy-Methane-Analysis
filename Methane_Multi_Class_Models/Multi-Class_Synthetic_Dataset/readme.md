@@ -78,6 +78,114 @@ Place downloaded videos in: `Original_Dataset/`
 
 ---
 
+## Artificial Background Generation
+
+To increase dataset diversity and robustness, you can generate augmented backgrounds using AI image generation tools. These artificial backgrounds are processed separately and kept isolated from normal backgrounds throughout the pipeline.
+This work was done by: Zakaria Al-Alie zakaria.al-alie@berkeley.edu
+
+### Tool
+Use **[Google Imagen Whisk](https://labs.google/fx/tools/whisk)** to generate or modify backgrounds.
+
+### Workflow
+
+#### Strategy Overview
+1. Generate a base Class 0 background by replacing the smokestack with industrial/oil extraction equipment
+2. Create minor augmentations (birds, planes) for additional diversity
+3. Copy augmented backgrounds to all classes (0-7)
+4. Resize and letterbox to match GasVid dimensions (320×240)
+
+---
+
+#### Step 1: Smokestack Replacement
+
+**Goal**: Replace the smokestack entirely with industrial equipment/oil extraction equipment
+
+**Prompt**:
+```
+Replace the central smokestack with a station venting unit, keeping the tip 
+aligned with the original smokestack location. Blend the equipment naturally 
+with the rest of the scene.
+```
+
+---
+
+#### Step 2: Minor Augmentation (Birds/Planes)
+
+**Goal**: Add small realistic variations for more diversity without modifying the main background
+
+**Prompt**:
+```
+Using this existing background, do not modify or alter any structures, equipment, 
+smokestack, lighting, sky, ground, or thermal palette. Only add small, realistic 
+variations for augmentation:
+
+- Birds: Add 0–3 birds flying at varying distances, appearing as bright thermal 
+  signatures, varying size for depth.
+- Planes: Add 0–1 distant plane or jet trail, optionally from a slightly different 
+  angle or direction.
+
+Keep all other aspects of the background exactly as in the original.
+```
+
+---
+
+#### Step 3: Classes
+
+**Goal**: Generate the dataset for all leak classes
+
+**Method**: Copy the augmented background from Step 2 for each class (0-7)
+
+---
+
+#### Step 4: Resize/Rescale
+
+**Goal**: Match GasVid frame size (320×240) and aspect ratio
+
+**Method**: Use OpenCV to resize and letterbox images (aspect ratios don't match, so black bars will be added)
+
+**Python Example**:
+```python
+import cv2
+import numpy as np
+
+def resize_with_letterbox(image_path, target_size=(320, 240)):
+    """Resize image to target size with letterboxing"""
+    img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+    h, w = img.shape
+    target_w, target_h = target_size
+    
+    # Calculate scaling factor
+    scale = min(target_w / w, target_h / h)
+    new_w = int(w * scale)
+    new_h = int(h * scale)
+    
+    # Resize image
+    resized = cv2.resize(img, (new_w, new_h))
+    
+    # Create black canvas
+    canvas = np.zeros((target_h, target_w), dtype=np.uint8)
+    
+    # Center the resized image
+    x_offset = (target_w - new_w) // 2
+    y_offset = (target_h - new_h) // 2
+    canvas[y_offset:y_offset+new_h, x_offset:x_offset+new_w] = resized
+    
+    return canvas
+```
+
+### File Organization
+Place generated artificial backgrounds in:
+```
+BackGrounds/Artificial_Backgrounds/XXXX/Class_Y/
+```
+
+The pipeline will automatically:
+- Copy them to `Processed_Dataset/XXXX_ARTIF/Class_Y/`
+- Generate numpy files with `_artif.npy` suffix
+- Keep artificial data completely separate from normal data in the final dataset
+
+---
+
 ## Output Structure
 
 ```
