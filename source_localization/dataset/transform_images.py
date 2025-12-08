@@ -216,8 +216,13 @@ def xor_bitplanes(image: np.ndarray, bit_pos1: int, bit_pos2: int) -> np.ndarray
     Output: 
         xored bitplane slice of original image in np array form 
     """
-    bitplane1 = bitplane_slice(image, bit_pos1)
-    bitplane2 = bitplane_slice(image, bit_pos2)
+    if image.ndim == 3:
+        image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    else:
+        image_gray = image
+
+    bitplane1 = bitplane_slice(image_gray, bit_pos1)
+    bitplane2 = bitplane_slice(image_gray, bit_pos2)
 
     # Xor the bit planes
     xored_bitplane = bitplane1 ^ bitplane2
@@ -365,10 +370,12 @@ def transform_images(
                     # Make bitplane xor-ed slice (4th and 5th bit)
                     bitplane_xor_image = xor_bitplanes(transformed_image, 4, 5)
                     bitplane_xor_image = xor_bitplanes(transformed_image, 4, 5)
+
                     if transformed_image.dtype == np.uint8:
-                        bitplane_xor_image = (bitplane_xor_image > 0).astype(np.uint8) * 255
-                    else:
-                        bitplane_xor_image = (bitplane_xor_image > 0).astype(np.uint16) * 65535
+                        bitplane_xor_image = (bitplane_xor_image > 0).astype(np.uint8) * 255.0
+                    elif transformed_image.dtype == np.uint16: 
+                        bitplane_xor_image = (bitplane_xor_image > 0).astype(np.uint8) * 65535.0
+
                     # Add to output dir (denoted with "_bpx")
                     bpx_base_name = image_name.replace('.png', '')
                     bpx_new_image_name = f"{bpx_base_name}_trans{translation[0]}_{translation[1]}_bpx.png"
@@ -382,13 +389,17 @@ def transform_images(
                     bpx_new_label['image_size'] = [original_width, original_height]
                     bpx_new_label['bbox'] = transformed_bbox
                     
-                    # Update image_path to point to new location
                     if project_root:
                         bpx_relative_path = bpx_new_image_path.relative_to(project_root)
                     else:
-                        # Fallback: construct path manually
-                        relative_path = Path('source_localization') / 'dataset' / 'plume_image_dataset' / 'transformed_images' / bpx_new_image_name
-                    
+                        bpx_relative_path = (
+                            Path('source_localization') /
+                            'dataset' /
+                            'plume_image_dataset' /
+                            'transformed_images' /
+                            bpx_new_image_name
+                        )
+                                            
                     bpx_new_label['image_path'] = str(bpx_relative_path).replace('\\', '/')
                     
                     transformed_labels.append(bpx_new_label)
