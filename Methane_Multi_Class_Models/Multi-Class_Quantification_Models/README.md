@@ -1,14 +1,42 @@
-# Squishy_Robots_Quant_Models
+# Multi-Class Quantification Models
 
+## Goal
 
-The goal of these models is to be able to recognize a methane leak using 2-Channel images. First channel is a greyscale image, second channel is a heatmap of believed methane gas (Using Optical Gas Imaging)
+Recognize and classify methane leaks using multi-modal deep learning models.
 
-These models are two modal, 1st Modal is 2 Channel Images as stated, 2nd Modal is vector of data collected (Wind Speed, distance from leak, max ppm detected using OGI)
+## Input Data
 
-End goal is accurate classification of leak into one of 8 categories. 
+### Modal 1: 2-Channel Images
 
-These models were trained on GasVid dataset, collected at METEC in Colorado. The dataset was modified from .mp4 videos to the 2 channel images using background subtraction, then outputting the background and the gas plume into the two channels previously mentioned.
+- **Channel 1**: Greyscale image (background)
+- **Channel 2**: Heatmap of methane gas detected via Optical Gas Imaging (OGI)
 
-Older versions of the models are stored in the old_models directory. Any ipynb files not in this directory are the latest version. 
+### Modal 2: Environmental Vector Data
 
-The .csv and .xlsx files are documentation of the processes and accuracy achieved. 
+- Distance from leak
+- Maximum PPM detected using OGI
+- Wind speed (TO BE ADDED LATER)
+
+## Output
+
+Classification of methane leaks into **8 distinct categories**.
+
+## Training Dataset
+
+**GasVid Dataset** - Collected at METEC facility in Colorado
+This dataset has been synthetically altered from it's original .mp4 format to 2 channel numpy arrays combined with metadata to create the two modalities. 
+In addition we have experimented with creating backgrounds altered using AI image generators, feeding in GasVid frames and adding additional objects in the foreground and background. 
+
+### Data Processing Pipeline
+
+1. Original format: `.mp4` video files
+2. Applied background subtraction technique
+3. Extracted two channels:
+   - Background (greyscale) -> Channel 1
+   - Gas plume (heatmap) -> Channel 2
+
+## Repository Structure
+
+- **Root directory**: Latest model versions (`.ipynb` files)
+- **old_models/**: Archived previous model versions
+- **Documentation**: `.csv` and `.xlsx` files contain process documentation and accuracy metrics 

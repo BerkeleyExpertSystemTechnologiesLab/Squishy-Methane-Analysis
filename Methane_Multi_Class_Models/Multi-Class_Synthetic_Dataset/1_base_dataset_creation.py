@@ -12,6 +12,152 @@ import numpy as np
 
 
 # =============================================================================
+# PATH CONSTANTS
+# =============================================================================
+
+EXCEL_PATH = "Original_Dataset/GasVid Logging File.xlsx"
+MOV_PATH = "Original_Dataset/Videos-20251002T175522Z-1-001/Videos"
+PROCESSED_DATASET_PATH = "Processed_Dataset"
+CLASSES_JSON_PATH = "classes.json"
+PLUME_MODELING_PATH = "Plume_Modeling/Gasvid Plume Models.xlsx"
+CONSOLIDATED_METADATA_PATH = "Metadata/consolidated_metadata.json"
+
+
+# =============================================================================
+# CONSOLIDATED METADATA FUNCTIONS
+# =============================================================================
+
+def load_consolidated_metadata(consolidated_metadata_path):
+    """
+    Load consolidated metadata from JSON file.
+    
+    Args:
+        consolidated_metadata_path (str): Path to consolidated metadata JSON file
+        
+    Returns:
+        dict: Consolidated metadata dictionary, or None if failed
+    """
+    try:
+        if not os.path.exists(consolidated_metadata_path):
+            return None
+            
+        with open(consolidated_metadata_path, 'r') as f:
+            metadata = json.load(f)
+        
+        print(f"Successfully loaded consolidated metadata from {consolidated_metadata_path}")
+        print(f"  Found metadata for {len(metadata)} videos")
+        return metadata
+        
+    except Exception as e:
+        print(f"Error loading consolidated metadata: {e}")
+        return None
+
+
+def write_class_json_file(class_dir, video_code, class_num, class_metadata):
+    """
+    Write metadata to individual class JSON file.
+    
+    Args:
+        class_dir (str): Path to class directory
+        video_code (str): 4-digit video code
+        class_num (int): Class number (0-7)
+        class_metadata (dict): Metadata dictionary for this class
+        
+    Returns:
+        bool: True if successful, False otherwise
+    """
+    try:
+        class_json_file = os.path.join(class_dir, f"{video_code}_class_{class_num}.json")
+        
+        with open(class_json_file, 'w') as f:
+            json.dump(class_metadata, f, indent=2)
+        
+        return True
+        
+    except Exception as e:
+        print(f"    Error writing JSON file for Class_{class_num}: {e}")
+        return False
+
+
+def populate_metadata_from_consolidated(processed_dataset_path, consolidated_metadata, video_codes):
+    """
+    Populate individual class JSON files from consolidated metadata.
+    
+    Args:
+        processed_dataset_path (str): Path to processed dataset directory
+        consolidated_metadata (dict): Consolidated metadata dictionary
+        video_codes (list): List of video codes to process
+        
+    Returns:
+        dict: Summary of results
+    """
+    print("\nPopulating class JSON files from consolidated metadata...")
+    
+    total_videos = 0
+    total_classes = 0
+    successful_updates = 0
+    failed_updates = 0
+    missing_videos = []
+    
+    for video_code in video_codes:
+        # Check if video exists in consolidated metadata
+        if video_code not in consolidated_metadata:
+            print(f"  Warning: Video {video_code} not found in consolidated metadata")
+            missing_videos.append(video_code)
+            continue
+        
+        video_dir = os.path.join(processed_dataset_path, video_code)
+        if not os.path.exists(video_dir):
+            print(f"  Warning: Video directory not found: {video_dir}")
+            continue
+        
+        total_videos += 1
+        video_metadata = consolidated_metadata[video_code]
+        
+        # Process each class (0-7)
+        for class_num in range(8):
+            class_key = f"class_{class_num}"
+            
+            if class_key not in video_metadata:
+                print(f"  Warning: {video_code} - Class_{class_num} not found in metadata")
+                failed_updates += 1
+                continue
+            
+            class_dir = os.path.join(video_dir, f"Class_{class_num}")
+            if not os.path.exists(class_dir):
+                print(f"  Warning: Class directory not found: {class_dir}")
+                failed_updates += 1
+                continue
+            
+            total_classes += 1
+            class_metadata = video_metadata[class_key]
+            
+            # Write class JSON file
+            success = write_class_json_file(class_dir, video_code, class_num, class_metadata)
+            
+            if success:
+                successful_updates += 1
+            else:
+                failed_updates += 1
+    
+    print(f"\nConsolidated metadata population completed:")
+    print(f"  Videos processed: {total_videos}")
+    print(f"  Classes processed: {total_classes}")
+    print(f"  Successful updates: {successful_updates}")
+    print(f"  Failed updates: {failed_updates}")
+    if missing_videos:
+        print(f"  Videos not found in metadata: {missing_videos}")
+    
+    return {
+        'total_videos': total_videos,
+        'total_classes': total_classes,
+        'successful_updates': successful_updates,
+        'failed_updates': failed_updates,
+        'missing_videos': missing_videos
+    }
+
+
+# =============================================================================
 # COMPLETE DATASET CREATION PIPELINE
 # =============================================================================
 
@@ -32,13 +178,6 @@ def create_dataset_from_scratch(test_videos=None, step_1=True, step_2=True, step
     print("STARTING COMPLETE DATASET CREATION PIPELINE")
     print("="*80)
     
-    # Define paths
-    excel_path = "Original_Dataset/GasVid Logging File.xlsx"
-    mov_path = "Original_Dataset/Videos-20251002T175522Z-1-001/Videos"
-    processed_dataset_path = "Processed_Dataset"
-    classes_json_path = "classes.json"
-    plume_modeling_path = "Plume_Modeling/Gasvid Plume Models.xlsx"
-    
     try:
         ##########################################################################
         # Step 1: Load Excel data, get video files, and create directory structure
@@ -48,13 +187,13 @@ def create_dataset_from_scratch(test_videos=None, step_1=True, step_2=True, step
             print("STEP 1: LOADING EXCEL DATA AND VIDEO FILES")
             print("="*50)
             
-            df = load_excel_data(excel_path)
+            df = load_excel_data(EXCEL_PATH)
             if df is None:
                 print("ERROR: Failed to load Excel data")
                 return False
             print("Excel data loaded successfully")
             
-            video_files = get_directory_files(mov_path, ['.mp4', '.mov'])
+            video_files = get_directory_files(MOV_PATH, ['.mp4', '.mov'])
             if video_files is None:
                 print("ERROR: Failed to get video files")
                 return False
@@ -121,7 +260,7 @@ def create_dataset_from_scratch(test_videos=None, step_1=True, step_2=True, step
                 
                 try:
                     # Create video-level output directory
-                    video_dir = os.path.join(processed_dataset_path, video_code)
+                    video_dir = os.path.join(PROCESSED_DATASET_PATH, video_code)
                     os.makedirs(video_dir, exist_ok=True)
                     
                     # Generate background for EACH class (8 classes)
@@ -196,7 +335,7 @@ def create_dataset_from_scratch(test_videos=None, step_1=True, step_2=True, step
                     # Extract class frames for this video
                     class_result = extract_class_frames(
                         video_path=video_path,
-                        processed_dataset_path=processed_dataset_path,
+                        processed_dataset_path=PROCESSED_DATASET_PATH,
                         video_number=video_code
                     )
                     
@@ -221,90 +360,119 @@ def create_dataset_from_scratch(test_videos=None, step_1=True, step_2=True, step
             
         
         ##################################################################
-        # Step 3: Add distance descriptors to class JSON files
+        # Step 3-5: Add metadata to class JSON files
+        # Check for consolidated metadata first, otherwise use individual sources
         ##################################################################
-        if step_3:
+        used_consolidated_metadata = False
+        if step_3 or step_4 or step_5:
             print("\n" + "="*50)
-            print("STEP 3: ADDING DISTANCE DESCRIPTORS TO CLASS FILES")
+            print("STEP 3-5: ADDING METADATA TO CLASS FILES")
             print("="*50)
             
-            print("Adding distance descriptors to class JSON files...")
-            distance_result = add_distance_descriptors(excel_path, processed_dataset_path)
-            if distance_result is None:
-                print("ERROR: Failed to add distance descriptors")
-                return False
-            print(f"Distance descriptors added for {len(distance_result)} videos")
-        
-
-        #########################################################
-        # Step 4: Add leak rates to all class JSON files
-        #########################################################
-        if step_4:
-            print("\n" + "="*50)
-            print("STEP 4: ADDING LEAK RATES TO CLASS FILES")
-            print("="*50)
+            # Try to load consolidated metadata
+            consolidated_metadata = load_consolidated_metadata(CONSOLIDATED_METADATA_PATH)
             
-            print("Adding leak rates to class JSON files...")
-            try:
-                leak_rate_result = add_leak_rates_to_classes(
-                    processed_dataset_path,
-                    classes_json_path
+            if consolidated_metadata is not None:
+                used_consolidated_metadata = True
+                # USE CONSOLIDATED METADATA
+                print("\nUsing consolidated metadata file (skipping individual Excel/CSV/JSON sources)")
+                print("="*50)
+                
+                metadata_result = populate_metadata_from_consolidated(
+                    PROCESSED_DATASET_PATH,
+                    consolidated_metadata,
+                    video_codes
                 )
                 
-                if leak_rate_result:
-                    print(f"Leak rate addition completed successfully!")
-                    print(f"  Processed {leak_rate_result['total_videos']} videos and {leak_rate_result['total_classes']} classes")
-                    print(f"  Successful updates: {leak_rate_result['successful_updates']}")
-                    print(f"  Failed updates: {leak_rate_result['failed_updates']}")
-                else:
-                    print("Leak rate addition failed!")
+                if metadata_result['successful_updates'] == 0:
+                    print("ERROR: Failed to populate any metadata from consolidated file")
                     return False
-                    
-            except Exception as e:
-                print(f"Error adding leak rates: {e}")
-                return False
-        
-
-        ##################################################################
-        # Step 5: Convert Excel to CSV if needed, then add PPM data
-        ##################################################################
-        if step_5:
-            print("\n" + "="*50)
-            print("STEP 5: CONVERTING EXCEL TO CSV AND ADDING PPM DATA")
-            print("="*50)
-            
-            # Check if CSV file exists, convert if needed
-            csv_path = plume_modeling_path.replace('.xlsx', '.csv')
-            if not os.path.exists(csv_path):
-                print("CSV file not found, converting Excel to CSV...")
-                if not convert_excel_to_csv(plume_modeling_path, csv_path):
-                    print("ERROR: Failed to convert Excel to CSV")
-                    return False
-                print("CSV conversion completed successfully!")
+                
+                print(f"\nMetadata successfully populated from consolidated file!")
+                print(f"  {metadata_result['successful_updates']} class JSON files created/updated")
+                
             else:
-                print(f"CSV file already exists: {csv_path}")
-            
-            print("Adding PPM data to class JSON files...")
-            print("DEBUG: This step should add PPM values to individual class JSON files")
-            try:
-                ppm_result = add_ppm_data_to_classes(
-                    processed_dataset_path,
-                    plume_modeling_path
-                )
+                # FALLBACK TO ORIGINAL METHOD (Individual sources)
+                print("\nConsolidated metadata not found, using individual sources...")
+                print("="*50)
                 
-                if ppm_result:
-                    print(f"PPM data addition completed successfully!")
-                    print(f"  Processed {ppm_result['total_videos']} videos and {ppm_result['total_classes']} classes")
-                    print(f"  Successful updates: {ppm_result['successful_updates']}")
-                    print(f"  Failed updates: {ppm_result['failed_updates']}")
-                    print(f"  No matches found: {ppm_result['no_match_found']}")
-                else:
-                    print("PPM data addition failed!")
-                    return False
+                # Step 3: Add distance descriptors
+                if step_3:
+                    print("\n" + "-"*40)
+                    print("STEP 3: ADDING DISTANCE DESCRIPTORS")
+                    print("-"*40)
                     
-            except Exception as e:
-                print(f"Error adding PPM data: {e}")
-                return False
+                    print("Adding distance descriptors to class JSON files...")
+                    distance_result = add_distance_descriptors(EXCEL_PATH, PROCESSED_DATASET_PATH)
+                    if distance_result is None:
+                        print("ERROR: Failed to add distance descriptors")
+                        return False
+                    print(f"Distance descriptors added for {len(distance_result)} videos")
+                
+                # Step 4: Add leak rates
+                if step_4:
+                    print("\n" + "-"*40)
+                    print("STEP 4: ADDING LEAK RATES")
+                    print("-"*40)
+                    
+                    print("Adding leak rates to class JSON files...")
+                    try:
+                        leak_rate_result = add_leak_rates_to_classes(
+                            PROCESSED_DATASET_PATH,
+                            CLASSES_JSON_PATH
+                        )
+                        
+                        if leak_rate_result:
+                            print(f"Leak rate addition completed successfully!")
+                            print(f"  Processed {leak_rate_result['total_videos']} videos and {leak_rate_result['total_classes']} classes")
+                            print(f"  Successful updates: {leak_rate_result['successful_updates']}")
+                            print(f"  Failed updates: {leak_rate_result['failed_updates']}")
+                        else:
+                            print("Leak rate addition failed!")
+                            return False
+                            
+                    except Exception as e:
+                        print(f"Error adding leak rates: {e}")
+                        return False
+                
+                # Step 5: Add PPM data
+                if step_5:
+                    print("\n" + "-"*40)
+                    print("STEP 5: ADDING PPM DATA")
+                    print("-"*40)
+                    
+                    # Check if CSV file exists, convert if needed
+                    csv_path = PLUME_MODELING_PATH.replace('.xlsx', '.csv')
+                    if not os.path.exists(csv_path):
+                        print("CSV file not found, converting Excel to CSV...")
+                        if not convert_excel_to_csv(PLUME_MODELING_PATH, csv_path):
+                            print("ERROR: Failed to convert Excel to CSV")
+                            return False
+                        print("CSV conversion completed successfully!")
+                    else:
+                        print(f"CSV file already exists: {csv_path}")
+                    
+                    print("Adding PPM data to class JSON files...")
+                    print("DEBUG: This step should add PPM values to individual class JSON files")
+                    try:
+                        ppm_result = add_ppm_data_to_classes(
+                            PROCESSED_DATASET_PATH,
+                            PLUME_MODELING_PATH
+                        )
+                        
+                        if ppm_result:
+                            print(f"PPM data addition completed successfully!")
+                            print(f"  Processed {ppm_result['total_videos']} videos and {ppm_result['total_classes']} classes")
+                            print(f"  Successful updates: {ppm_result['successful_updates']}")
+                            print(f"  Failed updates: {ppm_result['failed_updates']}")
+                            print(f"  No matches found: {ppm_result['no_match_found']}")
+                        else:
+                            print("PPM data addition failed!")
+                            return False
+                            
+                    except Exception as e:
+                        print(f"Error adding PPM data: {e}")
+                        return False
 
         ##################################################################
         # Step 6: Create example scaled versions of subtracted class images
@@ -317,7 +485,7 @@ def create_dataset_from_scratch(test_videos=None, step_1=True, step_2=True, step
                 print("="*50)
                 
                 for i, video_code in enumerate(video_codes):
-                    video_dir = os.path.join(processed_dataset_path, video_code)
+                    video_dir = os.path.join(PROCESSED_DATASET_PATH, video_code)
                     print(f"\nCreating scaled examples for video {i+1}/{len(video_codes)}: {video_code}")
                     
                     # Import scaling function
@@ -401,10 +569,11 @@ def create_dataset_from_scratch(test_videos=None, step_1=True, step_2=True, step
         print("DATASET CREATION COMPLETED SUCCESSFULLY!")
         print("="*80)
         print(f"Processed {successful_videos} videos")
-        print(f"Added distance descriptors")
         print(f"Extracted class frames")
-        print(f"Added leak rate data")
-        print(f"Added PPM data")
+        if used_consolidated_metadata:
+            print(f"Added metadata from consolidated_metadata.json")
+        else:
+            print(f"Added metadata from individual Excel/CSV/JSON sources")
         print("\nDataset base is ready for numpy dataset generation")
         
         return True

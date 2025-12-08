@@ -9,7 +9,7 @@ import cv2
 import random
 
 # =============================================================================
-# FULL DATASET CREATION - 50 RANDOM FRAMES PER CLASS PER VIDEO
+# FULL DATASET CREATION - DEFAULT 50 RANDOM FRAMES PER CLASS PER VIDEO
 # =============================================================================
 
 def create_full_dataset(test_videos=None, frames_per_class=50):
@@ -427,11 +427,15 @@ if __name__ == "__main__":
     # success = create_full_dataset(test_videos=test_videos, frames_per_class=50)
 
     # Set the total number of frames per class per video 
-    # frames_per_class X 8 classes X 28 Videos (50 X 8 X 28 = 11,200 frames)
+    # frames_per_class X 8 classes X 28 Videos 
+    # (50 X 8 X 28 = 11,200 frames) 
+    # (100 X 8 X 28 = 22,400 frames) 
+    # (200 X 8 X 28 = 44,800 frames)
+    # Validation accuracy above 50% was acheived with 200 frames per class per video (40,000+ numpy arrays)
 
     
     # Or process all videos:
-    success = create_full_dataset(frames_per_class=100)
+    success = create_full_dataset(frames_per_class=200)
     
     if success:
         print("\nCreating dataset summary...")
