@@ -1,0 +1,24 @@
+# Multi-Class Synthetic Dataset Generation Pipeline
+# Conda environment specification
+#
+# Create environment with:
+#   conda env create -f environment.yml
+#
+# Activate with:
+#   conda activate methane_dataset
+
+name: methane_dataset
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - numpy>=2.0
+  - pandas>=2.0
+  - opencv>=4.8
+  - matplotlib>=3.8
+  - pillow>=10.0
+  - openpyxl>=3.1
+  - pip
+  

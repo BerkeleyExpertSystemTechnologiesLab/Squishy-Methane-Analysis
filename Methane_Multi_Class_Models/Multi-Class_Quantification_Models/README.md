@@ -15,7 +15,10 @@ Recognize and classify methane leaks using multi-modal deep learning models.
 
 - Distance from leak
 - Maximum PPM detected using OGI
-- Wind speed (TO BE ADDED LATER)
+(TO BE ADDED LATER)
+- Wind speed 
+- Cross Section of Plume
+- etc...
 
 ## Output
 
@@ -24,7 +27,10 @@ Classification of methane leaks into **8 distinct categories**.
 ## Training Dataset
 
 **GasVid Dataset** - Collected at METEC facility in Colorado
-This dataset has been synthetically altered from it's original .mp4 format to 2 channel numpy arrays combined with metadata to create the two modalities. 
+The GasVid Dataset consists of 28 .mp4 videos of the METEC facility, with accurate measured disance to the leak and leak rate. We use the distance to the leak and an B.E.S.T. Lab / Squishy Robotics algorithm for modeling the ppm that should be detected (ppm is not recorded by METEC)
+
+The METEC dataset has been synthetically altered from it's original .mp4 format to 2 channel numpy arrays combined with metadata to create a two modal dataset. 
+
 In addition we have experimented with creating backgrounds altered using AI image generators, feeding in GasVid frames and adding additional objects in the foreground and background. 
 
 ### Data Processing Pipeline

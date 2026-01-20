@@ -274,7 +274,7 @@ Keywords: Natural gas; Methane emission; Deep learning; Convolutional neural net
 ### Common Issues
 
 **"Video file not found"**
-- Verify videos are in `Original_Dataset/Videos-20251002T175522Z-1-001/Videos/`
+- Verify videos are in `GasVid_Dataset/Videos/`
 - Check file extensions (`.mp4` or `.mov`)
 
 **"Missing metadata"**
