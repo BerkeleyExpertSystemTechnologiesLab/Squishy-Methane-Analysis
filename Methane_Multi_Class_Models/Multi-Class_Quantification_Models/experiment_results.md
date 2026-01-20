@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes a series of machine learning experiments conducted to determine the optimal data format for the Squishy Robot Quantification models.
+This document describes a series of machine learning experiments conducted to determine the optimal data format for the Squishy Robot Quantification models. These are the results as of 20 January 2026. 
 
 ## Baseline Models (Two-Channel with Metadata)
 
@@ -39,4 +39,6 @@ This experiment combined single-channel images with metadata. Due to a connectiv
 | Metadata only | 62% | 30 |
 | Single-channel image only | ~20% | 30 |
 
-These results demonstrate that multimodal approaches combining image data with metadata significantly outperform unimodal methods for methane leak quantification.
+These results demonstrate that multimodal approaches combining image data with metadata significantly outperform unimodal methods for methane leak quantification. These are the results as of 20 January 2026, by Joseph G. Berry, contact me with any questions.
+
+joseph.g.berry@gmail.com
