@@ -22,7 +22,7 @@ Using only the combined background and plume images without metadata, the highes
 
 **Notebook:** `Quant_Model_Metadata_Only.ipynb`
 
-Using only the metadata (distance and ppm), the highest accuracy across 30 trials was 62%. This experiment was limited to 224 metadata samples; additional data may yield improved accuracy.
+Using only the metadata (distance and ppm), the highest accuracy across 30 trials was 62%. This experiment was limited to 224 metadata samples; additional data may improve accuracy.
 
 ### Single-Channel Multimodal Model
 

@@ -4,12 +4,12 @@ Processed_Dataset/
 Dataset_Backups/
 Backup_Datasets/
 Exportable_Dataset/
-export_datasets/
-source_data/
-Final_Dataset/
+export_datasets/*
 
 
 
+
+*.png
 *.mp4
 *.pyc 
 *.npy #numpy array files

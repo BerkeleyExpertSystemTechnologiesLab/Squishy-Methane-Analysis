@@ -1,0 +1,1 @@
+This data is a combination of the GasVid - METEC Facility collected data for the GasVid dataset and Squishy Robotics cone modeling estimates for the plumes produced for estimating GasVid
