@@ -16,6 +16,10 @@ This pipeline processes the original GasVid dataset to create a semi-synthetic 2
 
 ---
 
+## Conda Environment
+
+This code was developed using a conda environment, the libraries required to run this code are in requirements.txt and environment.yml
+
 ## Running the Pipeline
 
 The pipeline is run via a single unified command-line interface:
@@ -49,11 +53,11 @@ python run_pipeline.py --frames-per-class 100
 |--------|--------|---------|-------------|
 | `--channels` | `single`, `double` | `double` | Output format: single (frames only) or double (background + plume) |
 | `--include-artificial` | flag | off | Include artificial background samples |
-| `--step` | `1`, `2`, `3`, `all` | `all` | Run specific step or complete pipeline |
-| `--test-videos` | video codes | none | Process only specified videos (e.g., `1237 1238`) |
-| `--frames-per-class` | integer | 200 | Number of frames to extract per class |
-| `--skip-step-1` | flag | off | Skip base dataset creation |
-| `--skip-step-2` | flag | off | Skip numpy dataset creation |
+| `--step` | `1`, `2`, `3`, `all` | `all` | Run specific step or complete pipeline (for testing code)|
+| `--test-videos` | video codes | none | Process only specified videos (e.g., `1237 1238`) used for testing code|
+| `--frames-per-class` | integer | 200 | Number of frames to extract per class frames are randomly selected, may get repeats, typically generates ~190 frames |
+| `--skip-step-1` | flag | off | Skip base dataset creation (for testing code) |
+| `--skip-step-2` | flag | off | Skip numpy dataset creation (for testing code)|
 
 ### Pipeline Steps
 
@@ -149,15 +153,15 @@ The GasVid video files are **not included** in this repository due to size const
    - Navigate to: `BEST Lab / Squishy Robotics URAP Root -> URAP Fall 2025 - ML/Software Team -> Datasets`
 
 2. **Direct Download**:
-   - [GasVid Dataset on Google Drive](https://drive.google.com/drive/folders/1JKEMtCGPSq2IqGk4uXZP9A6gr8fyJsGC)
+   - [GasVid Dataset on Google Drive, from original paper](https://drive.google.com/drive/folders/1JKEMtCGPSq2IqGk4uXZP9A6gr8fyJsGC)
    - (Link verified as of November 10th, 2025)
 
-Place downloaded videos in: `source_data/GasVid_Dataset/Videos/`
+Place downloaded .mp4 files directly in: `source_data/GasVid_Dataset/Videos/` (unzip from original directory)
 (All paths are configured in `config.py`)
 
 ### Metadata Files
-- `source_data/GasVid_Dataset/GasVid Logging File.xlsx`: Distance measurements and class information per video
-- `source_data/Metadata/Gasvid Plume Models.xlsx`: Squishy Robotics plume modeling data (PPM values)
+- `source_data/GasVid_Dataset/GasVid Logging File.xlsx`: Distance measurements and class information per video (From GasVid Paper)
+- `source_data/Metadata/Gasvid Plume Models.xlsx`: Plume modeling estimation data (PPM values) from Squishy Robotics
 - `source_data/Metadata/consolidated_metadata.json`: Pre-compiled metadata (optional, speeds up processing)
 
 ---
@@ -169,6 +173,8 @@ This work was done by: Zakaria Al-Alie zakaria.al-alie@berkeley.edu
 
 ### Tool
 Use **[Google Imagen Whisk](https://labs.google/fx/tools/whisk)** to generate or modify backgrounds.
+
+Any .png files with appropriate titles (1237_Class_0_artif)... placed in the source_data/Backgrounds/ directory will be copied into the dataset and used to generate extra numpy files. If you select 200 frames per class, then 200 will be generated using a new background and 200 more generated for each .png file in Backgrounds/ that shares the XXXX_Class_X name format. 
 
 ### Workflow
 
@@ -265,13 +271,15 @@ source_data/BackGrounds/Artificial_Backgrounds/XXXX/Class_Y/
 
 Then run the pipeline with the `--include-artificial` flag:
 ```bash
-python run_pipeline.py --include-artificial
+python ./run_pipeline.py --include-artificial
 ```
 
 The pipeline will automatically:
 - Copy them to `export_datasets/Processed_Dataset_*/XXXX_ARTIF/Class_Y/`
 - Generate numpy files with `_artif.npy` suffix
 - Keep artificial data completely separate from normal data in the final dataset
+
+If generate 200 frames per background, then there will be 200 from a generated background, plus 200 times every artificial background
 
 ---
 
@@ -329,6 +337,8 @@ Process specific videos only for faster iteration:
 python run_pipeline.py --test-videos 1237 1238 1239
 ```
 
+This is mainly for testing different sections of the code
+
 ### Step Control
 Run individual pipeline steps or skip completed ones:
 ```bash
@@ -344,6 +354,8 @@ python run_pipeline.py --skip-step-1
 # Skip steps 1 and 2, only run final assembly
 python run_pipeline.py --skip-step-1 --skip-step-2
 ```
+
+This is mainly for testing different sections of the code
 
 ---
 

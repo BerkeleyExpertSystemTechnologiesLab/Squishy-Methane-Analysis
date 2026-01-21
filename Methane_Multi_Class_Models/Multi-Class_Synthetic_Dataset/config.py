@@ -23,14 +23,16 @@ PROCESSED_DATASET_BASE = "export_datasets/Processed_Dataset"
 FINAL_DATASET_BASE = "export_datasets/Final_Dataset"
 
 
-def get_processed_dataset_path(channels="double"):
+def get_processed_dataset_path(channels="double", include_artificial=False):
     """Get the processed dataset path for the given channel mode."""
-    return f"{PROCESSED_DATASET_BASE}_{channels}_channel"
+    suffix = "_w_artif" if include_artificial else ""
+    return f"{PROCESSED_DATASET_BASE}_{channels}_channel{suffix}"
 
 
-def get_final_dataset_path(channels="double"):
+def get_final_dataset_path(channels="double", include_artificial=False):
     """Get the final dataset path for the given channel mode."""
-    return f"{FINAL_DATASET_BASE}_{channels}_channel"
+    suffix = "_w_artif" if include_artificial else ""
+    return f"{FINAL_DATASET_BASE}_{channels}_channel{suffix}"
 
 
 # Processing parameters
@@ -71,12 +73,12 @@ class PipelineConfig:
     @property
     def processed_dataset_path(self):
         """Get the processed dataset path for this configuration."""
-        return get_processed_dataset_path(self.channels)
+        return get_processed_dataset_path(self.channels, self.include_artificial)
 
     @property
     def final_dataset_path(self):
         """Get the final dataset path for this configuration."""
-        return get_final_dataset_path(self.channels)
+        return get_final_dataset_path(self.channels, self.include_artificial)
 
 
 def create_config_from_args(args):

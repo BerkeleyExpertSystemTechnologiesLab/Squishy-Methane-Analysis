@@ -46,3 +46,15 @@ In addition we have experimented with creating backgrounds altered using AI imag
 - **Root directory**: Latest model versions (`.ipynb` files)
 - **old_models/**: Archived previous model versions
 - **Documentation**: `.csv` and `.xlsx` files contain process documentation and accuracy metrics 
+
+### How to run these models
+
+Using the instructions in readme.md in the Multi-Class_Synthetic_Dataset Directory generate a final dataset (Final_Dataset_... directory)
+
+Turn that directory into a zip file and then upload to a Google Colab Instance (either upload directly or access your google drive from colab)
+
+Open the .ipynb files here using google colab. 
+
+Run the model, you will have to change the name of the zip file when unzipping, but the rest of the code will automatically run. The default setting is 30 trials, on google colab running an A100 or TPU this takes approximatley 30 hours or more. Trials can be shortened, this is a setting in the final code section of the .ipynb files. 
+
+I've run these models to completion, going to the last section of the ipynb files to find the best combination of parameters can save you time if you don't want to run all trials. The trials search for best combination of parameters. 

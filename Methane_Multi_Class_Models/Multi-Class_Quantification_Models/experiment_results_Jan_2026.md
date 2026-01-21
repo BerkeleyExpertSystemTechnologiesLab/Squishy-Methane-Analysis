@@ -7,10 +7,11 @@ This document describes a series of machine learning experiments conducted to de
 ## Baseline Models (Two-Channel with Metadata)
 
 The experiments in `Squish_Robot_Quant_Model_v5-1_mm_+_image_transforms.ipynb` and `Squish_Robot_Quant_Model_v5-2_artif_data_exp.ipynb` utilized two-channel NumPy arrays (background-only and plume-only channels) combined with image metadata (distance and ppm). This multimodal approach achieved high accuracy, exceeding 90%.
+The difference between the two models is their datasets, 5-1 was trained and tested on a modified GasVid dataset, and 5-2 was trained on that dataset and tested on an artificially generated version, using Generative LLM's to modify the images. 
 
 ## Ablation Studies
 
-To evaluate the contribution of each data component, additional experiments tested single-channel inputs and non-multimodal configurations.
+To evaluate the contribution of each data modality, additional experiments tested single-channel inputs and non-multimodal configurations.
 
 ### Image-Only Model (Single Channel, Non-Multimodal)
 
@@ -39,6 +40,8 @@ This experiment combined single-channel images with metadata. Due to a connectiv
 | Metadata only | 62% | 30 |
 | Single-channel image only | ~20% | 30 |
 
-These results demonstrate that multimodal approaches combining image data with metadata significantly outperform unimodal methods for methane leak quantification. These are the results as of 20 January 2026, by Joseph G. Berry, contact me with any questions.
+These results demonstrate that multimodal approaches combining image data with metadata (ppm and distance) significantly outperform unimodal methods for methane leak quantification. One possible issue is the calculation for ppm using Squishy Robotics plume modeling, the model used takes in the leak rate to estimate ppm that should be detected, since the models used here classify based on what the estimated leak rate is, it's possible that the ppm model is simply a stand in for leak rate, and we are giving the ML models here the answer with ppm. Further tests should be done with data where ppm is detected using equipment, and other factors like distance and wind speed are fed into the ML models here. 
+
+These are the results as of 20 January 2026, by Joseph G. Berry, contact me with any questions.
 
 joseph.g.berry@gmail.com
