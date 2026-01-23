@@ -49,7 +49,7 @@ In addition we have experimented with creating backgrounds altered using AI imag
 
 ### How to run these models
 
-Using the instructions in readme.md in the Multi-Class_Synthetic_Dataset Directory generate a final dataset (Final_Dataset_... directory)
+Using the instructions in readme.md in the Synthetic_Dataset_Creator/ Directory generate a final dataset (Final_Dataset_... directory)
 
 Turn that directory into a zip file and then upload to a Google Colab Instance (either upload directly or access your google drive from colab)
 
