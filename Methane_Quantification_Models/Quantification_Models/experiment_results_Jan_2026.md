@@ -41,12 +41,12 @@ This experiment attempts to use Vision Transformers instead of CNN's for classif
 ## Summary
 
 | Model | Configuration | Highest Accuracy | Trials Completed |
-|---------------|------------------|------------------|
-| CNN | Two-channel + metadata | >90% | 30 |
-| CNN | Single-channel + metadata | 95% | 29 |
-| CNN | Metadata only | 62% | 30 |
-| CNN | Single-channel image only | ~20% | 30 |
-| ViT | Two-channel + metadata | ~60% | 20 |
+|-------|---------------|------------------|------------------|
+| CNN   | Two-channel + metadata    | >90% | 30 |
+| CNN   | Single-channel + metadata | 95%  | 29 |
+| CNN   | Metadata only             | 62%  | 30 |
+| CNN   | Single-channel image only | ~20% | 30 |
+| ViT   | Two-channel + metadata    | ~60% | 20 |
 
 These results demonstrate that multimodal approaches combining image data with metadata (ppm and distance) significantly outperform unimodal methods for methane leak quantification. One possible issue is the calculation for ppm using Squishy Robotics plume modeling, the model used takes in the leak rate to estimate ppm that should be detected, since the models used here classify based on what the estimated leak rate is, it's possible that the ppm model is simply a stand in for leak rate, and we are giving the ML models here the answer with ppm. 
 
