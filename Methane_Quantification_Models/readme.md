@@ -15,7 +15,7 @@ The `Synthetic_Dataset_Creator` directory contains all the code necessary to gen
 - "Channels" refer to the layers in an image
 - Standard RGB images have 3 channels
 - Greyscale images have 1 channel
-- Our datasets use 2 channels
+- Our datasets can use 2 channels (channel 1 is background, channel 2 is plume) or 1 channel (background with plume)
 
 ## Model Training
 
