@@ -74,7 +74,7 @@ The pipeline consists of three steps that run sequentially:
 ## Project Structure
 
 ```
-Multi-Class_Synthetic_Dataset/
+Synthetic_Dataset_Creator/
 |-- config.py                 # Central configuration (paths, parameters)
 |-- run_pipeline.py           # Main entry point (CLI)
 |-- requirements.txt          # Python dependencies
@@ -407,7 +407,7 @@ Keywords: Natural gas; Methane emission; Deep learning; Convolutional neural net
 - Check available disk space
 
 **Import errors**
-- Ensure you're in the correct directory: `Multi-Class_Synthetic_Dataset/`
+- Ensure you're in the correct directory: `Synthetic_Dataset_Creator/`
 - Install dependencies: `pip install -r requirements.txt`
 
 ---

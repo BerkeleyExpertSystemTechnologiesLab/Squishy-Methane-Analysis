@@ -4,18 +4,18 @@
 
 This repository contains two interconnected directories that work together for multi-class methane quantification:
 
-1. **Multi-Class_Synthetic_Dataset** - Dataset generation
-2. **Multi-Class_Quantification_Models** - Model training and experimentation
+1. **Synthetic_Dataset_Creator** - Dataset generation
+2. **Quantification_Models** - Model training and experimentation
 
 ## Dataset Generation
 
-The `Multi-Class_Synthetic_Dataset` directory contains all the code necessary to generate 2-channel numpy arrays.
+The `Synthetic_Dataset_Creator` directory contains all the code necessary to generate 2-channel numpy arrays.
 
 **What are 2-channel arrays?**
 - "Channels" refer to the layers in an image
 - Standard RGB images have 3 channels
 - Greyscale images have 1 channel
-- Our datasets use 2 channels
+- Our datasets can use 2 channels (channel 1 is background, channel 2 is plume) or 1 channel (background with plume)
 
 ## Model Training
 
