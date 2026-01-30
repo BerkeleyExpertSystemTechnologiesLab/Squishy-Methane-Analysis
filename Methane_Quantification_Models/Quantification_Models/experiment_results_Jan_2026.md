@@ -48,18 +48,20 @@ This was an attempt at combining CNN's with ViT in sequential blocks [CNN -> ViT
 
 | Model | Configuration | Highest Val Accuracy | Trials Completed |
 |-------|---------------|------------------|------------------|
-| CNN         | Two-channel + metadata    | 90%  | 30 |
+| CNN         | Two-channel + metadata    | >90%  | >40 |
 | CNN         | Single-channel + metadata | 95%  | 29 |
 | CNN         | Metadata only             | 62%  | 30 |
 | CNN         | Single-channel image only | 21% | 30 |
 | ViT         | Two-channel + metadata    | 65% | 20 |
 | CNN w ViT   | Two-channel + metadata    | 52% | 7  |
 
-These results demonstrate that multimodal approaches combining image data with metadata (ppm and distance) significantly outperform unimodal methods for methane leak quantification. One possible issue is the calculation for ppm using Squishy Robotics plume modeling, the model used takes in the leak rate to estimate ppm that should be detected, since the models used here classify based on what the estimated leak rate is, it's possible that the ppm model is simply a stand in for leak rate, and we are giving the ML models here the answer with ppm. 
+These results demonstrate that multimodal approaches combining image data with metadata (ppm and distance) significantly outperform single mode methods for methane leak quantification such as only metadata or only images. 
 
-Further tests should be done with data where ppm is detected using equipment, and other factors like distance and wind speed are fed into the ML models here. 
+One possible issue with the models is the calculation for ppm using Squishy Robotics plume modeling, the plume estimation model (https://docs.google.com/spreadsheets/d/19fZelUZhGEwCyux0knJEHTg4rHD8eXcsizefphtPDFY/edit?gid=0#gid=0) takes in the leak rate to estimate ppm that should be detected given that leak rate. Since the models used here classify based on what the estimated leak rate is, it's possible that the ppm model is simply a stand in for leak rate, and we are giving the ML models here the answer to leak rate class by giving them our estimated ppm, further testing on different ppm algorithmic estimations should be performed. Including further tests done with data where ppm is verified using equipment, and other factors like distance and wind speed are fed into the ML models here. 
 
-ViT based models take much longer to test and experiment with than CNN's and since the ViT models here underperformed the CNN's by a wide margin of 30% accuracy this indicates that we can safely stick to simpler architectures for quantification models, and only move to ViT's if we gain massive amounts of data (GB's more or millions of images) and simultaneuously our CNN models underperform on future datasets. 
+ViT based models take much longer to test and experiment with than CNN's and since the ViT models here underperformed the CNN's by a wide margin of 30% accuracy, this indicates that we can safely stick to simpler architectures for quantification models, and only move to ViT's if we gain massive amounts of data (GB's more or millions of images) and simultaneuously our CNN models underperform on future datasets. 
+
+Unfortunately my trials for the Two-Channel + Metadata were interrupted and I had to restart. I witnessed accuracies above 90% but lost that documentation. 
 
 These are the results as of 30 January 2026, by Joseph G. Berry, contact me with any questions.
 
