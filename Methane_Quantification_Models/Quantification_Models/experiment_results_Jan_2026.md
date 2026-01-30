@@ -37,23 +37,30 @@ This experiment combined single-channel images with metadata. Due to a connectiv
 
 This experiment attempts to use Vision Transformers instead of CNN's for classification and still consists of a smaller neural netword for metadata. After 20 trials I ended the test early since results were poor, the highest validation accuracy was ~65% after upwards of 36 hours of testing. ViT's are known for requiring more data (GB's or millions of images) before their performance is better than CNN's. 
 
+### CNN with ViT Multimodal Model
+
+**Notebook:** `Quant_Model_CNN_w_ViT.ipynb`
+
+This was an attempt at combining CNN's with ViT in sequential blocks [CNN -> ViT -> GELU] -> [Another Block], it includes the pytorch autocast which reduces the models weights from float 32's to float 16's, then converts back for the backward pass. This model experienced the classic high training accuracy low validation overtraining symptom that is common with ViTs. Further attempts might be attempted with other CNN + ViT architectures but this model was not efficient for training and underperformed. 
+
 
 ## Summary
 
-| Model | Configuration | Highest Accuracy | Trials Completed |
-|---------------|------------------|------------------|
-| CNN | Two-channel + metadata | >90% | 30 |
-| CNN | Single-channel + metadata | 95% | 29 |
-| CNN | Metadata only | 62% | 30 |
-| CNN | Single-channel image only | ~20% | 30 |
-| ViT | Two-channel + metadata | ~60% | 20 |
+| Model | Configuration | Highest Val Accuracy | Trials Completed |
+|-------|---------------|------------------|------------------|
+| CNN         | Two-channel + metadata    | 90%  | 30 |
+| CNN         | Single-channel + metadata | 95%  | 29 |
+| CNN         | Metadata only             | 62%  | 30 |
+| CNN         | Single-channel image only | 21% | 30 |
+| ViT         | Two-channel + metadata    | 65% | 20 |
+| CNN w ViT   | Two-channel + metadata    | 52% | 7  |
 
 These results demonstrate that multimodal approaches combining image data with metadata (ppm and distance) significantly outperform unimodal methods for methane leak quantification. One possible issue is the calculation for ppm using Squishy Robotics plume modeling, the model used takes in the leak rate to estimate ppm that should be detected, since the models used here classify based on what the estimated leak rate is, it's possible that the ppm model is simply a stand in for leak rate, and we are giving the ML models here the answer with ppm. 
 
 Further tests should be done with data where ppm is detected using equipment, and other factors like distance and wind speed are fed into the ML models here. 
 
-ViT based models take much longer to test and experiment with than CNN's, and since the performance for some trials of CNN's is approximately 95% this indicates that we can safely stick to simpler architectures for quantification models, and only move to ViT's if we gain massive amounts of data (GB's more or millions of images) and CNN's underperform on new datasets. 
+ViT based models take much longer to test and experiment with than CNN's and since the ViT models here underperformed the CNN's by a wide margin of 30% accuracy this indicates that we can safely stick to simpler architectures for quantification models, and only move to ViT's if we gain massive amounts of data (GB's more or millions of images) and simultaneuously our CNN models underperform on future datasets. 
 
-These are the results as of 20 January 2026, by Joseph G. Berry, contact me with any questions.
+These are the results as of 30 January 2026, by Joseph G. Berry, contact me with any questions.
 
 joseph.g.berry@gmail.com
