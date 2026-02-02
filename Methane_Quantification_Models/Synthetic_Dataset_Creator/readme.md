@@ -2,7 +2,7 @@
 
 ## Overview
 
-This pipeline processes the original GasVid dataset to create a semi-synthetic 2-channel dataset optimized for methane leak detection using machine learning. The dataset generation involves background subtraction, frame extraction, and metadata integration to produce training-ready numpy arrays.
+This pipeline processes the original GasVid dataset to create a semi-synthetic 1-channel or 2-channel dataset optimized for methane leak detection using machine learning. The dataset generation involves background subtraction, frame extraction, and metadata integration to produce training-ready numpy arrays.
 
 ### How It Works
 

@@ -9,7 +9,7 @@ This repository contains two interconnected directories that work together for m
 
 ## Dataset Generation
 
-The `Synthetic_Dataset_Creator` directory contains all the code necessary to generate 2-channel numpy arrays.
+The `Synthetic_Dataset_Creator` directory contains all the code necessary to generate 1-channel or 2-channel numpy arrays.
 
 **What are 2-channel arrays?**
 - "Channels" refer to the layers in an image
@@ -19,7 +19,7 @@ The `Synthetic_Dataset_Creator` directory contains all the code necessary to gen
 
 ## Model Training
 
-The `Multi-Class_Quantification_Models` directory contains prototype models for experimentation. Running the dataset generation code will produce 2-channel numpy arrays that can be fed directly into these models.
+The `Multi-Class_Quantification_Models` directory contains prototype models for experimentation. Running the dataset generation code will produce 1-channel or 2-channel numpy arrays (depending on the flag you choose) that can be fed directly into these models.
 
 ### Model Versioning
 
