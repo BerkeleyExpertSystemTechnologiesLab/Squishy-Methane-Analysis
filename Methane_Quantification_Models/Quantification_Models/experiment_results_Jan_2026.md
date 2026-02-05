@@ -9,7 +9,11 @@ This document describes a series of machine learning experiments conducted to de
 The experiments in `Squish_Robot_Quant_Model_v5-1_mm_+_image_transforms.ipynb` and `Squish_Robot_Quant_Model_v5-2_artif_data_exp.ipynb` are CNN based ML models. They are a copy of the model described in the VideoGasNet paper, recreated. They consist of 3 basic blocks, CNN + Norm + Activation + Pool + Dropout, then combined with a smaller neural network for metadata, and then fed into a final block that combines the two and ends with classification. The models utilized two-channel NumPy arrays (background-only and plume-only channels) combined with image metadata (distance and ppm). This multimodal approach achieved high accuracy, exceeding 90%.
 The difference between the two models is their datasets, 5-1 was trained and tested on a modified GasVid dataset, and 5-2 was trained on that dataset and tested on an artificially generated version, using Generative LLM's to modify the images. 
 
-## Ablation Studies
+The experiment `Squish_Robot_Quant_Model_v6-1_Five_Classes+image_transform.ipynb` in Old_Models/ was experiments with reducing from 8 classes to 5 classes by merging classes 1 & 2, 3 & 4, and 5 & 6, leaving classes 0 and 7 the same. This improved accuracy, but since other changes to the 8 class model got high validation accuracy, I stopped testing 5 class models. Revisiting this may help if there are issues with new datasets. 
+
+The synthetic dataset creator can be used to make single channel datasets, since the hardware team informed me that double channel separating backgrounds from plumes is unrealistic, in the future models should be tested on single channel images. 
+
+## Metadata and Image Contribution Experiments
 
 To evaluate the contribution of each data modality, additional experiments tested single-channel inputs and non-multimodal configurations.
 
@@ -30,6 +34,8 @@ Using only the metadata (distance and ppm), the highest accuracy across 30 trial
 **Notebook:** `Quant_Model_1_Chan_and_Multi_Mode.ipynb`
 
 This experiment combined single-channel images with metadata. Due to a connectivity interruption while running on google colab, only 29 of the planned 30 trials were completed. The highest observed accuracy was 95%.
+
+## Vision Transformer Experiments
 
 ### ViT Multimodal Model
 
