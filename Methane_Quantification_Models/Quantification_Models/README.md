@@ -6,7 +6,10 @@ Recognize and classify methane leaks using multi-modal deep learning models.
 
 ## Input Data
 
-### Modal 1: 2-Channel Images
+### Modal 1: 1-Channel or 2-Channel Images
+
+If 1-channel, then standard greyscale images
+If 2-channel:
 
 - **Channel 1**: Greyscale image (background)
 - **Channel 2**: Heatmap of methane gas detected via Optical Gas Imaging (OGI)
@@ -46,6 +49,10 @@ In addition we have experimented with creating backgrounds altered using AI imag
 - **Root directory**: Latest model versions (`.ipynb` files)
 - **old_models/**: Archived previous model versions
 - **Documentation**: `.csv` and `.xlsx` files contain process documentation and accuracy metrics 
+
+### Old Models
+
+The models inside this directory were kept for documentation, they are result and don't need to be kept. The only result from the old models that should be recorded is that reducing the classes from 8 to 5 can boost validation accuracy. 
 
 ### How to run these models
 
