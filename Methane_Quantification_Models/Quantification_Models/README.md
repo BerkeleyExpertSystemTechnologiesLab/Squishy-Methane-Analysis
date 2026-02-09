@@ -1,5 +1,7 @@
 # Multi-Class Quantification Models
 
+View the flowchart docs/CNN_Quant_Model_Flow.png for a visual representation of how the model works. 
+
 ## Goal
 
 Recognize and classify methane leaks using multi-modal deep learning models.
