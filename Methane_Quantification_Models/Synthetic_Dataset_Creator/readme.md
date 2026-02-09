@@ -2,7 +2,7 @@
 
 ## Overview
 
-This pipeline processes the original GasVid dataset to create a semi-synthetic 1-channel or 2-channel dataset optimized for methane leak detection using machine learning. The dataset generation involves background subtraction, frame extraction, and metadata integration to produce training-ready numpy arrays.
+This pipeline processes the original GasVid dataset to create a semi-synthetic 1-channel or 2-channel dataset optimized for methane leak detection using machine learning. The dataset generation involves background subtraction, frame extraction, and metadata integration to produce training-ready numpy arrays. View docs/How_Synthetic_Dataset_Is_Created.png for a flowchart. 
 
 ### How It Works
 
@@ -158,6 +158,8 @@ The GasVid video files are **not included** in this repository due to size const
 
 Place downloaded .mp4 files directly in: `source_data/GasVid_Dataset/Videos/` (unzip from original directory)
 (All paths are configured in `config.py`)
+
+One note, the .mp4 titled 1471 actually starts leaking at 2:46, not the first few seconds. This code does NOT compensate for this, so the portion of the dataset generated from this video will be slightly off. This is likely not enough to alter the models significantly, but while running this code 1471 should be excluded. 
 
 ### Metadata Files
 - `source_data/GasVid_Dataset/GasVid Logging File.xlsx`: Distance measurements and class information per video (From GasVid Paper)

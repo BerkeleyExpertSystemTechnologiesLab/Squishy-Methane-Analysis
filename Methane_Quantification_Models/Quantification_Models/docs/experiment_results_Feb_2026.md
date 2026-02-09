@@ -49,17 +49,26 @@ This experiment attempts to use Vision Transformers instead of CNN's for classif
 
 This was an attempt at combining CNN's with ViT in sequential blocks [CNN -> ViT -> GELU] -> [Another Block], it includes the pytorch autocast which reduces the models weights from float 32's to float 16's, then converts back for the backward pass. This model experienced the classic high training accuracy low validation overtraining symptom that is common with ViTs. Further attempts might be attempted with other CNN + ViT architectures but this model was not efficient for training and underperformed. 
 
+### Imported ViT models (Huggingface, Pytorch)
+
+**Notebooks:** `Quant_Model_Swin_ViT.ipynb` `Quant_Model_MaxViT.ipynb` `Quant_Model_DeiT_ViT.ipynb`
+
+I imported predesigned but not pretrained models from timm (Pytorch models) and Huggingface. Performance was middleing, and seems like they suffered the same issues with ViT's, low accuracy when not presented with a massive amount of data available. 
+
 
 ## Summary
 
 | Model | Configuration | Highest Val Accuracy | Trials Completed |
 |-------|---------------|------------------|------------------|
-| CNN         | Two-channel + metadata    | >90%  | >40 |
-| CNN         | Single-channel + metadata | 95%  | 29 |
-| CNN         | Metadata only             | 62%  | 30 |
-| CNN         | Single-channel image only | 21% | 30 |
-| ViT         | Two-channel + metadata    | 65% | 20 |
-| CNN w ViT   | Two-channel + metadata    | 52% | 7  |
+| CNN + NN    | Two-channel + metadata    | >90%  | >40 |
+| CNN + NN    | Single-channel + metadata | 95%   | 29 |
+| CNN + NN    | Metadata only             | 62%   | 30 |
+| CNN + NN    | Single-channel image only | 21%   | 30 |
+| ViT + NN        | Two-channel + metadata    | 65%   | 20 |
+| CNN w ViT + NN  | Two-channel + metadata    | 52%   | 7  |
+| DeiT + NN      | Single-Channel + metadata | 81%   | 5  | 
+| MaxViT + NN     | Single-Channel + metadata | 52%   | 10 | 
+| SwinViT + NN    | Single-Channel + metadata | 79%   | 5  | 
 
 These results demonstrate that multimodal approaches combining image data with metadata (ppm and distance) significantly outperform single mode methods for methane leak quantification such as only metadata or only images. 
 
