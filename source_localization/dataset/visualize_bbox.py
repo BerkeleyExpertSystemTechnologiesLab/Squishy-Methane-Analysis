@@ -128,7 +128,7 @@ def draw_bboxes_from_json(
 
 if __name__ == "__main__":
     # Example usage
-    json_file = Path("/Users/valerie/code_practice/urap/labels.json")
+    json_file = Path("/Users/valerie/code_practice/urap/source_labels/labels.json")
     # base_path = Path(__file__).parent.parent
     base_path = Path("/Users/valerie/code_practice/urap/resampled_test_image")
     
