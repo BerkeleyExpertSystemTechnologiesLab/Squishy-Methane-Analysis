@@ -9,17 +9,19 @@ def draw_bbox_on_image(
     output_path: Union[str, Path] = None,
     color: str = "green",
     thickness: int = 2,
-    base_path: Union[str, Path] = None
+    base_path: Union[str, Path] = None,
+    box_size: int = 50
 ) -> Image.Image:
     """
-    Draw a bounding box on an image based on label data.
+    Draw a bounding box on an image based on center coordinate.
     
     Args:
-        label: Dictionary containing image data with 'image_path' and 'bbox' keys
+        label: Dictionary containing image data with 'image_path' and 'center_coord' keys
         output_path: Optional path to save the annotated image
-        color: Color of the bounding box (default: "red")
+        color: Color of the bounding box (default: "green")
         thickness: Thickness of the bounding box lines (default: 2)
         base_path: Base path to resolve relative image paths (default: current working directory)
+        box_size: Size of the bounding box (width and height in pixels, default: 50)
     
     Returns:
         PIL Image object with bounding box drawn
@@ -29,8 +31,8 @@ def draw_bbox_on_image(
         ValueError: If required keys are missing from label
     """
     # Validate label dictionary
-    if "image_path" not in label or "bbox" not in label:
-        raise ValueError("Label must contain 'image_path' and 'bbox' keys")
+    if "image_path" not in label or "center_coord" not in label:
+        raise ValueError("Label must contain 'image_path' and 'center_coord' keys")
     
     # Construct full image path
     image_path = Path(label["image_path"])
@@ -44,18 +46,17 @@ def draw_bbox_on_image(
     
     image = Image.open(image_path).convert("RGB")
     
-    # Extract bbox coordinates
-    bbox = label["bbox"]
-    bbox_format = label.get("bbox_format", "xywh")
+    # Extract center coordinate and compute bbox
+    center_x, center_y = label["center_coord"]
+    half_size = box_size // 2
     
-    # Convert bbox to (x1, y1, x2, y2) format if needed
-    if bbox_format == "xywh":
-        x, y, w, h = bbox
-        bbox_coords = (x, y, x + w, y + h)
-    elif bbox_format == "xyxy":
-        bbox_coords = tuple(bbox)
-    else:
-        raise ValueError(f"Unsupported bbox_format: {bbox_format}")
+    # Create bbox in (x1, y1, x2, y2) format centered on the coordinate
+    bbox_coords = (
+        center_x - half_size,
+        center_y - half_size,
+        center_x + half_size,
+        center_y + half_size
+    )
     
     # Draw bounding box
     draw = ImageDraw.Draw(image)
@@ -76,17 +77,20 @@ def draw_bboxes_from_json(
     output_dir: Union[str, Path] = None,
     color: str = "green",
     thickness: int = 2,
-    base_path: Union[str, Path] = None
+    base_path: Union[str, Path] = None,
+    box_size: int = 50
 ) -> List[Image.Image]:
     """
     Draw bounding boxes on images from a labels.json file.
+    Creates 50x50 (or custom size) bounding boxes centered on coordinates from the JSON.
     
     Args:
         json_path: Path to the labels.json file
         output_dir: Optional directory to save annotated images
-        color: Color of the bounding boxes (default: "red")
+        color: Color of the bounding boxes (default: "green")
         thickness: Thickness of the bounding box lines (default: 2)
         base_path: Base path to resolve relative image paths (default: parent of json_path)
+        box_size: Size of the bounding box in pixels (default: 50)
     
     Returns:
         List of PIL Image objects with bounding boxes drawn
@@ -119,21 +123,75 @@ def draw_bboxes_from_json(
             output_path=output_path,
             color=color,
             thickness=thickness,
-            base_path=base_path
+            base_path=base_path,
+            box_size=box_size
         )
         images.append(image)
     
     return images
 
+import argparse
+
 
 if __name__ == "__main__":
-    # Example usage
-    json_file = Path("/Users/valerie/code_practice/urap/source_labels/labels.json")
-    # base_path = Path(__file__).parent.parent
-    base_path = Path("/Users/valerie/code_practice/urap/resampled_test_image")
-    
+    # parse command-line arguments so users can specify input paths
+    parser = argparse.ArgumentParser(
+        description="Draw bounding boxes on images using a labels JSON file."
+    )
+    parser.add_argument(
+        "--json-file",
+        required=True,
+        type=Path,
+        help="Path to the labels JSON file."
+    )
+    parser.add_argument(
+        "--base-path",
+        required=False,
+        type=Path,
+        help="Base directory to resolve relative image paths. Defaults to parent of --json-file."
+    )
+    parser.add_argument(
+        "--output-dir",
+        required=False,
+        type=Path,
+        default=None,
+        help="Directory where annotated images will be saved. If not provided, images are not saved."
+    )
+    parser.add_argument(
+        "--color",
+        required=False,
+        default="green",
+        help="Bounding box color (default: green)."
+    )
+    parser.add_argument(
+        "--thickness",
+        required=False,
+        type=int,
+        default=2,
+        help="Bounding box line thickness (default: 2)."
+    )
+    parser.add_argument(
+        "--box-size",
+        required=False,
+        type=int,
+        default=50,
+        help="Size of the bounding box in pixels (default: 50)."
+    )
+
+    args = parser.parse_args()
+
+    json_file = args.json_file
+    base_path = args.base_path or json_file.parent
+
     if json_file.exists():
-        images = draw_bboxes_from_json(json_file, output_dir=Path("/Users/valerie/code_practice/urap/resampled_test_image"), base_path=base_path)
+        images = draw_bboxes_from_json(
+            json_file,
+            output_dir=args.output_dir,
+            color=args.color,
+            thickness=args.thickness,
+            base_path=base_path,
+            box_size=args.box_size,
+        )
         print(f"Processed {len(images)} images")
     else:
         print(f"labels.json not found at {json_file}")

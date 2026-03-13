@@ -17,15 +17,15 @@ from typing import List, Dict, Optional
 
 def parse_source_bboxes(csv_path: Path) -> Dict[int, List[int]]:
     """
-    Parse source bounding boxes from CSV file.
+    Parse source bounding boxes from CSV file and convert to center coordinates.
 
     Args:
         csv_path: Path to source_bbox.csv file
 
     Returns:
-        Dictionary mapping video numbers to [x, y, width, height] bbox lists
+        Dictionary mapping video numbers to [center_x, center_y] center coordinates
     """
-    bboxes = {}
+    centers = {}
     with open(csv_path, 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -34,8 +34,11 @@ def parse_source_bboxes(csv_path: Path) -> Dict[int, List[int]]:
             y = int(row['y'])
             width = int(row['width'])
             height = int(row['height'])
-            bboxes[video_no] = [x, y, width, height]
-    return bboxes
+            # Compute center from bbox (x, y, width, height)
+            center_x = x + width // 2
+            center_y = y + height // 2
+            centers[video_no] = [center_x, center_y]
+    return centers
 
 
 def extract_video_number(image_filename: str) -> Optional[int]:
@@ -101,31 +104,31 @@ def create_labels(
     images_dir: Path,
     output_path: Path,
     bbox_csv_path: Optional[Path] = None,
-    default_bbox: List[int] = [170, 120, 20, 10]
+    default_center: List[int] = [195, 145]
 ) -> None:
     """
     Create labels.json file with metadata for all images.
-    Uses per-video bounding boxes from source_bbox.csv if available.
+    Uses per-video center coordinates from source_bbox.csv if available.
 
     Args:
         images_dir: Directory containing image files
         output_path: Path to save labels.json file
         bbox_csv_path: Path to source_bbox.csv file (default: metadata/source_bbox.csv)
-        default_bbox: Default bounding box in xywh format [x, y, width, height]
-                     used for videos not found in CSV
+        default_center: Default center coordinate [center_x, center_y]
+                       used for videos not found in CSV (default: [195, 145] which is center of 50x50 box at 170,120)
     """
-    # Load bbox mappings from CSV
+    # Load center coordinates from CSV
     if bbox_csv_path is None:
         script_dir = Path(__file__).parent
         bbox_csv_path = script_dir / 'metadata' / 'source_bbox.csv'
     
-    bboxes = {}
+    centers = {}
     if bbox_csv_path.exists():
-        print(f"Loading bounding boxes from: {bbox_csv_path}")
-        bboxes = parse_source_bboxes(bbox_csv_path)
-        print(f"Loaded {len(bboxes)} video bounding boxes")
+        print(f"Loading center coordinates from: {bbox_csv_path}")
+        centers = parse_source_bboxes(bbox_csv_path)
+        print(f"Loaded {len(centers)} video center coordinates")
     else:
-        print(f"Warning: Bbox CSV not found at {bbox_csv_path}, using default bbox for all images")
+        print(f"Warning: Bbox CSV not found at {bbox_csv_path}, using default center for all images")
     
     # Find all PNG images
     image_files = sorted(images_dir.glob("*.png"))
@@ -151,12 +154,12 @@ def create_labels(
             # Extract video number from filename
             video_no = extract_video_number(image_path.name)
             
-            # Get bbox for this video, or use default
-            if video_no is not None and video_no in bboxes:
-                bbox = bboxes[video_no]
+            # Get center coordinate for this video, or use default
+            if video_no is not None and video_no in centers:
+                center_coord = centers[video_no]
                 videos_with_bbox.add(video_no)
             else:
-                bbox = default_bbox
+                center_coord = default_center
                 if video_no is not None:
                     videos_without_bbox.add(video_no)
             
@@ -189,8 +192,7 @@ def create_labels(
                 "image_size": props['image_size'],
                 "image_channels": props['image_channels'],
                 "image_format": props['image_format'],
-                "bbox": bbox,
-                "bbox_format": "xywh",
+                "center_coord": center_coord,
                 "rotation": 0,
                 "rotation_format": "degrees",
                 "translation": [0, 0]
@@ -242,9 +244,9 @@ Examples:
                         help='Path to save labels.json (default: source_localization/dataset/plume_image_dataset/labels.json)')
     parser.add_argument('--bbox-csv', type=str, default=None,
                         help='Path to source_bbox.csv file (default: source_localization/dataset/metadata/source_bbox.csv)')
-    parser.add_argument('--default-bbox', type=int, nargs=4, default=[170, 120, 20, 10],
-                        metavar=('X', 'Y', 'W', 'H'),
-                        help='Default bounding box in xywh format for videos not in CSV (default: 170 120 20 10)')
+    parser.add_argument('--default-center', type=int, nargs=2, default=[195, 145],
+                        metavar=('CENTER_X', 'CENTER_Y'),
+                        help='Default center coordinate for videos not in CSV (default: 195 145)')
 
     args = parser.parse_args()
 
@@ -277,7 +279,7 @@ Examples:
             images_dir=images_dir,
             output_path=output_path,
             bbox_csv_path=bbox_csv_path,
-            default_bbox=args.default_bbox
+            default_center=args.default_center
         )
         return 0
     except Exception as e:
