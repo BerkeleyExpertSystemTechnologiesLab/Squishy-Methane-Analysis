@@ -13,7 +13,7 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
-## 2026-09-29 — Prepare the company scanner branch and usable quickstart
+## 2026-09-29 — Submit the reviewed scanner with a usable quickstart
 
 From `1bdf3c6` on `codex/company-submission`, prepare the reviewed package for
 `BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis`, branch
@@ -45,6 +45,11 @@ all 271 package blobs and README links are checked. Physical/summary videos
 decode and inspected startup/focus keyframes retain their causal labels.
 Clean historical hard-break spelling and redundant blank EOF lines for the
 imported tree's whitespace check; no Python behavior or evidence bytes change.
+Source preparation commits are `2ca861f` and `e139952`. Company submission
+`79f2d0137ca35950f82e09640b2487999147c6c1` is pushed to `plume_scanner_new`,
+with matching local/remote tips and GitHub author/committer WinChurchill verified.
+This closeout follows as documentation only. Company main is not merged into or
+modified by this submission; generated artifacts remain local.
 
 ## 2026-09-29 — Review and clean up the evidence-gated focus checkpoint
 

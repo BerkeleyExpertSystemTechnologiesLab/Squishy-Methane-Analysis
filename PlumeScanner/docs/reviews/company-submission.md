@@ -56,7 +56,19 @@ Verification complete in the isolated company checkout with a fresh Python
 The installed module resolves to the isolated company package, not the original
 editable installation. Fresh dependencies are NumPy 2.5.3, SciPy 1.18.1, OpenCV
 headless 5.0.0.93 and pytest 9.1.1. Local audit and render manifests remain in
-ignored `outputs/`. Publishing is pending and limited to the requested branch,
-with no force push or merge. Source/submission producing commits, GitHub author
-attribution and remote equality will be recorded at closeout. No pull request is
-requested.
+ignored `outputs/`.
+
+## Published closeout
+
+Source preparation commits are `2ca861f53425deec24498f4ca75b1afe09026a2c`
+and `e13995263f3a38a954a610a1cd8279767e9025e7`. Company submission
+`79f2d0137ca35950f82e09640b2487999147c6c1` imports that source snapshot.
+The authorized push created
+[`plume_scanner_new`](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/tree/plume_scanner_new).
+`git ls-remote origin refs/heads/plume_scanner_new` matched the local submission
+commit, and GitHub's commit API resolved both author and committer to WinChurchill.
+The company checkout is clean after submission. No force push, merge or pull
+request occurred. Only the scanner package, root README and scripts ignore
+exception differ from company main. This publication record follows in a
+documentation-only commit; final tip equality and artifact hashes are also kept
+in the local ignored closeout record.

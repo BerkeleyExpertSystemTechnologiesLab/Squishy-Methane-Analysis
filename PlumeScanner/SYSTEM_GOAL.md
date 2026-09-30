@@ -4,16 +4,22 @@ Last updated: 2026-09-29
 
 Overall status: `active`
 
-## Active company submission (2026-09-29)
+## Completed company submission (2026-09-29)
 
 The user supplied the company repository and explicitly requested a new
 `plume_scanner_new` branch and a clean push under their GitHub user, WinChurchill.
-Prepare the reviewed package from `1bdf3c6` under `PlumeScanner/` on company main
-`94ed07fc96592b7cb073f59b88f9d98bd6e1ff37`. Local preparation branch is
-`codex/company-submission`. Make setup/demo/verification commands usable from a
-fresh checkout, retain historical evidence, verify the exported tree and user
-attribution, then push only the requested company branch and check its remote tip.
-No research experiment or default promotion is authorized by this transfer.
+The reviewed package from `1bdf3c6`, with source preparation through
+`e13995263f3a38a954a610a1cd8279767e9025e7`, is submitted under `PlumeScanner/`
+on company main `94ed07fc96592b7cb073f59b88f9d98bd6e1ff37`. Initial company
+submission commit `79f2d0137ca35950f82e09640b2487999147c6c1` is pushed and its
+remote tip verified. GitHub resolves both author and committer to WinChurchill.
+Fresh installation passes 554 tests/five skips, demo/replay/render commands work,
+and all 271 package blobs match the source after normal text EOL conversion.
+Frozen evidence bytes and other company projects are preserved. Local preparation
+branch is `codex/company-submission`; the company branch is exactly
+`plume_scanner_new`. Closeout notes follow in a documentation-only commit.
+The [submission review](docs/reviews/company-submission.md) records verification.
+No research experiment or default promotion starts from this transfer.
 
 ## Completed review and cleanup round (2026-09-29)
 
