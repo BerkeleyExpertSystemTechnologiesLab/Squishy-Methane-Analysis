@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "artifact_type": "sensing_development_suite_v1",
+  "profiles": [
+    "coarse.json",
+    "narrow.json"
+  ],
+  "seeds": [
+    0,
+    1
+  ],
+  "policies": [
+    "mass90_column_v1",
+    "static_corridor_with_reacquisition_v1",
+    "age_rescan_v1"
+  ],
+  "cases": [
+    {
+      "name": "known-wind",
+      "source_free": false,
+      "wind_bias_yx": [
+        0.0,
+        0.0
+      ],
+      "wind_error_speed": 0.005
+    },
+    {
+      "name": "wind-error",
+      "source_free": false,
+      "wind_bias_yx": [
+        0.012,
+        -0.015
+      ],
+      "wind_error_speed": 0.02
+    },
+    {
+      "name": "source-free",
+      "source_free": true,
+      "wind_bias_yx": [
+        0.0,
+        0.0
+      ],
+      "wind_error_speed": 0.005
+    }
+  ],
+  "source_free_corridor_yxyx": [
+    0.32,
+    0.19,
+    0.68,
+    0.85
+  ],
+  "convergence": {
+    "absolute_tolerance": 1e-10,
+    "relative_tolerance": 0.01,
+    "maximum_refinements": 2,
+    "fixtures": [
+      "coarse-known-wind-mass90_column_v1-seed-0",
+      "coarse-known-wind-static_corridor_with_reacquisition_v1-seed-0",
+      "coarse-known-wind-age_rescan_v1-seed-0",
+      "coarse-wind-error-mass90_column_v1-seed-0",
+      "coarse-source-free-mass90_column_v1-seed-0",
+      "narrow-known-wind-mass90_column_v1-seed-0"
+    ]
+  }
+}

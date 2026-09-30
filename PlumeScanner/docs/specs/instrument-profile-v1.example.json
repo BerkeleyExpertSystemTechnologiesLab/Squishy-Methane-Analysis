@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "artifact_type": "instrument_profile",
+  "profile_id": "arithmetic_fixture_4x4_v1",
+  "provenance": {
+    "kind": "synthetic",
+    "note": "Arithmetic checks only. Not a reference instrument, May hardware, or the recovery demo."
+  },
+  "coordinate_frame": "normalized_fov_yx",
+  "mapping": {
+    "units": "synthetic_fov",
+    "origin_yx": [0.0, 0.0],
+    "span_yx": [1.0, 1.0]
+  },
+  "lattice_shape": [4, 4],
+  "footprint": {"height": 0.125, "width": 0.125, "edge_model": "clipped_fov"},
+  "scan_mode": "column",
+  "mechanics": {
+    "sweep_vertical_fov_per_second": 0.25,
+    "move_vertical_fov_per_second": 0.25,
+    "move_horizontal_fov_per_second": 0.5,
+    "settling_seconds_per_visit": 0.0
+  },
+  "acquisition": {"cadence_hz": 1.0, "detector_capacity_hz": 2.0, "integration_seconds": 0.5},
+  "retrieval": {
+    "quantity": "beam_integrated_concentration",
+    "units": "synthetic_concentration_path",
+    "path_convention": "synthetic one-way integral; no conversion to emission rate",
+    "calibration_id": "fixed_synthetic_identity_v1",
+    "temporal_model": "exposure_midpoint_approximation",
+    "assumptions": "Identity retrieval; independent residual error specified by the model; zero additional response lag; synthetic clipped-FOV beam."
+  }
+}

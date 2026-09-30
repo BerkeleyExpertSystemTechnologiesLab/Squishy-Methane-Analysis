@@ -1,0 +1,10 @@
+{
+  "dataset_accession_schema_version": 1,
+  "dataset_id": "gasvid",
+  "accession_id": "gasvid-public-google-drive-20260726",
+  "source_uri": "https://drive.google.com/drive/folders/1JKEMtCGPSq2IqGk4uXZP9A6gr8fyJsGC",
+  "accessed_at_utc": "2026-07-26T14:10:58Z",
+  "rights_status": "unverified",
+  "rights_provenance": "Public provider folder linked as the original-author GasVid download by the LangGas repository. The folder was inventoried and downloaded for local research use, but no explicit GasVid license, redistribution grant, or derivative-data terms were found in the inspected provider folder or linked primary publication.",
+  "rights_uri": null
+}

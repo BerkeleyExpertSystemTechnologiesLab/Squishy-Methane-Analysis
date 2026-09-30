@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plume-focus"
+version = "0.1.0"
+description = "Mechanically constrained beam scanning for time-referenced plume reconstruction."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "opencv-python-headless>=4.10",
+  "scipy>=1.14",
+]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.8"]
+dev = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+plume-focus-sensing = "plume_focus.sensing_cli:main"
+plume-focus = "plume_focus.demo:main"
+plume-focus-demo = "plume_focus.demo:main"
+plume-focus-visualize = "plume_focus.visualization:main"
+plume-focus-video = "plume_focus.video_cli:main"
+plume-focus-benchmark = "plume_focus.benchmark_cli:main"
+plume-focus-recorded = "plume_focus.recorded_cli:main"
+plume-focus-recorded-data = "plume_focus.recorded_dataset_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = ["-p", "no:cacheprovider"]

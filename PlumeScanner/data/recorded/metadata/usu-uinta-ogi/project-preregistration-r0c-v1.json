@@ -1,0 +1,26 @@
+{
+  "artifact_kind": "recorded_project_preregistration",
+  "assignments": [
+    {
+      "exclusion_reason": null,
+      "relative_path": "Ground_26feb2018_propane.mp4",
+      "sha256": "da3f7702376eeaa6c2d6b37a835b874965d8f49b8b60f56227af8f42bd6b75fd",
+      "split": "development"
+    }
+  ],
+  "claim_eligibility": "not_sequence_evidence",
+  "created_at_utc": "2026-07-31T16:50:54Z",
+  "dataset_audit": {
+    "accession_id": "usu-uinta-ogi-ground-propane-20260731",
+    "dataset_id": "usu-uinta-ogi",
+    "path": "metadata/usu-uinta-ogi/dataset-audit.json",
+    "sha256": "58b91a710636f483283b6d99190bf4ea3d849cb9abc7ab71f04b1a1e8388737a"
+  },
+  "operations": [
+    "decode_analysis",
+    "render_local_media"
+  ],
+  "preregistration_id": "usu-r0c-v1-diagnostic",
+  "project_preregistration_schema_version": 1,
+  "purpose": "diagnostic_raw_pilot"
+}

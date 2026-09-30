@@ -1,0 +1,7 @@
+{
+  "emulation_profile": null,
+  "preparation_profile_schema_version": 1,
+  "profile_id": "raw-recorded-r0c-v1",
+  "sensor_input_kind": "raw_recorded",
+  "sensor_input_provenance": "Unaltered decoded grayscale display intensity; no structure suppression, calibration fit, or per-frame normalization is applied."
+}

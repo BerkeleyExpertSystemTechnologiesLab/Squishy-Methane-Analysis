@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Instrument profile v1",
+  "description": "Structural validation only. Instrument-profile-v1.md defines additional cadence, speed, timing, and physical adequacy checks. No numerical hardware defaults.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_type", "profile_id", "provenance", "coordinate_frame", "mapping", "lattice_shape", "footprint", "scan_mode", "mechanics", "acquisition", "retrieval"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "artifact_type": {"const": "instrument_profile"},
+    "profile_id": {"$ref": "#/$defs/text"},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "note"],
+      "properties": {
+        "kind": {"enum": ["synthetic", "hardware_characterization"]},
+        "note": {"$ref": "#/$defs/text"}
+      }
+    },
+    "coordinate_frame": {"const": "normalized_fov_yx"},
+    "mapping": {
+      "type": "object", "additionalProperties": false,
+      "required": ["units", "origin_yx", "span_yx"],
+      "properties": {
+        "units": {"enum": ["radian", "degree", "synthetic_fov"]},
+        "origin_yx": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "span_yx": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/positive"}}
+      }
+    },
+    "lattice_shape": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1}},
+    "footprint": {
+      "type": "object", "additionalProperties": false,
+      "required": ["height", "width", "edge_model"],
+      "properties": {
+        "height": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "width": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "edge_model": {"const": "clipped_fov"}
+      }
+    },
+    "scan_mode": {"enum": ["column", "point"]},
+    "mechanics": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sweep_vertical_fov_per_second", "move_vertical_fov_per_second", "move_horizontal_fov_per_second", "settling_seconds_per_visit"],
+      "properties": {
+        "sweep_vertical_fov_per_second": {"$ref": "#/$defs/positive"},
+        "move_vertical_fov_per_second": {"$ref": "#/$defs/positive"},
+        "move_horizontal_fov_per_second": {"$ref": "#/$defs/positive"},
+        "settling_seconds_per_visit": {"type": "number", "minimum": 0}
+      }
+    },
+    "acquisition": {
+      "type": "object", "additionalProperties": false,
+      "required": ["cadence_hz", "detector_capacity_hz", "integration_seconds"],
+      "properties": {
+        "cadence_hz": {"$ref": "#/$defs/positive"},
+        "detector_capacity_hz": {"$ref": "#/$defs/positive"},
+        "integration_seconds": {"$ref": "#/$defs/positive"}
+      }
+    },
+    "retrieval": {
+      "type": "object", "additionalProperties": false,
+      "required": ["quantity", "units", "path_convention", "calibration_id", "temporal_model", "assumptions"],
+      "properties": {
+        "quantity": {"const": "beam_integrated_concentration"},
+        "units": {"$ref": "#/$defs/text"},
+        "path_convention": {"$ref": "#/$defs/text"},
+        "calibration_id": {"$ref": "#/$defs/text"},
+        "temporal_model": {"const": "exposure_midpoint_approximation"},
+        "assumptions": {"$ref": "#/$defs/text"}
+      }
+    }
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "positive": {"type": "number", "exclusiveMinimum": 0}
+  }
+}

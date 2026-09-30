@@ -1,0 +1,61 @@
+{
+  "artifact_type": "mechanism_revision_development_v2",
+  "profiles": [
+    "coarse-full-startup.json",
+    "double-prior-startup.json"
+  ],
+  "seeds": [
+    0,
+    1
+  ],
+  "policies": [
+    "threshold90_segment_v2",
+    "static_corridor_segment_v2",
+    "age_segment_v2"
+  ],
+  "cases": [
+    {
+      "name": "known-wind",
+      "source_free": false,
+      "wind_bias_yx": [
+        0.0,
+        0.0
+      ],
+      "wind_error_speed": 0.005
+    },
+    {
+      "name": "wind-error",
+      "source_free": false,
+      "wind_bias_yx": [
+        0.012,
+        -0.015
+      ],
+      "wind_error_speed": 0.02
+    },
+    {
+      "name": "source-free",
+      "source_free": true,
+      "wind_bias_yx": [
+        0.0,
+        0.0
+      ],
+      "wind_error_speed": 0.005
+    }
+  ],
+  "source_free_corridor_yxyx": [
+    0.32,
+    0.19,
+    0.68,
+    0.85
+  ],
+  "evaluation": "Use existing accepted 120x160 / 0.05 s mesh; check representative v2 refinements before accepting comparisons.",
+  "supplementary": [
+    "coarse zero-threshold segment ablation",
+    "coarse 2-sigma threshold",
+    "coarse 4-sigma threshold",
+    "coarse full-height surveillance",
+    "double full-startup resource check",
+    "source-free weak signal x0.1",
+    "source-free blank signal x0"
+  ]
+}

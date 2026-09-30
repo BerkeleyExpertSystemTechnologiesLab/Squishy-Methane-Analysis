@@ -1,0 +1,80 @@
+{
+  "calibration": {
+    "provenance": "Non-radiometric compressed OGI display video; no gas-concentration or sensor calibration is claimed.",
+    "sensor_id": "usu-uinta-ogi-camera",
+    "signal_units": "compressed_8bit_ogi_display_intensity"
+  },
+  "capture_group": {
+    "capture_group_id": "usu-controlled-release-2018-02-26",
+    "grouping_provenance": "The Utah State dataset record and provider README identify the selected dated ground video as a controlled-propane release recording."
+  },
+  "dataset_lineage": {
+    "accession_id": "usu-uinta-ogi-ground-propane-20260731",
+    "audit_path": "metadata/usu-uinta-ogi/dataset-audit.json",
+    "audit_sha256": "58b91a710636f483283b6d99190bf4ea3d849cb9abc7ab71f04b1a1e8388737a",
+    "dataset_id": "usu-uinta-ogi",
+    "source_asset_sha256": "da3f7702376eeaa6c2d6b37a835b874965d8f49b8b60f56227af8f42bd6b75fd"
+  },
+  "dataset_qualification": {
+    "path": "metadata/usu-uinta-ogi/qualification-r0c-v1.json",
+    "purpose": "diagnostic_raw_pilot",
+    "sha256": "5c7c09678d7f45025fe00d0bed5f597bdbe32203ae7c27ec0f6be24b2527b2c2"
+  },
+  "evaluation_truth": {
+    "annotation_provenance": "No spatial or concentration truth is attached; this engineering smoke reports operational behavior only.",
+    "evidence_grade": "none"
+  },
+  "frame_clock": {
+    "fps": 14.946166324004734,
+    "mode": "constant_fps",
+    "provenance": "Nominal container rate recorded by the full sequential decode audit; no frame-synchronous timestamp sidecar is available."
+  },
+  "gas_identity": {
+    "identity": "propane",
+    "provenance": "Utah State provider metadata identifies Ground_DATE_propane.mp4 recordings as known-quantity controlled propane releases."
+  },
+  "manifest_schema_version": 5,
+  "media": {
+    "capture_provenance": "Utah State independently recorded ground OGI video of a controlled propane release on 2018-02-26.",
+    "path": "assets/usu-uinta-ogi/Ground_26feb2018_propane.mp4",
+    "sha256": "da3f7702376eeaa6c2d6b37a835b874965d8f49b8b60f56227af8f42bd6b75fd"
+  },
+  "model_profile_id": "uncalibrated_video_v1",
+  "normalization": {
+    "mode": "uint8_identity",
+    "provenance": "Decoded grayscale uint8 display values are preserved without cleaning or frame-global normalization."
+  },
+  "scanner": {
+    "column_mass_fraction": 1.0,
+    "column_stride_px": 4,
+    "evidence_kind": "counterfactual_virtual",
+    "horizontal_step_seconds": 0.01,
+    "maximum_sweep_columns": null,
+    "minimum_sweep_columns": 1,
+    "minimum_sweep_rows": 1,
+    "provenance": "R0C-v1 fast counterfactual virtual-scanner settings fixed before media accession at commit 523df9307246fb8365710f8ff2e9fd8784fbdd1c; these are not measured hardware timing.",
+    "row_mass_fraction": 1.0,
+    "sample_stride_px": 2,
+    "scan_mode": "column",
+    "scan_rate_hz": 20.0,
+    "vertical_pass_seconds": 0.05
+  },
+  "scenario": "plume",
+  "sensor_input": {
+    "kind": "raw_recorded",
+    "provenance": "Unaltered decoded grayscale display intensity; no structure suppression, calibration fit, or per-frame normalization is applied."
+  },
+  "sequence_id": "usu-ground-26feb2018-propane-raw-r0c-v1",
+  "source_assumption": {
+    "mode": "source_free",
+    "provenance": "No release location, source corridor, or hidden geometry is supplied to the planner."
+  },
+  "split": "development",
+  "split_provenance": "Engineering-only development assignment frozen in project preregistration usu-r0c-v1-diagnostic before media inspection.",
+  "wind": {
+    "conversion_provenance": "not applicable",
+    "mode": "none",
+    "provenance": "No frame-synchronous external wind measurement is available or supplied to planning.",
+    "units": "px_per_second"
+  }
+}

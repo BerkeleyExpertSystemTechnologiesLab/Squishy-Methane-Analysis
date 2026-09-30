@@ -1,0 +1,22 @@
+{
+  "artifact_kind": "recorded_preparation_report",
+  "claim_eligibility": "not_sequence_evidence",
+  "preparation_id": "usu-ground-propane-raw-r0c-v1",
+  "preparation_profile": {
+    "path": "metadata/usu-uinta-ogi/preparation-profile-r0c-v1.json",
+    "sha256": "1e32041031d842b0372a666661391904d01e54cae533c8f3bcbc4349ffbc87c4"
+  },
+  "preparation_spec": {
+    "path": "metadata/usu-uinta-ogi/preparation-spec-r0c-v1.json",
+    "sha256": "af7e4d7e5ca2c991f26aef74e08c97e35935c1ff39fc2916c6a6e7850168d60d"
+  },
+  "producing_commit": "523df9307246fb8365710f8ff2e9fd8784fbdd1c",
+  "report_schema_version": 1,
+  "sequences": [
+    {
+      "manifest_sha256": "97ef226314b5d9fba88cf135ab6df53c8b90d9a0f1375261058a3f2d77dda116",
+      "path": "manifests/usu-ground-26feb2018-propane-raw-r0c-v1.json",
+      "sequence_id": "usu-ground-26feb2018-propane-raw-r0c-v1"
+    }
+  ]
+}

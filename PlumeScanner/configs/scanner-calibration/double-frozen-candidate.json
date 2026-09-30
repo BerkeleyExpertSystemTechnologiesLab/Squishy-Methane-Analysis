@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "message_type": "CalibrationRunConfig",
+  "session": {
+    "schema_version": 1,
+    "message_type": "CalibrationSession",
+    "instrument": {
+      "acquisition": {
+        "cadence_hz": 20.0,
+        "detector_capacity_hz": 20.0,
+        "integration_seconds": 0.025
+      },
+      "artifact_type": "instrument_profile",
+      "coordinate_frame": "normalized_fov_yx",
+      "footprint": {
+        "edge_model": "clipped_fov",
+        "height": 0.025,
+        "width": 0.015625
+      },
+      "lattice_shape": [
+        40,
+        64
+      ],
+      "mapping": {
+        "origin_yx": [
+          0.0,
+          0.0
+        ],
+        "span_yx": [
+          1.0,
+          1.0
+        ],
+        "units": "synthetic_fov"
+      },
+      "mechanics": {
+        "move_horizontal_fov_per_second": 0.625,
+        "move_vertical_fov_per_second": 0.5,
+        "settling_seconds_per_visit": 0.0,
+        "sweep_vertical_fov_per_second": 0.5
+      },
+      "profile_id": "tentative_40x64_20hz",
+      "provenance": {
+        "kind": "synthetic",
+        "note": "User-requested tentative doubled physical lattice; same 20 Hz detector, explicit 0.5 FOV/s sweep; unconfirmed hardware."
+      },
+      "retrieval": {
+        "assumptions": "Identity retrieval; independent residual error specified by the model; zero additional response lag; synthetic clipped-FOV beam.",
+        "calibration_id": "fixed_synthetic_identity_v1",
+        "path_convention": "synthetic one-way integral; no conversion to emission rate",
+        "quantity": "beam_integrated_concentration",
+        "temporal_model": "exposure_midpoint_approximation",
+        "units": "synthetic_concentration_path"
+      },
+      "scan_mode": "column",
+      "schema_version": 1
+    },
+    "model": {
+      "grid_shape": [
+        12,
+        16
+      ],
+      "signal_units": "synthetic_concentration_path",
+      "gain": 1.0,
+      "offset": 0.0,
+      "sensor_noise_std": 0.05,
+      "initial_mean": 0.0,
+      "initial_std": 0.2,
+      "correlation_length": 0.08,
+      "process_std_per_sqrt_second": 0.01,
+      "diffusivity": 5e-05,
+      "source_rate": 0.2829738193616142,
+      "source_sigma": 0.035,
+      "background_threshold": 0.0,
+      "max_transition_seconds": 0.5
+    },
+    "settings": {
+      "threshold": 0.15,
+      "upper_quantile": 0.95,
+      "focus_seconds": 12.0,
+      "minimum_readings": 4,
+      "delivery_delay_seconds": 0.0,
+      "completion_overrun_seconds": 0.0,
+      "vertical_margin_fov": 0.0,
+      "full_scan_only": false
+    },
+    "source_position": [
+      0.547945205479452,
+      0.15047021943573669
+    ],
+    "home_yx": [
+      0.0,
+      0.0
+    ],
+    "transport_id": "zero_inflow_v1",
+    "policy_id": "full_fov_margin_loop_v2_candidate",
+    "clock_origin": "seconds from session start",
+    "half_life_seconds": 6.0,
+    "formulation_id": "beam_reconstruction_decay_v1_candidate"
+  },
+  "source": {
+    "shape": [
+      220,
+      320
+    ],
+    "frames": 72,
+    "fps": 12.0,
+    "source": [
+      120.0,
+      48.0
+    ],
+    "wind_velocity": [
+      -0.02,
+      1.02
+    ],
+    "emission_interval": 3,
+    "memory_frames": 66,
+    "base_sigma": 1.8,
+    "diffusion_per_frame": 0.075,
+    "lateral_phase": 5.9283895760985725,
+    "amplitude_phase": 2.2583089557830767,
+    "shimmer_phase": 4.931077833484783,
+    "source_exclusion_px": 10,
+    "roi_margin_px": 10,
+    "scan_rate_hz": 20.0,
+    "sample_stride_px": 8,
+    "vertical_pass_seconds": 1.0,
+    "horizontal_step_seconds": 0.05,
+    "column_stride_px": 1,
+    "column_mass_fraction": 0.8,
+    "row_mass_fraction": 0.85,
+    "min_sweep_columns": 30,
+    "min_sweep_rows": 56,
+    "max_sweep_columns": 120,
+    "end_time_seconds": null,
+    "signal_scale": 1.0
+  },
+  "wind": {
+    "measured_at_seconds": 0.0,
+    "available_at_seconds": 0.0,
+    "velocity_yx": [
+      -0.001095890410958904,
+      0.03836990595611285
+    ],
+    "error_speed": 0.005
+  },
+  "duration_seconds": 360.0,
+  "simulated_noise_std": 0.01,
+  "cessation_seconds": null,
+  "seed": 101,
+  "delivery": "stream",
+  "evaluation_shape": [
+    120,
+    160
+  ],
+  "evaluation_step_seconds": 0.05,
+  "active_windows": null
+}

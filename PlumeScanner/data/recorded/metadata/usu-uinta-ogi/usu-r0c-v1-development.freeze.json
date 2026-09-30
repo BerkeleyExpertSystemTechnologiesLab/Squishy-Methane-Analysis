@@ -1,0 +1,20 @@
+{
+  "artifact_kind": "recorded_suite_freeze_record",
+  "claim_eligibility": "not_sequence_evidence",
+  "freeze_provenance": "Frozen by Codex under the preregistered R0C-v1 diagnostic before causal or rendered outcome inspection; engineering use only.",
+  "freeze_record_schema_version": 1,
+  "frozen_at_utc": "2026-07-31T16:54:28Z",
+  "frozen_before_model_commit": "523df9307246fb8365710f8ff2e9fd8784fbdd1c",
+  "path_base": "recorded_data_root",
+  "preparation_report": {
+    "path": "metadata/usu-uinta-ogi/preparation-report-r0c-v1.json",
+    "sha256": "610da2b217ce6bf4c18deeef61b2c28af28d8f20eecfd49ab303881e2c767037"
+  },
+  "split": "development",
+  "suite_id": "usu-r0c-v1-development",
+  "suite_manifest": {
+    "canonical_json_sha256": "c63650e9d89ad6467f8c632bedb84b1e6540315c42c07ceb56a86055fbd74479",
+    "path": "manifests/usu-r0c-v1-development-suite.json",
+    "sha256": "95e301339ec95f9a88ea644512ce91e7953ff32042fbab0192a959ee0979baac"
+  }
+}

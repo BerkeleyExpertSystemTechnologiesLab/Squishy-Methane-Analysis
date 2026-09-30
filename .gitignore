@@ -34,3 +34,7 @@ MethaneCNN/train(ignore)/*
 
 MethaneModel/data/*
 MethaneModel/frame_data_movingAvg/*
+
+# The scanner's source scripts are not virtual-environment Scripts/.
+!PlumeScanner/scripts/
+!PlumeScanner/scripts/**

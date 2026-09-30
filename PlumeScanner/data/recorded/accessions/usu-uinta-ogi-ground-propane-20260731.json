@@ -1,0 +1,10 @@
+{
+  "dataset_accession_schema_version": 1,
+  "dataset_id": "usu-uinta-ogi",
+  "accession_id": "usu-uinta-ogi-ground-propane-20260731",
+  "source_uri": "https://digitalcommons.usu.edu/all_datasets/82/",
+  "accessed_at_utc": "2026-07-31T16:48:46Z",
+  "rights_status": "verified",
+  "rights_provenance": "Utah State University's dataset record identifies the selected controlled-propane video and applies the Creative Commons Attribution 4.0 International licence. Content-hashed snapshots are retained under metadata/usu-uinta-ogi/.",
+  "rights_uri": "https://creativecommons.org/licenses/by/4.0/"
+}

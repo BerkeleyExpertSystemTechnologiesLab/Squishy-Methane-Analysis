@@ -1,0 +1,19 @@
+{
+  "artifact_type": "reconstruction_risk_development_v4",
+  "starting_revision": "51d1f633f8720d3cbcf14d61d2b2c7a27e201e5b",
+  "historical_root": "outputs/persistent-wind-v3",
+  "historical_configurations_sha256": "d7c2ae7cbf9a3bb5d6640760d651970a8a507354b8bb114495117a9d7a8cbcc0",
+  "policy": "reconstruction_risk_segment_v4_candidate",
+  "risk_steps_seconds": [0.1, 0.05, 0.025],
+  "history_counts": [32, 64, 128],
+  "relative_tolerance": 0.01,
+  "absolute_tolerance": 1e-10,
+  "random_seed": 0,
+  "comparison_records": 96,
+  "new_runs": 36,
+  "reused_controls": 60,
+  "reference_decisions": "Coarse biased wind: first post-startup and middle executable decision; doubled biased wind: startup and first completed scan; blank coarse diagnostic: first completed scan. Both estimators, seed 0.",
+  "source_assumptions": "Unchanged existing synthetic scenarios; causal nominal wind held fixed during planning.",
+  "deferred_required_work": ["Changing local drift", "Incoming-boundary clipping correction and validation", "Estimator and hardware calibration"],
+  "success": "Verified inspectable allocation experiment, not guaranteed superiority. Map loss primary; enhancement-index error separate."
+}

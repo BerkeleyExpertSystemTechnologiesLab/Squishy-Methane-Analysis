@@ -1,0 +1,499 @@
+{
+  "artifact_kind": "recorded_dataset_qualification",
+  "asset_root": "assets/external-accession",
+  "assets": [
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1237-1242",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1237.mp4",
+      "sha256": "55b188cd39b9373d20d9a1cedcee98ea6ca15aaf554ea06302fe9e445e644c71",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1237-1242",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1238.mp4",
+      "sha256": "bfd3bf5f195ee702ac92f60b03bb802b6172fdf9a7ea9ce04dc1d7fb4c9c1e30",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1237-1242",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1239.mp4",
+      "sha256": "eea224b313bdfec0ab979804454ed4d5820e218e734d86830aa92ca758ebd97f",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1237-1242",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1240.mp4",
+      "sha256": "698cfdcb07c82dc1fa9a68d5c6295026c6a7684b8bfa1ec356180159e45faea0",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1237-1242",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1241.mp4",
+      "sha256": "728ad9a13ae301b0504657fd07bfbc42a77b42500d923d37d5bed5d7d09e965b",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1237-1242",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1242.mp4",
+      "sha256": "b7a125f5ab21572c1a11403b9d76528a54d95a73b1b007843ab084c6550da19f",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1467-1473",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1467.mp4",
+      "sha256": "fe8afc6451c272b900fd71011b3f2c59d5254a10f7cac57034a4bc34a6deab1b",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1467-1473",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1468.mp4",
+      "sha256": "16cb6756f925a756689c63ac0170975af8872102039fc9405f05d8564155371c",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1467-1473",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1469.mp4",
+      "sha256": "de6c03130eb363acbbe1fbd17c202d468c87e577a5eb041ce153870083695aa4",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1467-1473",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1470.mp4",
+      "sha256": "b452c082c178a94f180d442df8107fbad58993d6d89c14ce1ae07c91d450579f",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1467-1473",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1471.mp4",
+      "sha256": "ab74fa6d0fda49b7eb865230592062b30c1b1289a654d367c3fad3d14bbfb607",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1467-1473",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1472.mp4",
+      "sha256": "994322c82fd0e297c693c70f04fcee1f3be7cc64e3cccd39bc5714e5ae69196a",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-1467-1473",
+      "paper_group_id": "pad-1",
+      "relative_path": "MOV_1473.mp4",
+      "sha256": "dbfd1036ace4aa220c5f95dc93c68b2fbbc12486e7b5b5d17ab458904e578abf",
+      "split": "held-out"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2559-2564",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2559.mp4",
+      "sha256": "881b7206fc74c5c5007cff750811768b530f0e1233adddd2b1b3457cc76a95cf",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2559-2564",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2560.mp4",
+      "sha256": "ecbbece833529d4591f83a28a7a52c658e30186c8170bc16da20695322f274f7",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2559-2564",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2561.mp4",
+      "sha256": "bb5009fb2f9c587f0e61f924ae6d34c1cdb886f3804ce02ae0d5c5afb127f9c6",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2559-2564",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2562.mp4",
+      "sha256": "a192288016e6960d20e7b8a7d2eb71838b87b82332f59ed231b13ac57a8dd481",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2559-2564",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2563.mp4",
+      "sha256": "45bd26227da903b752381047d7b3d21784d7b0b8b1c4a05a4974dc702abc6936",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2559-2564",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2564.mp4",
+      "sha256": "b73b2b7b8717f53444202fc81fb8fd594b5a062af15aa894493d7881a3c7e9b5",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2566-2571",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2566.mp4",
+      "sha256": "8402b2b66ee9985167c7692f704095d3a127d5b37383c39dfb02c2241ae8281f",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2566-2571",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2567.mp4",
+      "sha256": "b8105e27244d9f2db72de36a0b52655ccf63f837bb98ba25ee486bfd93386748",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2566-2571",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2568.mp4",
+      "sha256": "35cd05fbbb6e04afb9098cec62fb3c26e0d20f60aca816030a3a4bd6d48dc9f0",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2566-2571",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2569.mp4",
+      "sha256": "27e9cfa1de39b3f92e162d5c45d05690d67dcc635a8b91a9102a1b749a8bdad0",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2566-2571",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2570.mp4",
+      "sha256": "24995bb47e98e554b33360c2298a9607c8688792b6c3d9990afdf658cd695bfe",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2566-2571",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2571.mp4",
+      "sha256": "489b0e6f94f6eb9ba5e48ad8eb393a531a07523fe6e1b43af7125a60eb38a5b0",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2578-2583",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2578.mp4",
+      "sha256": "57a6cd9227cb3374d88da5ee0415d1e56046a85bfcfe735973099abfd478511e",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2578-2583",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2579.mp4",
+      "sha256": "262caf0bbfc020b27b50b00ee7d806364ad5d37dd98f362fc0bb940ab8ec9341",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2578-2583",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2580.mp4",
+      "sha256": "adfd7bc5cb2cf7edc064d0793a6f3962dab33e9eab84b61f4b57b2566efa34bd",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2578-2583",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2581.mp4",
+      "sha256": "bb6a9aeb383abb60e70952dac07b6beb6ad1444edf6ff9385a042d6fc622b44f",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2578-2583",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2582.mp4",
+      "sha256": "ce6d7a57570f50f0ad9a0431ed5ecba3bb5dad282f7857f9cf2ad287e88b31da",
+      "split": "development"
+    },
+    {
+      "assignment_evidence_ids": [
+        "gasvid-original-paper-2019",
+        "gasvid-provider-logging-20260726",
+        "videogasnet-paper-2021"
+      ],
+      "assignment_status": "inferred",
+      "capture_group_id": "capture-2578-2583",
+      "paper_group_id": "pad-2",
+      "relative_path": "MOV_2583.mp4",
+      "sha256": "8643c586e075a091c2e0c3c045269acbf84d9cd8b15dfcf6f485ea85f9e5b6c2",
+      "split": "development"
+    }
+  ],
+  "claim_eligibility": "not_sequence_evidence",
+  "dataset_audit": {
+    "accession_id": "gasvid-public-google-drive-20260726",
+    "dataset_id": "gasvid",
+    "path": "assets/dataset-audit.json",
+    "sha256": "246fc11ded363272bce0cec44d7cdfef3ebbab2bd637cdade474b16a1797a189"
+  },
+  "evidence_records": [
+    {
+      "content_sha256": null,
+      "evidence_id": "gasvid-original-paper-2019",
+      "kind": "primary_publication",
+      "observed_at_utc": "2026-07-31T15:01:49Z",
+      "reference": "https://svl.stanford.edu/gibson2/assets/Wangetal.2019.pdf",
+      "summary": "Primary GasVid/GasNet acquisition publication; records nominal class and trimming conventions but contains a class-zero contradiction and does not authorize dataset reuse."
+    },
+    {
+      "content_sha256": "1869c151d59d712981ffcf6316ffe3919aeba2296448203ca1f5ceb4ab02db55",
+      "evidence_id": "gasvid-provider-logging-20260726",
+      "kind": "dataset_owner_metadata",
+      "observed_at_utc": "2026-07-31T15:01:49Z",
+      "reference": "https://docs.google.com/spreadsheets/d/14SR_QKMKhWPvSnR1U5F4mdB2Su-J52vTg9fjjzsTcNM/edit",
+      "summary": "Provider logging sheet exported locally with 31 filename-keyed rows, distances, capture dates/times, and Leak 0/Leak 1 start times; it supplies no pad field, rights grant, wind, or spatial truth."
+    },
+    {
+      "content_sha256": null,
+      "evidence_id": "videogasnet-paper-2021",
+      "kind": "primary_publication",
+      "observed_at_utc": "2026-07-31T15:01:49Z",
+      "reference": "https://www.sciencedirect.com/science/article/pii/S0360544221017643",
+      "summary": "Primary VideoGasNet publisher record; documents pad roles, nominal three-minute classes, and a 25-file modeled subset but does not provide an authoritative filename-to-pad mapping or authorize dataset reuse."
+    }
+  ],
+  "native_interval_semantics": {
+    "class_zero_meaning": "unresolved conflict: the original publication's Table 1 assigns class 0 a nonzero 0.3 scfh (5.3 +/- 0.1 g/h) release, while Section 4.2 describes the first class-0 segment as non-leak",
+    "evidence_ids": [
+      "gasvid-original-paper-2019",
+      "gasvid-provider-logging-20260726",
+      "videogasnet-paper-2021"
+    ],
+    "exceptions": [
+      {
+        "description": "Provider Leak 0 to Leak 1 start-time gap is 157 seconds rather than the nominal 180 seconds; semantics remain unresolved.",
+        "evidence_ids": [
+          "gasvid-provider-logging-20260726"
+        ],
+        "relative_path": "MOV_2568.mp4"
+      },
+      {
+        "description": "Provider Leak 0 to Leak 1 start-time gap is 360 seconds rather than the nominal 180 seconds; semantics remain unresolved.",
+        "evidence_ids": [
+          "gasvid-provider-logging-20260726"
+        ],
+        "relative_path": "MOV_2582.mp4"
+      }
+    ],
+    "nominal_interval_seconds": 180.0,
+    "status": "unresolved",
+    "trim_end_seconds": 5.0,
+    "trim_start_seconds": 15.0
+  },
+  "permissions": {
+    "bounded_interval_extraction": {
+      "decision": "unknown",
+      "evidence_ids": []
+    },
+    "local_decode_analysis": {
+      "decision": "unknown",
+      "evidence_ids": []
+    },
+    "local_derivative_construction": {
+      "decision": "unknown",
+      "evidence_ids": []
+    },
+    "publish_aggregate_metrics": {
+      "decision": "unknown",
+      "evidence_ids": []
+    },
+    "publish_frames_or_clips": {
+      "decision": "unknown",
+      "evidence_ids": []
+    },
+    "redistribution": {
+      "decision": "unknown",
+      "evidence_ids": []
+    }
+  },
+  "purpose": "local-raw-pilot",
+  "qualification_id": "gasvid-qualification-v1",
+  "qualification_schema_version": 1
+}

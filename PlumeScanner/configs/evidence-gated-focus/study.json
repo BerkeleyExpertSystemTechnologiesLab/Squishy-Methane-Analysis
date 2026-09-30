@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "artifact_type": "evidence_gated_focus_study_v1",
+  "prepared": "2026-09-19",
+  "purpose": "Predeclared bounded study of the opt-in evidence_gated_focus_loop_v3_candidate mode gate with the calibrated estimator held fixed.",
+  "policies": {
+    "control": "full_fov_margin_loop_v2_candidate",
+    "candidate": "evidence_gated_focus_loop_v3_candidate"
+  },
+  "reference_configs": {
+    "coarse": "configs/scanner-calibration/coarse-frozen-candidate.json",
+    "double": "configs/scanner-calibration/double-frozen-candidate.json"
+  },
+  "gate": {
+    "alpha": 0.05,
+    "entry_level": 0.15,
+    "retain_level": 0.1
+  },
+  "duration_seconds": 360,
+  "evaluation": {
+    "shape": [
+      120,
+      160
+    ],
+    "step_seconds": 0.05
+  },
+  "cases": {
+    "continuous": {},
+    "wind_error": {
+      "wind_delta_yx": [
+        0.003,
+        -0.004
+      ]
+    },
+    "weak": {
+      "signal_scale": 0.3
+    },
+    "blank": {
+      "signal_scale": 0
+    },
+    "cessation": {
+      "cessation_seconds": 180
+    },
+    "intermittent": {
+      "active_windows": [
+        [
+          0,
+          120
+        ],
+        [
+          240,
+          360
+        ]
+      ]
+    }
+  },
+  "development": {
+    "profiles": [
+      "coarse",
+      "double"
+    ],
+    "cases": [
+      "continuous",
+      "blank",
+      "cessation",
+      "intermittent"
+    ],
+    "seed": 0,
+    "noise": [
+      0,
+      0.05
+    ]
+  },
+  "heldout": {
+    "profiles": [
+      "coarse",
+      "double"
+    ],
+    "cases": [
+      "continuous",
+      "wind_error",
+      "weak",
+      "blank",
+      "cessation",
+      "intermittent"
+    ],
+    "seed_noise_pairs": [
+      [
+        201,
+        0.01
+      ],
+      [
+        202,
+        0.05
+      ],
+      [
+        203,
+        0.05
+      ]
+    ]
+  },
+  "source_phase_convention": "Development seed 0 keeps the frozen reference phases; a nonzero seed replaces (lateral, amplitude, shimmer) with the first three draws of default_rng(seed).uniform(0, 2*pi, 3) in that order. Noise is not crossed with phases.",
+  "shadow": {
+    "path_template": "outputs/scanner-calibration/runs/heldout-{profile}-{case}-seed101-noise0.01-calibrated.json",
+    "cases": [
+      "continuous",
+      "wind_error",
+      "weak",
+      "blank",
+      "cessation",
+      "intermittent"
+    ]
+  },
+  "inspection": {
+    "stage": "development",
+    "noise": 0,
+    "pairs": [
+      [
+        "coarse",
+        "continuous"
+      ],
+      [
+        "double",
+        "continuous"
+      ],
+      [
+        "coarse",
+        "blank"
+      ],
+      [
+        "double",
+        "cessation"
+      ],
+      [
+        "coarse",
+        "intermittent"
+      ]
+    ],
+    "fps": 4,
+    "playback_fps": 2,
+    "playback_speed": 3,
+    "note": "Renderer layout unchanged: six-panel physical-time and one-frame-per-scan compressed summary pairs plus one alternate playback render."
+  },
+  "refinement": {
+    "stage": "development",
+    "cases": [
+      "continuous",
+      "blank"
+    ],
+    "noise": 0,
+    "policy": "candidate",
+    "factors": [
+      2,
+      4
+    ],
+    "change_case_near_tolerance": true,
+    "change_cases": [
+      "cessation",
+      "intermittent"
+    ],
+    "near_tolerance_fraction": 0.01
+  },
+  "criteria": {
+    "continuous_j_over_t_max_increase": 0.05,
+    "continuous_core_coverage_max_decrease_points": 0.05,
+    "reconstruction_comparator_fraction": 0.01,
+    "numerical_tolerance": 1e-10
+  },
+  "notes": [
+    "Both policies use exactly the same frozen calibrated estimator, transport, mechanics and truth field.",
+    "No policy parameter search: alpha, entry and retain levels are predeclared candidate settings.",
+    "Historical scanner-calibration histories are local evidence for the shadow audit, not fresh held-out tests.",
+    "Missing focus coverage is unavailable, never 100 percent."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "freeze_provenance": "Frozen by Codex under the preregistered R0C-v1 diagnostic before causal or rendered outcome inspection; engineering use only.",
+  "frozen_at_utc": "2026-07-31T16:54:28Z",
+  "frozen_before_model_commit": "523df9307246fb8365710f8ff2e9fd8784fbdd1c",
+  "sequences": [
+    {
+      "manifest_sha256": "97ef226314b5d9fba88cf135ab6df53c8b90d9a0f1375261058a3f2d77dda116",
+      "path": "usu-ground-26feb2018-propane-raw-r0c-v1.json"
+    }
+  ],
+  "split": "development",
+  "suite_id": "usu-r0c-v1-development",
+  "suite_schema_version": 1
+}

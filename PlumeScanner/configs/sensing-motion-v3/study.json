@@ -1,0 +1,21 @@
+{
+  "artifact_type": "persistent_wind_development_v3",
+  "starting_revision": "66ea099299599f0d253b720424da81dba8bc8068",
+  "base_suite": "configs/sensing-v2/development.json",
+  "wind_bias_covariance_yx": [[0.0001, 0.0], [0.0, 0.0001]],
+  "known_wind_covariance_yx": [[0.0, 0.0], [0.0, 0.0]],
+  "orders": [3, 5, 7],
+  "relative_tolerance": 0.01,
+  "absolute_tolerance": 1e-10,
+  "maximum_evaluation_refinements": 2,
+  "diagnostic_signal_scales": [1.0, 0.1, 0.0],
+  "diagnostic_seeds": [0, 1],
+  "fixed_evidence_horizons_seconds": [0, 1, 3, 6, 12],
+  "fixed_evidence_decisions": "first post-scan, middle and last executable decision, deduplicated",
+  "representative_cases": [
+    "coarse-full-startup-wind-error-threshold90_segment_v2-seed-0",
+    "double-prior-startup-wind-error-threshold90_segment_v2-seed-0"
+  ],
+  "deferred_required_work": "Changing local drift; learning session-constant wind bias does not represent unpredictable future plume deformation.",
+  "comparison": "Existing 36 v2 runs under both estimators, plus 12 source-free biased-wind diagnostics; common ceilings, actual expenditure reported."
+}

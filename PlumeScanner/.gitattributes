@@ -1,0 +1,12 @@
+# R0C provider snapshots are content-hashed evidence; retain provider bytes.
+data/recorded/metadata/usu-uinta-ogi/*.html binary
+data/recorded/metadata/usu-uinta-ogi/*.txt binary
+
+# R0C canonical lineage JSON must not undergo platform EOL conversion.
+data/recorded/accessions/usu-uinta-ogi-ground-propane-20260731.json -text
+data/recorded/manifests/usu-*.json -text
+data/recorded/metadata/usu-uinta-ogi/*.json -text
+
+# All frozen JSON lineage uses byte hashes. Preserve CRLF where it was declared.
+# Retain normal whitespace checks while recognizing CRLF line terminators.
+*.json -text whitespace=trailing-space,space-before-tab,cr-at-eol

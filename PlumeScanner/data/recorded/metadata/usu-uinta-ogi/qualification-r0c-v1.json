@@ -1,0 +1,99 @@
+{
+  "artifact_kind": "recorded_dataset_qualification",
+  "asset_root": "assets/usu-uinta-ogi",
+  "claim_eligibility": "not_sequence_evidence",
+  "dataset_audit": {
+    "accession_id": "usu-uinta-ogi-ground-propane-20260731",
+    "dataset_id": "usu-uinta-ogi",
+    "path": "metadata/usu-uinta-ogi/dataset-audit.json",
+    "sha256": "58b91a710636f483283b6d99190bf4ea3d849cb9abc7ab71f04b1a1e8388737a"
+  },
+  "evidence_records": [
+    {
+      "content_sha256": "abee592f33eda90b309da7d6f56cc6d591a4605079f3dde8da59e0049ced41ac",
+      "evidence_id": "usu-dataset-record-20260731",
+      "kind": "dataset_owner_metadata",
+      "observed_at_utc": "2026-07-31T16:49:33Z",
+      "reference": "metadata/usu-uinta-ogi/provider-dataset-record-20260731.html",
+      "summary": "Utah State University's dataset record identifies Ground_26feb2018_propane.mp4, its provider MD5, the ground controlled-propane acquisition, and the dataset's CC BY 4.0 licence."
+    },
+    {
+      "content_sha256": "c847a7b332f316d58a2e09d449f7817b4bd25a3489b6bd93e79b8f632ebebdbb",
+      "evidence_id": "usu-survey-video-readme-2018",
+      "kind": "dataset_owner_metadata",
+      "observed_at_utc": "2026-07-31T16:49:33Z",
+      "reference": "metadata/usu-uinta-ogi/README2018surveyvideos.txt",
+      "summary": "The provider README states that Ground_DATE_propane.mp4 videos are ground OGI recordings of known-quantity propane released from a stainless-steel tube."
+    },
+    {
+      "content_sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "evidence_id": "cc-by-4.0-legalcode-20260731",
+      "kind": "formal_terms",
+      "observed_at_utc": "2026-07-31T16:49:33Z",
+      "reference": "metadata/usu-uinta-ogi/cc-by-4.0-legalcode.txt",
+      "summary": "Content-hashed Creative Commons Attribution 4.0 International legal code linked by the provider dataset record."
+    }
+  ],
+  "native_interval_semantics": {
+    "class_zero_meaning": null,
+    "evidence_ids": [],
+    "exceptions": [],
+    "nominal_interval_seconds": null,
+    "status": "unresolved",
+    "trim_end_seconds": null,
+    "trim_start_seconds": null
+  },
+  "permissions": {
+    "bounded_interval_extraction": {
+      "decision": "unknown",
+      "evidence_ids": []
+    },
+    "local_decode_analysis": {
+      "decision": "allowed",
+      "evidence_ids": [
+        "usu-dataset-record-20260731",
+        "cc-by-4.0-legalcode-20260731"
+      ]
+    },
+    "local_derivative_construction": {
+      "decision": "allowed",
+      "evidence_ids": [
+        "usu-dataset-record-20260731",
+        "cc-by-4.0-legalcode-20260731"
+      ]
+    },
+    "publish_aggregate_metrics": {
+      "decision": "unknown",
+      "evidence_ids": []
+    },
+    "publish_frames_or_clips": {
+      "decision": "unknown",
+      "evidence_ids": []
+    },
+    "redistribution": {
+      "decision": "unknown",
+      "evidence_ids": []
+    }
+  },
+  "project_preregistration": {
+    "path": "metadata/usu-uinta-ogi/project-preregistration-r0c-v1.json",
+    "sha256": "105bbf19f33f266b6bdf1cc1e6931103fb60fadbc47972e9c34bce1134a04ed8"
+  },
+  "provider_assets": [
+    {
+      "capture_group_id": "usu-controlled-release-2018-02-26",
+      "fact_evidence_ids": [
+        "usu-dataset-record-20260731",
+        "usu-survey-video-readme-2018"
+      ],
+      "fact_status": "verified",
+      "gas_identity": "propane",
+      "paper_group_id": null,
+      "relative_path": "Ground_26feb2018_propane.mp4",
+      "sha256": "da3f7702376eeaa6c2d6b37a835b874965d8f49b8b60f56227af8f42bd6b75fd"
+    }
+  ],
+  "purpose": "diagnostic_raw_pilot",
+  "qualification_id": "usu-r0c-v1-qualification",
+  "qualification_schema_version": 2
+}

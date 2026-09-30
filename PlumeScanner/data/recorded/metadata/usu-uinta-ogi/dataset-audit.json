@@ -1,0 +1,40 @@
+{
+  "accession": {
+    "accessed_at_utc": "2026-07-31T16:48:46Z",
+    "accession_id": "usu-uinta-ogi-ground-propane-20260731",
+    "dataset_id": "usu-uinta-ogi",
+    "rights_provenance": "Utah State University's dataset record identifies the selected controlled-propane video and applies the Creative Commons Attribution 4.0 International licence. Content-hashed snapshots are retained under metadata/usu-uinta-ogi/.",
+    "rights_status": "verified",
+    "rights_uri": "https://creativecommons.org/licenses/by/4.0/",
+    "source_uri": "https://digitalcommons.usu.edu/all_datasets/82/"
+  },
+  "accession_manifest_sha256": "8934447a850f1fb189d91a562b9f94761b50fde0fe08c490ee6d8f22885e79d2",
+  "artifact_kind": "dataset_accession_audit",
+  "asset_count": 1,
+  "assets": [
+    {
+      "byte_count": 66504835,
+      "container_fourcc": "FMP4",
+      "container_frame_count": 2067,
+      "decoded_content_sha256": "4ef5f4d8a5045cdc59acd723b871e575225287abfe302657e5edb7bcf6467a71",
+      "decoded_frame_count": 2067,
+      "frame_shape": [
+        240,
+        320
+      ],
+      "issue": null,
+      "nominal_duration_seconds": 138.29633333333334,
+      "nominal_fps": 14.946166324004734,
+      "relative_path": "Ground_26feb2018_propane.mp4",
+      "sha256": "da3f7702376eeaa6c2d6b37a835b874965d8f49b8b60f56227af8f42bd6b75fd",
+      "status": "valid"
+    }
+  ],
+  "claim_eligibility": "not_sequence_evidence",
+  "dataset_audit_schema_version": 2,
+  "decode_scope": "full_sequential_decode",
+  "opencv_build_sha256": "b49ca26fc14eeaa8e0f917bcc0d0cf90f9a1fc6e833362e9020cf7e4bd0560b6",
+  "opencv_version": "4.13.0",
+  "rights_blocked": false,
+  "valid": true
+}
