@@ -32,15 +32,28 @@ from plume_focus.recorded_contracts import (
 from plume_focus.sensor_emulation import SensorEmulationProfile
 
 
+def _unique_json_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate JSON field: {key}")
+        result[key] = value
+    return result
+
+
+def _reject_json_constant(value):
+    raise ValueError(f"Non-finite JSON constant: {value}")
+
+
 def load_json_object(path: Path) -> dict[str, Any]:
     """Read one JSON object with a path-specific decode error."""
 
     try:
         payload = Path(path).read_text(encoding="utf-8")
-        decoded = json.loads(payload)
+        decoded = json.loads(payload, object_pairs_hook=_unique_json_object, parse_constant=_reject_json_constant)
     except FileNotFoundError:
         raise
-    except json.JSONDecodeError as error:
+    except ValueError as error:
         raise ValueError(f"Invalid JSON: {path}") from error
     return _require_object(Path(path).name, decoded)
 

@@ -72,6 +72,28 @@ class SyntheticMethaneLeakConfig:
     min_sweep_rows: int = 56
     max_sweep_columns: int = 120
 
+    def __post_init__(self):
+        # These fields define the analytic source, including calls made without
+        # a typed session. Reject undefined puffs before range/division/exp.
+        if len(self.shape) != 2 or any(type(n) is not int or n < 2 for n in self.shape):
+            raise ValueError("Synthetic source shape needs two integer dimensions >= 2.")
+        for name in ("frames", "emission_interval", "memory_frames"):
+            if type(getattr(self, name)) is not int or getattr(self, name) < 1:
+                raise ValueError(f"{name} must be a positive integer.")
+        for name in ("fps", "base_sigma"):
+            value = getattr(self, name)
+            if isinstance(value, bool) or not np.isfinite(value) or value <= 0:
+                raise ValueError(f"{name} must be finite and positive.")
+        if not np.isfinite(self.diffusion_per_frame) or self.diffusion_per_frame < 0:
+            raise ValueError("Puff width growth must be finite and nonnegative.")
+        for name in ("source", "wind_velocity"):
+            value = getattr(self, name)
+            if len(value) != 2 or not np.all(np.isfinite(value)):
+                raise ValueError(f"{name} needs two finite coordinates.")
+        for name in ("lateral_phase", "amplitude_phase", "shimmer_phase"):
+            if not np.isfinite(getattr(self, name)):
+                raise ValueError(f"{name} must be finite.")
+
 
 def generate_synthetic_object_frame(
     config: SyntheticVideoConfig,
@@ -190,11 +212,11 @@ def generate_synthetic_plume_values(
 
     for lobe in range(config.plume_lobes):
         downstream_offset = -direction * config.lobe_spacing * lobe
-        wobble = normal[:, None] * (
+        wobble = (
             3.2 * np.sin(0.42 * frame_times + 0.83 * lobe)
         )
-        center_y = head_y + downstream_offset[0] + wobble[0]
-        center_x = head_x + downstream_offset[1] + wobble[1]
+        center_y = head_y + downstream_offset[0] + normal[0] * wobble
+        center_x = head_x + downstream_offset[1] + normal[1] * wobble
         sigma_y = config.base_sigma + config.diffusion_per_lobe * lobe
         sigma_x = (
             config.base_sigma * 1.35
@@ -263,8 +285,25 @@ def generate_synthetic_methane_values(
     cols: NDArray[np.int_],
     *,
     clean_signal: bool = False,
+    lifetime_convention: str = "closed_v1",
+    emission_windows_frames: tuple[tuple[float, float], ...] | None = None,
 ) -> NDArray[np.float64]:
-    """Sample the methane leak plume at arbitrary per-pixel frame times."""
+    """Sample declared signal puffs; legacy video/sensor semantics are the default.
+
+    half_open_v2 excludes the zero-measure age==memory endpoint. Emission windows
+    gate puff births, preserving already emitted, advecting puffs after shutoff.
+    Neither option turns the empirical signal amplitude into methane mass.
+    """
+    if lifetime_convention not in ("closed_v1", "half_open_v2"):
+        raise ValueError("Unknown puff lifetime convention.")
+    if emission_windows_frames is not None:
+        previous = -float("inf")
+        for a,b in emission_windows_frames:
+            if not np.isfinite(a) or not np.isfinite(b) or not a < b or a < previous:
+                raise ValueError("Emission windows must be finite, ordered, and nonoverlapping.")
+            previous = b
+    if not frame_times.size:
+        return np.empty(frame_times.shape, dtype=float)
 
     wind = np.array(config.wind_velocity, dtype=float)
     speed = float(np.linalg.norm(wind))
@@ -296,8 +335,11 @@ def generate_synthetic_methane_values(
         last_birth + 1,
         config.emission_interval,
     ):
+        if emission_windows_frames is not None and not any(a <= birth < b for a,b in emission_windows_frames):
+            continue
         age = frame_times - birth
-        active = (age >= 0.0) & (age <= config.memory_frames)
+        active = (age >= 0.0) & ((age <= config.memory_frames) if lifetime_convention == "closed_v1"
+                                else (age < config.memory_frames))
         if not np.any(active):
             continue
 

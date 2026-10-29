@@ -122,6 +122,11 @@ class FullFovPlan(PhysicalPlan):
 
 class FullFovController(AcquisitionController):
     """Minimal operating state over the shared, causal acquisition engine."""
+    def decision_snapshot(self):
+        """Detached READY state, including full-scan and derived gate obligations."""
+        from plume_focus.sensing_snapshot import DecisionSnapshot
+        return DecisionSnapshot.capture(self)
+
     def __setattr__(self, name, value):
         if name in {"session", "capabilities", "model", "source_position"} and getattr(self, "_bound", False):
             raise AttributeError("Instrument, model and loop settings are immutable within a session.")

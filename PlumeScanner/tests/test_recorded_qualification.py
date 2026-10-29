@@ -898,6 +898,15 @@ def test_v2_diagnostic_checks_selected_asset_without_suite_completeness(
     assert report.selected_asset_count == 1
     assert report.development_asset_count == 1
     assert report.held_out_asset_count == 0
+    assert report.operations == (
+        "decode_analysis", "extract_bounded_window", "render_local_media",
+    )
+    assert report.required_permission_scopes == (
+        "local_decode_analysis", "bounded_interval_extraction", "local_derivative_construction",
+    )
+    assert report.project_preregistration_sha256 == file_sha256(preregistration_path)
+    assert qualification.provider_assets[1].fact_status == "unresolved"
+    assert report.to_payload()["purpose"] == "diagnostic_raw_pilot"
 
 
 @pytest.mark.parametrize("failure", ("missing", "tampered"))
@@ -952,21 +961,6 @@ def test_v2_checker_rejects_symlinked_evidence_snapshot(
             data_root=tmp_path,
             qualification_path=eligible_path,
         )
-    assert report.operations == (
-        "decode_analysis",
-        "extract_bounded_window",
-        "render_local_media",
-    )
-    assert report.required_permission_scopes == (
-        "local_decode_analysis",
-        "bounded_interval_extraction",
-        "local_derivative_construction",
-    )
-    assert report.project_preregistration_sha256 == file_sha256(
-        preregistration_path
-    )
-    assert qualification.provider_assets[1].fact_status == "unresolved"
-    assert report.to_payload()["purpose"] == "diagnostic_raw_pilot"
 
 
 def test_v2_diagnostic_requires_selected_provider_fact_but_not_unselected(

@@ -10,6 +10,11 @@ This package lives in `PlumeScanner/` on the company repository's
 [`plume_scanner_new` branch](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/tree/plume_scanner_new).
 Run commands from that package directory. The Python package name is `plume_focus`.
 
+The [2026-10-29 numerical audit extensions](docs/specs/numerical-audit-v2.md)
+add opt-in finite-footprint/exposure references, birth-gated signal cessation,
+event-split time integration and full-FOV READY snapshots. They preserve frozen
+demo defaults and distinguish synthetic signal accuracy from physical calibration.
+
 ## Install
 
 Requires **Python 3.10+**; verified on Python 3.12. The quickstart needs no GPU or
@@ -124,9 +129,11 @@ the adapter. The [API guide](docs/sensing-core.md) covers messages and causal ch
 .\.venv\Scripts\python.exe -m compileall -q src scripts examples tests
 ```
 
-The submission passes **554 tests with five platform skips**, including the new
-demo CLI. The reviewed scanner checkpoint replayed 104 frozen study executions
-with unchanged reconstruction loss. Tests need no external footage. Symlink
+The original submission passed **554 tests with five platform skips**. The local
+[2026-10-29 review](docs/reviews/code-review-2026-10-29.md) passes **615 tests**,
+including 56 new numerical, lifecycle and input-integrity cases. The historical
+scanner checkpoint replayed 104 frozen study executions with unchanged loss;
+that full study was not rerun in this review. Tests need no external footage. Symlink
 tests skip where that capability is unavailable. If the system temporary directory
 is restricted, use a fresh workspace directory with `--basetemp outputs/pytest-local`.
 

@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-10-29 — Audit source, observation, evaluation and replay prerequisites
+
+From company submission `5cac633` on local `codex/comprehensive-audit-20261029`,
+review the complete package and repair nonfinite loss handling, ambiguous paired
+statistics/JSON, shape-dependent plume queries, invalid input handling, legacy
+run-directory reuse and misplaced qualification-test assertions. Add explicit,
+opt-in sensor/time-quadrature and birth-gated source references plus complete
+built-in full-FOV READY snapshots and covariance checks. Keep frozen estimator,
+policy, source defaults and historical result bytes. The [review](docs/reviews/code-review-2026-10-29.md)
+and [numerical contract](docs/specs/numerical-audit-v2.md) define scope and limits.
+
+Verification: 615 tests pass (56 new cases), 203 Python files compile in memory,
+97 runtime modules import, 13 config JSON files parse, and disclosed numerical
+references converge. The old 107 local source blobs and eleven protected
+artifacts retain their hashes. Figures are inspected. These are correctness
+fixtures and engineering regression, not a new policy-performance or hardware
+study. Physical calibration and custom recovery/P2 continuation remain open.
+This checkpoint is local; no remote push or claim promotion is included.
+
 Broad project checkpoints, newest first. This is the maintained summary of what
 changed, why it matters, and what was actually established. Detailed evidence
 stays in the linked reviews; current work and completion gates stay in

@@ -81,6 +81,10 @@ class ControlledSignal:
         values=self.base.signal_at(times,positions_yx)
         return values if self.cessation is None else np.where(np.asarray(times)<self.cessation,values,0.)
 
+    def temporal_breakpoints(self,start,end):
+        events = self.base.temporal_breakpoints(start,end) if hasattr(self.base,"temporal_breakpoints") else ()
+        return (*events, *(() if self.cessation is None or not start<self.cessation<end else (self.cessation,)))
+
 
 def replay_event(controller,event,*,verify_plan=True):
     at=event['at_seconds']

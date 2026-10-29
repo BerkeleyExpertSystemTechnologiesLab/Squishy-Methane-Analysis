@@ -24,6 +24,7 @@ class SyntheticSourceV1(SyntheticMethaneLeakConfig, RequiredMessage):
         object.__setattr__(self, "shape", tuple(self.shape))
         object.__setattr__(self, "source", tuple(float(v) for v in self.source))
         object.__setattr__(self, "wind_velocity", tuple(float(v) for v in self.wind_velocity))
+        super().__post_init__()
         if len(self.shape) != 2 or any(type(n) is not int or n < 2 for n in self.shape):
             raise ValueError("Synthetic source shape must have two dimensions >= 2.")
         for value in (self.fps, self.base_sigma, self.emission_interval, self.memory_frames):

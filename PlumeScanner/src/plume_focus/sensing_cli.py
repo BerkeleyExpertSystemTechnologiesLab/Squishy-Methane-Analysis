@@ -16,6 +16,7 @@ from plume_focus.sensing_diagnostics import render_matched_diagnostics, measurem
 from plume_focus.sensing_evaluation import summarize_run
 from plume_focus.sensing_rendering import RenderSettings, render_sensing_video
 from plume_focus.sensing_simulation import CleanMethaneSource, SensingSimulationConfig, run_sensing_simulation
+from plume_focus.run_outputs import require_fresh_output
 
 
 def _write(path, value):
@@ -32,6 +33,7 @@ def _runtime():
 
 def run_development_suite(output_dir: Path, *, max_scans=5, duration=75., seeds=(0, 1)) -> dict:
     """Frozen development conditions, not a held-out advantage test."""
+    output_dir=require_fresh_output(output_dir)
     cases = (("known-wind", False, (0., 0.), .005),
              ("wind-error", False, (.012, -.015), .02),
              ("source-free", True, (0., 0.), .005))
@@ -100,7 +102,7 @@ def main(argv=None) -> None:
         else:
             run_config_file(args.run_config, args.output_dir, render=args.render, fps=args.fps, playback_speed=args.playback_speed)
         return
-    args.output_dir.mkdir(parents=True, exist_ok=True)
+    require_fresh_output(args.output_dir)
     if args.suite:
         run_development_suite(args.output_dir, max_scans=args.max_scans, duration=args.duration)
     else:

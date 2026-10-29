@@ -18,6 +18,10 @@ class WindowedSignal:
         for start,end in self.windows:active |= (t>=start)&(t<end)
         return np.where(active,values,0.)
 
+    def temporal_breakpoints(self,start,end):
+        events = self.base.temporal_breakpoints(start,end) if hasattr(self.base,"temporal_breakpoints") else ()
+        return (*events, *(t for pair in (self.windows or ()) for t in pair if start<t<end))
+
 
 @dataclass(frozen=True)
 class CalibrationRunConfig(FullFovRunConfig):

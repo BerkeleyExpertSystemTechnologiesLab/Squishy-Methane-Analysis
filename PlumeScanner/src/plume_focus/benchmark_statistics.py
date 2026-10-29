@@ -31,8 +31,8 @@ def paired_bootstrap_confidence_interval(
         raise ValueError("deltas must be a non-empty 1-D array.")
     if np.any(~np.isfinite(values)):
         raise ValueError("deltas must contain only finite values.")
-    if samples <= 0:
-        raise ValueError("samples must be positive.")
+    if type(samples) is not int or samples <= 0:
+        raise ValueError("samples must be a positive integer.")
     if values.size == 1:
         value = float(values[0])
         return value, value
@@ -57,7 +57,18 @@ def compare_adaptive_to_baselines(
 ) -> tuple[PairedComparison, ...]:
     """Compare matched primary episodes after equal averaging across budgets."""
 
+    if not budget_ids or len(set(budget_ids)) != len(budget_ids):
+        raise ValueError("Declared budget IDs must be nonempty and unique.")
+    if (not baseline_policy_ids or len(set(baseline_policy_ids)) != len(baseline_policy_ids)
+            or adaptive_policy_id in baseline_policy_ids):
+        raise ValueError("Baseline policy IDs must be unique and differ from the adaptive policy.")
+
     primary = [result for result in results if not result.stress]
+    keys = [(r.policy_id, r.episode_id, r.budget_id) for r in primary]
+    if len(set(keys)) != len(keys):
+        raise ValueError("Duplicate primary episode/policy/budget result.")
+    if any(r.budget_id not in budget_ids for r in primary):
+        raise ValueError("A primary result uses an undeclared budget.")
     by_key = {
         (result.policy_id, result.episode_id, result.budget_id): result
         for result in primary
@@ -69,9 +80,16 @@ def compare_adaptive_to_baselines(
     }
     if not adaptive_keys:
         raise ValueError("adaptive policy has no primary results.")
+    episodes = {episode for episode, _ in adaptive_keys}
+    expected = {(episode, budget) for episode in episodes for budget in budget_ids}
+    if adaptive_keys != expected:
+        raise ValueError("Every primary episode must contain every declared budget.")
 
     comparisons: list[PairedComparison] = []
     for comparison_index, baseline_id in enumerate(baseline_policy_ids):
+        baseline_keys = {(r.episode_id, r.budget_id) for r in primary if r.policy_id == baseline_id}
+        if baseline_keys != adaptive_keys:
+            raise ValueError(f"Baseline {baseline_id} does not have exactly the matched primary episodes/budgets.")
         episode_deltas: dict[str, list[float]] = defaultdict(list)
         per_budget: dict[str, list[float]] = defaultdict(list)
         for episode_id, budget_id in sorted(adaptive_keys):

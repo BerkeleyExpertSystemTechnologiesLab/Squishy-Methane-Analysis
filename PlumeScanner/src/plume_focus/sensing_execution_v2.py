@@ -19,6 +19,9 @@ class ScaledSyntheticSource:
     def signal_at(self, times, positions_yx):
         return self.scale * self.source.signal_at(times, positions_yx)
 
+    def temporal_breakpoints(self, start, end):
+        return self.source.temporal_breakpoints(start,end) if hasattr(self.source,"temporal_breakpoints") else ()
+
 
 @dataclass(frozen=True)
 class SyntheticSourceV2(SyntheticSourceV1):

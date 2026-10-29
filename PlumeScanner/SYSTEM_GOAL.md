@@ -1,8 +1,25 @@
 # Plume Focus Living System Goal
 
-Last updated: 2026-09-29
+Last updated: 2026-10-29
 
 Overall status: `active`
+
+## Local prerequisite/code review (2026-10-29)
+
+Current review checkpoint: engineering `complete`; comparative claim remains
+`not_demonstrated`. The [code review](docs/reviews/code-review-2026-10-29.md)
+records the full-package audit, repairs and 615 passing tests. The [explicit
+numerical extensions](docs/specs/numerical-audit-v2.md) add finite-footprint/
+exposure references, birth-gated cessation, midpoint/event splitting and v2
+built-in lifecycle snapshots. Frozen defaults and prior evidence are retained.
+The reviewed normal Windows run also exercises the formerly hidden symlink-test
+NameError, now repaired without deleting its assertions.
+
+Source/physical calibration, representation error, evidence-driven source
+activity and a custom recovery/P2 forced-continuation adapter remain unresolved.
+The refined sensor is not a coherent new estimator binding by itself. There is
+no new policy-performance study, hardware result, company push or default promotion.
+Historical completion records and gates below retain their original scope.
 
 ## Completed company submission (2026-09-29)
 

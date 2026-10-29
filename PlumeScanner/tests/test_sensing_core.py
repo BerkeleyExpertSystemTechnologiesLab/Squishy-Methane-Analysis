@@ -243,7 +243,7 @@ def test_public_messages_json_round_trip_and_reject_unknown_fields():
 
 def test_controller_dependency_boundary():
     root = Path(__file__).parents[1] / "src" / "plume_focus"
-    modules = {"calibrated_scanner", "acquisition", "sensing_compat", "full_fov_loop", "controller", "sensing_policy", "physical_scan", "signal_belief", "sensing_contracts",
+    modules = {"full_fov_snapshot", "calibrated_scanner", "acquisition", "sensing_compat", "full_fov_loop", "controller", "sensing_policy", "physical_scan", "signal_belief", "sensing_contracts",
                "sensing_session", "sensing_messages_v2", "sensing_policy_v1", "sensing_session_v2", "sensing_policy_v2",
                "sensing_session_v3", "motion_config", "motion_belief", "signal_distribution",
                "sensing_session_v4", "sensing_messages_v3", "sensing_risk", "sensing_policy_v4",
@@ -253,7 +253,10 @@ def test_controller_dependency_boundary():
         "calibrated_scanner": {"full_fov_loop", "sensing_session", "sensing_contracts", "signal_belief"},
         "acquisition": {"sensing_contracts", "signal_belief", "signal_distribution"},
         "sensing_compat": {"sensing_session_v2", "sensing_session_v4", "sensing_session_v5", "sensing_policy_v1", "sensing_policy_v2", "sensing_policy_v4", "sensing_policy_v5"},
-        "full_fov_loop": {"acquisition", "physical_scan", "sensing_contracts", "sensing_session", "signal_belief", "signal_distribution", "sensing_messages_v2"},
+        "full_fov_loop": {"acquisition", "physical_scan", "sensing_contracts", "sensing_session", "signal_belief", "signal_distribution", "sensing_messages_v2", "sensing_snapshot"},
+        # READY serialization knows concrete lifecycle types, with no simulator,
+        # evaluator, source, filesystem or media dependency. Acquisition stays pure.
+        "full_fov_snapshot": {"full_fov_loop", "calibrated_scanner", "evidence_gated_loop", "sensing_contracts", "evidence_gate", "sensing_snapshot"},
         "sensing_contracts": set(), "signal_belief": {"sensing_contracts"},
         "sensing_session": {"signal_belief", "sensing_contracts"},
         "sensing_session_v2": {"sensing_contracts", "sensing_session"},
@@ -270,7 +273,7 @@ def test_controller_dependency_boundary():
         "evidence_gated_execution": {"calibration_execution", "evidence_gated_loop", "sensing_contracts",
                                      "sensing_session"},
         "sensing_session_diagnostic": {"sensing_session_v4", "sensing_session", "signal_belief"},
-        "sensing_snapshot": {"sensing_contracts", "sensing_session", "sensing_session_v2", "sensing_session_v3",
+        "sensing_snapshot": {"full_fov_loop", "full_fov_snapshot", "sensing_contracts", "sensing_session", "sensing_session_v2", "sensing_session_v3",
                              "sensing_session_v4", "sensing_session_diagnostic", "sensing_session_v5"},
         "sensing_policy_v4": {"physical_scan", "sensing_messages_v3", "sensing_policy_v2", "sensing_risk", "signal_belief"},
         "motion_config": {"sensing_contracts"},

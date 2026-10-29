@@ -23,6 +23,8 @@ from plume_focus.signal_belief import grid_positions, interpolation_stencil
 
 def begin_forced_scan(controller, plan, wind, budget):
     """Diagnostic-only action injection; public lifecycle validation is retained."""
+    if getattr(controller,"_session",None) is None:
+        raise ValueError("Historical forced actions do not support full-FOV/evidence-gated lifecycles; use an explicit lifecycle adapter.")
     now=plan.started_at_seconds
     if controller.active_plan is not None:
         raise RuntimeError("Cannot replace an active scan.")
@@ -91,20 +93,29 @@ def predicted_mean(controller,time):
 
 class TruthQuadrature:
     """Shared, candidate-independent truth sufficient statistics for map loss."""
-    def __init__(self, source, start, horizon, latent_shape, shape=(120,160), step=.05):
+    def __init__(self, source, start, horizon, latent_shape, shape=(120,160), step=.05, *,
+                 temporal_rule="left_endpoint_v1", breakpoints=()):
+        from plume_focus.evaluation_quadrature import time_quadrature
+        for label,mesh in (("latent",latent_shape),("evaluation",shape)):
+            if len(mesh)!=2 or any(type(n) is not int or n < (2 if label=="latent" else 1) for n in mesh):
+                raise ValueError(f"Invalid {label} mesh.")
         self.start,self.horizon,self.shape,self.step=start,horizon,shape,step
-        self.times=start+np.arange(int(math.ceil(horizon/step)))*step
-        self.durations=np.diff(np.append(self.times,start+horizon))
+        self.temporal_rule,self.breakpoints=temporal_rule,tuple(breakpoints)
+        self.times,self.durations=time_quadrature(start,horizon,step,rule=temporal_rule,breakpoints=self.breakpoints)
         points=grid_positions(shape);ids,weights=interpolation_stencil(points,latent_shape)
         self.gram=projection_gram(latent_shape,shape)
         self.cross=[];self.square=[];self.average=[]
         self.mean_operator=np.zeros(math.prod(latent_shape))
         np.add.at(self.mean_operator,ids.ravel(),weights.ravel()/len(points))
         for t in self.times:
-            values=source.signal_at(np.full(len(points),t),points)
+            values=np.asarray(source.signal_at(np.full(len(points),t),points), dtype=float)
+            if values.shape != (len(points),) or not np.all(np.isfinite(values)):
+                raise ValueError("Evaluator truth must have one finite value per query point.")
             projected=np.zeros(math.prod(latent_shape))
             np.add.at(projected,ids.ravel(),(weights*values[:,None]).ravel()/len(points))
             self.cross.append(projected);self.square.append(float(np.mean(values**2)));self.average.append(float(np.mean(values)))
+            if not np.all(np.isfinite(projected)) or not math.isfinite(self.square[-1]) or not math.isfinite(self.average[-1]):
+                raise ValueError("Evaluator truth statistics must be finite; signal scale overflowed.")
         self.cross=np.asarray(self.cross)
 
 
@@ -116,7 +127,12 @@ class OnlineLoss:
         q=self.truth
         while self.index<len(q.times) and q.times[self.index]<available_at-1e-10:
             i=self.index;t=float(q.times[i]);mu=predicted_mean(controller,t)
-            mse=max(0.,float(mu@q.gram@mu-2*mu@q.cross[i]+q.square[i]))
+            if not np.all(np.isfinite(mu)):
+                raise ValueError("Evaluator prediction must be finite.")
+            raw_mse=float(mu@q.gram@mu-2*mu@q.cross[i]+q.square[i])
+            if not math.isfinite(raw_mse):
+                raise ValueError("Evaluator map error must be finite; prediction scale overflowed.")
+            mse=max(0.,raw_mse)
             signed=float(q.mean_operator@mu-q.average[i])
             self.rows.append({"time":t,"map_mse":mse,"signed_index_error":signed,"duration":float(q.durations[i])})
             self.index+=1
@@ -131,6 +147,15 @@ class OnlineLoss:
 def run_counterfactual(snapshot,config,candidate,required,*,continuation="repeat",seed=0,horizon=12.,truth=None):
     if continuation not in ("repeat","replan","idle"):
         raise ValueError("Unknown diagnostic continuation.")
+    if snapshot.to_dict().get("schema_version")!=1:
+        raise ValueError("Historical counterfactual execution requires a v1 policy snapshot; full-FOV/gated snapshots need a lifecycle adapter.")
+    from plume_focus.sensing_session import configuration_hash
+    if configuration_hash(snapshot.to_dict()["session"])!=configuration_hash(config.session.to_dict()):
+        raise ValueError("Counterfactual configuration and snapshot sessions differ.")
+    if continuation!="idle" and candidate is None:
+        raise ValueError("An active continuation requires a candidate path.")
+    from plume_focus.sensing_contracts import finite
+    finite("counterfactual horizon",horizon,positive=True)
     controller=snapshot.fork_controller(SensingController);start=controller._last_available;end=start+horizon
     lookahead_wind=controller._wind
     truth=truth or TruthQuadrature(config.source.build(),start,horizon,config.model.grid_shape)

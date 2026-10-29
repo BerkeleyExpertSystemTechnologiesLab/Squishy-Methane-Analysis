@@ -19,6 +19,7 @@ from plume_focus.sensing_execution_v4 import SensingRunConfigV4, SensingMotionRu
 from plume_focus.sensing_reconstruction import reconstruction_loss, summarize_v1
 from plume_focus.sensing_rendering import RenderSettings, render_sensing_video
 from plume_focus.sensing_session import configuration_hash
+from plume_focus.run_outputs import require_fresh_output
 
 
 def write_json(path: Path, value):
@@ -69,11 +70,11 @@ def artifact_manifest(output: Path):
 
 
 def _run_job(name: str, payload: dict, output: str, grid_payload: dict | None = None):
+    directory = require_fresh_output(Path(output) / name)
     producing_revision = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
     config = config_from_dict(payload)
     if grid_payload is not None:
         config = replace(config, evaluation=ReconstructionGridV1.from_dict(grid_payload))
-    directory = Path(output) / name
     start = time.perf_counter()
     run = run_sensing_v1(config)
     simulated = time.perf_counter()
@@ -155,6 +156,7 @@ def _render(config, directory, fps, playback_speed):
 
 
 def run_config_file(path, output, *, render=False, fps=12., playback_speed=1.):
+    output=require_fresh_output(output)
     config = load_config(Path(path))
     result = _run_job("run", config.to_dict(), str(output))
     if render:
@@ -164,6 +166,7 @@ def run_config_file(path, output, *, render=False, fps=12., playback_speed=1.):
 
 
 def run_suite_file(path, output, *, workers=2, render=False, fps=12., playback_speed=1.):
+    output=require_fresh_output(output)
     suite, configs = suite_configs(Path(path))
     if type(workers) is not int or workers < 1:
         raise ValueError("workers must be positive.")

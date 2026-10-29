@@ -11,7 +11,7 @@ import numpy as np
 
 from plume_focus.controller import AssimilationEvent, SensingController
 from plume_focus.sensing_contracts import (
-    CausalWind, ExecutionReceipt, Position, ScanConstraints, ScanPlan, ScannerCapabilities, SensorReading,
+    CausalWind, ExecutionReceipt, Position, ScanConstraints, ScanPlan, ScannerCapabilities, SensorReading, finite,
 )
 from plume_focus.signal_belief import BeliefView, SignalModelConfig, footprint_points
 from plume_focus.video_sources import SyntheticMethaneLeakConfig, generate_synthetic_methane_values
@@ -33,13 +33,25 @@ class CleanMethaneSource:
     config: SyntheticMethaneLeakConfig = field(default_factory=SyntheticMethaneLeakConfig)
     end_time_seconds: float | None = None
 
+    def __post_init__(self):
+        if self.end_time_seconds is not None:
+            finite("source end time", self.end_time_seconds)
+
+    def temporal_breakpoints(self, start, end):
+        from plume_focus.scheduled_puff_source import puff_breakpoints
+        return puff_breakpoints(self.config, start, end)
+
     def signal_at(self, times: np.ndarray, positions_yx: np.ndarray) -> np.ndarray:
         times = np.asarray(times, dtype=float)
         positions = np.asarray(positions_yx, dtype=float)
         if positions.shape != (*times.shape, 2):
             raise ValueError("Positions must match times with a final (y,x) axis.")
+        if np.any(~np.isfinite(positions)) or np.any((positions < 0) | (positions > 1)):
+            raise ValueError("Source positions must be finite normalized FOV coordinates.")
         if np.any(~np.isfinite(times)) or np.any(times < 0) or (self.end_time_seconds is not None and np.any(times > self.end_time_seconds + 1e-10)):
             raise SourceExhausted("Synthetic source has no sample at the requested time.")
+        if not times.size:
+            return np.empty(times.shape, dtype=float)
         return generate_synthetic_methane_values(
             self.config, times * self.config.fps,
             positions[..., 0] * (self.config.shape[0] - 1), positions[..., 1] * (self.config.shape[1] - 1),
@@ -67,17 +79,24 @@ class SimulatedExecution:
 class FakeScanner:
     """Example hardware-shaped adapter, including exposure and finite input bounds."""
     def __init__(self, source: SensorSource, *, noise_std: float = .05, seed: int = 0,
-                 gain: float = 1.0, offset: float = 0.0):
+                 gain: float = 1.0, offset: float = 0.0, quadrature=None):
         if not np.isfinite(noise_std) or noise_std < 0 or type(seed) is not int or seed < 0:
             raise ValueError("Noise and seed must be nonnegative.")
         self.source, self.noise_std, self.seed = source, noise_std, seed
         if not np.isfinite(gain) or gain <= 0 or not np.isfinite(offset):
             raise ValueError("Sensor gain must be positive and offset finite.")
         self.gain, self.offset = gain, offset
+        if quadrature is not None:
+            from plume_focus.sensor_quadrature import SensorQuadratureV2
+            if not isinstance(quadrature, SensorQuadratureV2):
+                raise TypeError("Use a validated SensorQuadratureV2 or None for legacy readings.")
+        self.quadrature = quadrature
 
     def execute(self, plan: ScanPlan, *, delivery: str = "stream", delivery_delay: float = 0.0,
                 completion_overrun: float = 0.0) -> SimulatedExecution:
-        if delivery not in ("stream", "batch") or delivery_delay < 0 or completion_overrun < 0:
+        finite("delivery delay", delivery_delay)
+        finite("completion overrun", completion_overrun)
+        if delivery not in ("stream", "batch"):
             raise ValueError("Invalid simulated delivery settings.")
         end = plan.completed_at_seconds + completion_overrun
         exhausted = self.source.end_time_seconds is not None and end > self.source.end_time_seconds
@@ -88,13 +107,21 @@ class FakeScanner:
             exposure_end = sample.acquired_at_seconds + sample.integration_seconds / 2
             if exposure_end > end + 1e-10:
                 break
-            # Simpson exposure integration and four-point spatial quadrature.
-            values = []
-            for offset in (-.5, 0, .5):
-                t = sample.acquired_at_seconds + offset * sample.integration_seconds
-                points = footprint_points(pose_at(plan, t), sample.footprint)
-                values.append(float(np.mean(self.source.signal_at(np.full(len(points), t), points))))
-            signal = (values[0] + 4 * values[1] + values[2]) / 6
+            if self.quadrature is None:
+                # Frozen v1: Simpson exposure integration and four spatial rays.
+                values = []
+                for offset in (-.5, 0, .5):
+                    t = sample.acquired_at_seconds + offset * sample.integration_seconds
+                    points = footprint_points(pose_at(plan, t), sample.footprint)
+                    queried = np.asarray(self.source.signal_at(np.full(len(points), t), points), dtype=float)
+                    if queried.shape != (len(points),) or not np.all(np.isfinite(queried)):
+                        raise ValueError("Sensor source must return one finite signal per query point.")
+                    values.append(float(np.mean(queried)))
+                signal = (values[0] + 4 * values[1] + values[2]) / 6
+            else:
+                from plume_focus.sensor_quadrature import exposure_average
+                signal = exposure_average(self.source, sample, lambda t: pose_at(plan, t), self.quadrature,
+                    split_times=tuple(t for s in plan.segments for t in (s.started_at_seconds,s.completed_at_seconds)))
             # Same seed, acquisition time and position give the same noise even
             # when other policies choose a different number of previous samples.
             entropy = [self.seed, int(round(sample.acquired_at_seconds * 1e6)),
