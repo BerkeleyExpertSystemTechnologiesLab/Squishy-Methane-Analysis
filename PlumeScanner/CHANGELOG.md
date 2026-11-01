@@ -13,6 +13,25 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
+## 2026-11-01 — Matched joint source location and amount inference
+
+Implement and execute a separate fixed-path comparison with explicit cell-integrated
+source input at .5/1/1.5 reference amount: 33 histories, including ten paired seeds
+per amount and three deterministic controls. Compare fixed nominal amount, joint
+location/amount, and true-amount location inference using identical readings.
+Joint inference reduces mean checkpoint map MSE by 31.95%/22.79% at low/high
+input, but increases it .89% nominal. Low-input source error falls .1409 to .0134
+FOV; high-input maps improve without better localization. Preserve the negative
+nominal result and this asymmetry. This metric is not physical-time J/T.
+
+49 targeted tests pass. Direct/affine calculations and shared realized noise agree
+to roundoff; 129/129 to 257/257 quadrature passes all 99 frozen checks after an
+initial 46/99 pass. Exact mixture forecast diagnostics, fields, source/amount
+posteriors, configs, implementation snapshots, figures and hashes remain local.
+The source-informed path, one geometry, synthetic units and matched Gaussian
+model limit the claim; production policy and historical evidence are unchanged.
+See the [review](docs/reviews/joint-source-amount-v1.md). No remote upload.
+
 ## 2026-11-01 — Explicit source amount and input representation audit
 
 Add opt-in point-normalized and cell-integrated Gaussian source inputs with an

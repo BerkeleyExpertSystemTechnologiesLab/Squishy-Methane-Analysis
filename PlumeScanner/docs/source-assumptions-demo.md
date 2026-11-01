@@ -112,6 +112,7 @@ accurate/biased point assumptions. Regional assumptions have standard deviation
 | Model-consistent control | Generate new observations with the estimator's own discrete model | Whether original simulator/estimator mismatch contributes to source displacement |
 | One-factor mismatch | Wind speed, source width or half-life, separately | Sensitivity to each declared mismatch on the fixed path |
 | Conserved-input width control | Separate width changes from changes in total discrete source input | Distinguish shape effects from signal-amount effects |
+| Matched location/amount control | Explicit low/nominal/high total input; estimate location alone or jointly with amount | Whether the wrong amount is absorbed into location or map error on the same path |
 
 Every method shares evidence within a realization. Changing a data generator or
 mismatch condition creates different observations; those cross-condition
@@ -168,9 +169,13 @@ evidence without those archives.
 | One-factor controls | [`one-factor-source-mismatch.py`](../scripts/one-factor-source-mismatch.py), [study](reviews/one-factor-source-mismatch-v1.md) |
 | Width/amount controls | [`conserved-width-source-control.py`](../scripts/conserved-width-source-control.py), [study](reviews/conserved-source-width-v1.md) |
 | Explicit source-input amount and representation | [`source_input.py`](../src/plume_focus/source_input.py), [`audit-source-input.py`](../scripts/audit-source-input.py), [audit](reviews/source-input-audit-v1.md) |
+| Joint source location/amount control | [`source_amount_control.py`](../src/plume_focus/source_amount_control.py), [`compare-source-amount.py`](../scripts/compare-source-amount.py), [configuration](../configs/source-prior-study/joint-source-amount-v1.json), [study](reviews/joint-source-amount-v1.md) |
 | Visual comparison | [`demo-source-assumptions.py`](../scripts/demo-source-assumptions.py) |
 
 Physical deployment still requires voltage retrieval calibration, coordinate and
 RGB registration, a measured footprint, and separate prototype/final-instrument
-timing profiles. Unknown-source search, joint source strength/location inference
-and closed-loop benefits remain unestablished.
+timing profiles. Joint location/amount inference is now implemented and tested in
+a separate matched synthetic fixed-path study: low/high map errors improve,
+nominal error slightly worsens, and localization gains are not universal.
+Unknown-source search, physical strength estimation and closed-loop benefits
+remain unestablished.

@@ -4,6 +4,22 @@ Last updated: 2026-11-01
 
 Overall status: `active`
 
+## Matched location/amount inference comparison (2026-11-01)
+
+The [joint location/amount comparison](docs/reviews/joint-source-amount-v1.md) is
+implemented and executed locally, from starting revision `96ccb71`, without any
+remote upload. Three amounts (.5/1/1.5 Q0), 33 matched histories and three estimators
+hold the source geometry, noise, wind, footprint and 708-reading schedule fixed.
+Joint inference improves mean checkpoint map MSE 31.95% low and 22.79% high,
+but worsens it .89% nominal. Low-input source displacement is largely removed;
+high-input map gains coexist with slightly worse location error. Ten paired seeds
+per amount do not establish generalization or physical calibration. The checkpoint
+mean is not J/T. 49 targeted tests pass; all 99 final quadrature-refinement checks
+pass after retaining the initial failure. Direct reference checks and paired noise
+agree to roundoff. Production inference/policy and original evidence are unchanged.
+This bounded comparison is complete. Independent geometries/paths, source-activity
+inference and the effect on subsequent scan decisions remain proposed, not active.
+
 ## Explicit source-input audit (2026-11-01)
 
 The [source-input audit](docs/reviews/source-input-audit-v1.md) is implemented and
@@ -13,8 +29,8 @@ can strongly change the legacy discrete amount, especially for narrow sources.
 96 named and 4,624 phase profiles satisfy frozen normalization/integrated-cell
 refinement checks; 49 targeted tests pass. Center-based spatial representation
 errors and boundary limitations remain explicit. No new field/measurement
-histories or inference results are produced. Next is a separately declared
-matched-model comparison of location-only and joint location/amount inference.
+histories or inference results are produced by the audit itself. Its proposed
+matched location/amount comparison is now completed separately above.
 
 ## Source-assumption reference and visual replay (2026-11-01)
 
@@ -28,8 +44,8 @@ calibration, RGB registration and measured acquisition/motion timing remain open
 The visual observer holds all 708 readings fixed and contrasts two fixed source
 hints. It saves reconstructed maps, causal reading traces and provenance locally.
 27 targeted tests passed at implementation; decoded media reproduce frozen final
-fields within 1.67e-16. The numerical research claims remain unchanged. Joint
-location/amplitude inference and closed-loop evaluation remain proposed work.
+fields within 1.67e-16. Joint location/amount inference is now tested in the
+separate matched comparison above; closed-loop evaluation remains proposed work.
 
 ## Local source-prior study (2026-10-28)
 
@@ -61,8 +77,9 @@ persists and interacts nonadditively with amount. 143 histories, 55 exact prior
 reproductions, 40 passing tests, identical realized noise and input conservation
 within 2.22e-16. Location/radius-mass checks pass; 4 histories retain HPD boundary
 ambiguity. Amount-only reduction can create large boundary shifts; it does not
-identify the original demo's error direction. Joint location/amplitude inference,
-original-simulator operator comparison and independent grids/sources remain proposed. Source-activity
+identify the original demo's error direction. Joint location/amount inference is
+now tested separately above; original-simulator operator comparison and independent
+grids/sources remain proposed. Source-activity
 inference and closed-loop comparisons remain separate work. Artifacts stay local,
 with production behavior unchanged.
 
