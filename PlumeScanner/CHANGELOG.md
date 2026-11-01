@@ -13,6 +13,21 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
+## 2026-11-01 — Explicit source amount and input representation audit
+
+Add opt-in point-normalized and cell-integrated Gaussian source inputs with an
+explicit synthetic in-FOV total. The separate audit checks 96 named profiles and
+4,624 interior grid-alignment profiles, preserving the historical peak-rate formula.
+At half width on 12x16, legacy input/continuous-integral ratios range .129–2.640;
+normalization removes total variation, and integrated cell masses agree under
+refinement to roundoff. Source centroid errors remain, including boundary
+counterexamples where integration has a worse center-based first moment.
+49 targeted tests pass; maximum relative total and cell-refinement discrepancies
+are 7.77e-16 and 2.71e-16. Baseline vector/configuration are unchanged. This
+defines controlled inputs for a later joint location/amount experiment; it does
+not run inference or establish reconstruction or physical-emission accuracy.
+See the [audit review](docs/reviews/source-input-audit-v1.md).
+
 ## 2026-11-01 — Baseline and experiment interface documentation
 
 Document the source-assumption branch against the immutable `plume_scanner_new`

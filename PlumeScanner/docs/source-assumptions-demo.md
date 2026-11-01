@@ -167,6 +167,7 @@ evidence without those archives.
 | Model-consistent control | [`model-consistent-source-priors.py`](../scripts/model-consistent-source-priors.py), [study](reviews/model-consistent-source-priors-v1.md) |
 | One-factor controls | [`one-factor-source-mismatch.py`](../scripts/one-factor-source-mismatch.py), [study](reviews/one-factor-source-mismatch-v1.md) |
 | Width/amount controls | [`conserved-width-source-control.py`](../scripts/conserved-width-source-control.py), [study](reviews/conserved-source-width-v1.md) |
+| Explicit source-input amount and representation | [`source_input.py`](../src/plume_focus/source_input.py), [`audit-source-input.py`](../scripts/audit-source-input.py), [audit](reviews/source-input-audit-v1.md) |
 | Visual comparison | [`demo-source-assumptions.py`](../scripts/demo-source-assumptions.py) |
 
 Physical deployment still requires voltage retrieval calibration, coordinate and

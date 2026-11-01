@@ -4,6 +4,18 @@ Last updated: 2026-11-01
 
 Overall status: `active`
 
+## Explicit source-input audit (2026-11-01)
+
+The [source-input audit](docs/reviews/source-input-audit-v1.md) is implemented and
+executed: point-normalized and cell-integrated alternatives define a fixed synthetic
+in-FOV input amount without changing historical source formulas. Grid alignment
+can strongly change the legacy discrete amount, especially for narrow sources.
+96 named and 4,624 phase profiles satisfy frozen normalization/integrated-cell
+refinement checks; 49 targeted tests pass. Center-based spatial representation
+errors and boundary limitations remain explicit. No new field/measurement
+histories or inference results are produced. Next is a separately declared
+matched-model comparison of location-only and joint location/amount inference.
+
 ## Source-assumption reference and visual replay (2026-11-01)
 
 The [experiment guide](docs/source-assumptions-demo.md) identifies the exact
