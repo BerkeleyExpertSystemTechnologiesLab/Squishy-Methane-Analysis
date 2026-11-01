@@ -13,6 +13,25 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
+## 2026-11-01 — Reconstruction, independent scenes and same-policy loop validation
+
+Add an opt-in fixed-clock source-mixture model with path-independent truth/noise,
+causal full-time scoring and actual mixture uncertainty. Execute 126 histories
+across two matched field grids, including 96 heldout combinations at four new
+source positions. Heldout joint J/T improves 12–14% low and 8–9% high but worsens
+.57–.97% nominal; nominal forecasts also worsen. At high input, +12 s source-point
+95% membership changes 0/16 to 15/16 on both grids. Counts remain descriptive.
+
+Preserve all 54 initial numerical failures; 513 checks and one final 1025-source
+oracle pass close the unchanged criteria. All 18 scientific checks pass. The
+24 same-policy closed executions and saved JSON replays verify exactly. Crossed
+measurement replay separates belief gains from negligible/mixed path effects;
+acquisition improvement remains `not_demonstrated`. 116 targeted tests pass.
+Configs, evidence, truth, fields, diagnostics, code snapshots, decoded moving
+media and hashes remain local. Hardware calibration, real-time latency and
+allocation convergence are not established; production policy is unchanged.
+See the [review](docs/reviews/source-amount-validation-v1.md). No remote upload.
+
 ## 2026-11-01 — Three-estimator paired information comparison
 
 Derive explicit candidate/fixed-default/true-amount paired contrasts from the

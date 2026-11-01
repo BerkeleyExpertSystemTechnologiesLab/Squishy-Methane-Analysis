@@ -4,6 +4,31 @@ Last updated: 2026-11-01
 
 Overall status: `active`
 
+## Reconstruction and independent-scene validation (2026-11-01)
+
+The [validation study](docs/reviews/source-amount-validation-v1.md) is implemented
+and executed locally from `bf0500b`: 126 fixed-path histories on two matched grids,
+including 96 heldout location/amount/seed combinations, plus 24 same-policy closed
+executions. Joint J/T improves 12–14% low and 8–9% high on heldout scenes; nominal
+J/T worsens .57–.97% and nominal forecasts worsen 5–12%. Source-footprint +12 s
+central-95% membership improves from 0/16 high to 15/16 on both grids, without a
+general calibration claim. All 18 frozen scientific checks pass. Preserve the
+original 54 numerical failures: 513-level checks close all but one development
+oracle forecast; a 1025 full-history oracle pass closes the remainder without
+relaxing criteria. Source-relative targets are evaluator-only.
+
+Closed-loop J/T improves 27.87% low and 19.73% high, worsening .37% nominal.
+Low/nominal measurement histories are identical. High-input crossed replay shows
+only -.0308% path value under the common joint estimator, +.2709% under fixed,
+with mixed individual signs and no allocation-convergence verification.
+Acquisition improvement remains `not_demonstrated`; better beliefs are the
+supported contribution. All 24 saved JSON histories replay plans/arrays exactly;
+116 targeted tests pass and the moving demo decodes. All data, configurations,
+producer snapshots and hashes are local. No remote upload, baseline policy change
+or slide preparation. This bounded stage is complete; hardware calibration,
+independent physical-model validation and improved allocation remain proposed,
+not active work.
+
 ## Matched location/amount inference comparison (2026-11-01)
 
 The [joint location/amount comparison](docs/reviews/joint-source-amount-v1.md) is

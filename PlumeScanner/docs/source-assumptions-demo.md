@@ -113,6 +113,7 @@ accurate/biased point assumptions. Regional assumptions have standard deviation
 | One-factor mismatch | Wind speed, source width or half-life, separately | Sensitivity to each declared mismatch on the fixed path |
 | Conserved-input width control | Separate width changes from changes in total discrete source input | Distinguish shape effects from signal-amount effects |
 | Matched location/amount control | Explicit low/nominal/high total input; estimate location alone or jointly with amount | Whether the wrong amount is absorbed into location or map error on the same path |
+| Independent-source/grid validation and same-policy loop | New source positions, boundary distances, matched field grids, then changed acquisition paths under one policy | Whole-monitoring reconstruction, no-reading forecasts, uncertainty and the separate value of changed measurements |
 
 Every method shares evidence within a realization. Changing a data generator or
 mismatch condition creates different observations; those cross-condition
@@ -170,6 +171,7 @@ evidence without those archives.
 | Width/amount controls | [`conserved-width-source-control.py`](../scripts/conserved-width-source-control.py), [study](reviews/conserved-source-width-v1.md) |
 | Explicit source-input amount and representation | [`source_input.py`](../src/plume_focus/source_input.py), [`audit-source-input.py`](../scripts/audit-source-input.py), [audit](reviews/source-input-audit-v1.md) |
 | Joint source location/amount control | [`source_amount_control.py`](../src/plume_focus/source_amount_control.py), [`compare-source-amount.py`](../scripts/compare-source-amount.py), [configuration](../configs/source-prior-study/joint-source-amount-v1.json), [study](reviews/joint-source-amount-v1.md) |
+| Independent validation and closed-loop comparison | [`source_amount_validation.py`](../src/plume_focus/source_amount_validation.py), [`validate-source-amount.py`](../scripts/validate-source-amount.py), [`run-source-amount-loop.py`](../scripts/run-source-amount-loop.py), [configuration](../configs/source-prior-study/source-amount-validation-v1.json), [study](reviews/source-amount-validation-v1.md) |
 | Visual comparison | [`demo-source-assumptions.py`](../scripts/demo-source-assumptions.py) |
 
 Physical deployment still requires voltage retrieval calibration, coordinate and
@@ -177,5 +179,8 @@ RGB registration, a measured footprint, and separate prototype/final-instrument
 timing profiles. Joint location/amount inference is now implemented and tested in
 a separate matched synthetic fixed-path study: low/high map errors improve,
 nominal error slightly worsens, and localization gains are not universal.
-Unknown-source search, physical strength estimation and closed-loop benefits
-remain unestablished.
+Independent-source/grid checks and an exploratory same-policy closed loop are
+now executed separately: reconstruction benefits persist under strength mismatch,
+while crossed replay does not establish improved acquisition. Unknown-source
+search, physical strength estimation and general closed-loop superiority remain
+unestablished.
