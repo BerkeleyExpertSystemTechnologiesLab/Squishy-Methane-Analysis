@@ -1,0 +1,19 @@
+{
+  "experiment_id": "fixed_evidence_source_priors_v1",
+  "record": "outputs/2026-10-28-baseline-01/runs/demo.json",
+  "record_sha256": "9545e6c6f9495f082ca845eafecf2d5cdef82ff19160d6eb2f8481aff9cedf10",
+  "candidate_grid_orders": [33, 65],
+  "accurate_center_yx": [0.547945205479452, 0.15047021943573669],
+  "biased_center_yx": [0.447945205479452, 0.3304702194357367],
+  "region_std_yx": [0.06, 0.06],
+  "prior_definitions": "broad: uniform over FOV cell-center quadrature; regions: Gaussian density truncated only at FOV boundary, not hard-box support; points: delta at respective center",
+  "prior_availability_seconds": 0.0,
+  "accurate_prior_provenance": "Oracle-informed experimental condition; not a source detector output",
+  "hold_fixed": ["all delivered readings and times", "source_rate", "source_sigma", "wind", "decay", "initial field", "process and measurement noise", "footprint", "latent grid"],
+  "source_input_convention": "Original point-sampled Gaussian injection unchanged; no renormalization across source locations. Report discrete integral variation.",
+  "evaluation_shape": [120, 160],
+  "evaluation_step_seconds": 0.05,
+  "snapshot_shape": [20, 32],
+  "refinement_relative_J_tolerance": 0.01,
+  "scope": "Single continuous zero-added-noise 40s history selected by known-source baseline. Fixed evidence estimator comparison only; no closed-loop or general superiority claim."
+}

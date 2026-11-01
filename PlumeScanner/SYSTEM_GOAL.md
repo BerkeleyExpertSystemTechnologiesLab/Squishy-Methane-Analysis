@@ -1,8 +1,56 @@
 # Plume Focus Living System Goal
 
-Last updated: 2026-09-29
+Last updated: 2026-11-01
 
 Overall status: `active`
+
+## Presentation and code-sharing checkpoint (2026-11-01)
+
+The worksheet-aligned explanation and visual observer are complete; see
+[source assumptions](docs/source-assumptions-demo.md). The demo holds all 708
+readings fixed and contrasts two fixed source hints, showing the reconstructed
+maps rather than beginning with source-posterior error plots. Terminology and
+team interfaces are explicit. Current user authorization includes uploading the
+study code to GitHub on its separate working branch; generated media stay local.
+27 targeted tests pass and decoded media reproduce the frozen final fields
+within 1.67e-16. The numerical research claims remain unchanged. No joint
+location/amplitude experiment or new scan policy starts from this checkpoint.
+
+## Local source-prior study (2026-10-28)
+
+Xilin requested a first fixed-evidence comparison before preparing slides.
+The [study](docs/reviews/source-prior-fixed-evidence-v1.md) is implemented and run
+on the original 40 s/708-reading history, with broad, accurate/biased regional and
+accurate/biased point priors. Production policies are unchanged. Exact original
+baseline checks and 21 targeted tests pass; 65-to-129 source-grid J refinement
+passes after the initial 33-to-65 failure. Accurate regional prior gives 2.74%
+lower J than accurate point on this history, while source posteriors concentrate
+at a biased location. Source posterior convergence/calibration and general benefit
+remain unestablished. The [model-consistent fixed-path control](docs/reviews/model-consistent-source-priors-v1.md)
+is now implemented and executed: mean control plus ten preregistered stochastic
+seeds substantially reduce the large source displacement, but residual directional
+posterior-mean error remains. All ten source HPD sets include truth for each
+distribution prior; this is descriptive and does not establish calibration.
+27 targeted tests and 129-to-257 source-summary refinement pass, after preserving
+the failed 65-to-129 comparison. Exact affine likelihood equivalence is checked.
+The [one-factor mismatch study](docs/reviews/one-factor-source-mismatch-v1.md) is
+now implemented and run: 143 histories across matched and 12 one-factor conditions.
+None reproduces the original large displacement in the declared range; coverage
+can degrade before source errors become large. All final location/radius-mass
+checks pass; two histories retain unresolved HPD membership after grid refinement.
+31 targeted tests pass, with unchanged historical evidence and exact matched
+reproduction. Width-at-fixed-peak changes injected signal amount; do not infer a
+pure shape effect. The [conserved-input width study](docs/reviews/conserved-source-width-v1.md)
+is now implemented/run: paired shape-by-amount controls restore most narrow-source
+location accuracy when total input is held fixed, while wider-source shape error
+persists and interacts nonadditively with amount. 143 histories, 55 exact prior
+reproductions, 40 passing tests, identical realized noise and input conservation
+within 2.22e-16. Location/radius-mass checks pass; 4 histories retain HPD boundary
+ambiguity. Amount-only reduction can create large boundary shifts; it does not
+identify the original demo's error direction. Joint location/amplitude inference,
+original-simulator operator comparison and independent grids/sources remain proposed. Source-activity
+inference and closed-loop comparisons remain separate work. Artifacts stay local,
+and no slides or remote submission are produced in this study.
 
 ## Completed company submission (2026-09-29)
 

@@ -13,6 +13,91 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
+## 2026-11-01 — Worksheet-aligned explanation and visual source-hint demo
+
+Prepare the requested source-prior study code for the separate
+`codex/source-prior-fixed-evidence` branch. Add a plain-language explanation of
+the component's inputs/outputs, prior/posterior/injection, and worksheet mapping.
+An observer replays the same 708 readings into two fixed source-location
+assumptions and renders truth plus two estimated maps, with a shared scale and
+causal delivered-reading trace. Optional fresh-demo generation makes the visual
+example runnable without the ignored October evidence. No production inference
+or scan policy changes. Generated evidence/media and worksheet files stay local.
+
+27 targeted source/control/demo tests pass; compilation and whitespace checks
+pass. The 81-frame H.264 video decodes at 4 fps (20.25 s playback for a 40 s
+simulation); its final fields match the frozen point-prior results within
+1.67e-16. Saved numerical frames, copied record, producer/config hashes and media
+hashes are verified. This illustrates a known single-fixture map difference, not
+a new scientific result, source-search method or closed-loop improvement.
+See [the explanation and reproduction instructions](docs/source-assumptions-demo.md).
+
+## 2026-10-28 — Conserved-input source-width and amount controls
+
+Run a paired shape-by-amount control: matched plus fixed-peak, fixed-total and
+amount-only conditions at four reference widths, each with a mean control and ten
+seeds (143 histories). Exactly reproduce 55 prior histories. Discrete injection
+normalization is accurate to 2.22e-16; independent subtraction verifies identical
+realized noise. At narrow widths, conserving amount largely removes excess
+location error; at wide widths, shape error persists and added amount partly
+counteracts it. Amount-only reduction can produce boundary-shift failures, with
+mean error .0597 at .5712 baseline input, opposite the old demo's x direction.
+Do not attribute a universal percentage of error to either factor.
+40 targeted tests pass. Source-mean/radius-mass refinement passes for all histories;
+4 histories (6 prior-specific HPD verdicts) remain unresolved at the HPD boundary.
+Configuration, all truth/evidence, posterior arrays, paired contrasts, code/logs
+and hashes are saved locally. Production inference is unchanged; no slides or
+remote push. See the [review](docs/reviews/conserved-source-width-v1.md).
+
+## 2026-10-28 — One-factor source-location mismatch controls
+
+Execute 13 conditions (matched plus wind-speed, source-width and half-life
+multipliers .5/.75/1.25/1.5), each with a mean control and ten paired seeds:
+143 fixed-path histories. No tested single perturbation reproduces the original
+~.063 FOV displacement; all stochastic distribution-prior source errors stay below
+.05. Width .5x has the largest broad-prior average distance (.0260), with substantial
+noise sensitivity; half-life .5x has a deterministic displacement in a different
+x direction. Coverage often deteriorates. Width-at-fixed-peak changes injected
+signal amount, so it is not a conserved-emission geometry-only test.
+31 targeted tests pass; prior matched evidence/truth reproduce exactly. All final
+source-mean/radius-mass refinements pass, but 2 histories (3 prior verdicts) have
+unresolved 95% HPD membership after 513-grid refinement. Preserve failures and
+report coverage bounds; do not claim global refinement or calibrated uncertainty.
+See the [review](docs/reviews/one-factor-source-mismatch-v1.md). Save configurations,
+truth/evidence, exact likelihoods, posteriors, paired summaries, code/logs/figures
+and hashes locally; production policies unchanged, no slides or remote pushes.
+
+## 2026-10-28 — Model-consistent fixed-path source-prior control
+
+Add an evaluator-only unconditioned Gaussian field generator and run one mean
+control plus ten frozen stochastic seeds on the existing 708-observation path.
+Use the same five priors and preserve acquisition/delivery separation. The large
+original source displacement drops from about .063 FOV to .0025–.0037 in the mean
+control and .0067–.0082 on average with matched noise. Residual directional
+posterior-mean bias remains; calibration and general localization are not proven.
+27 targeted tests pass. Preserve failed 65/129 source refinement; exact affine
+likelihood refinement to 257 passes all frozen summary checks and agrees with
+direct filtering. Saved configs, generated evidence/truth, traces, source arrays,
+code, logs and hashes remain local. See the
+[control review](docs/reviews/model-consistent-source-priors-v1.md). Production
+models/policies and historical evidence are unchanged; no slides or remote push.
+
+## 2026-10-28 — Local fixed-evidence source-location prior comparison
+
+On `codex/source-prior-fixed-evidence`, add an opt-in conditional-Gaussian source
+mixture and an evaluator-side runner. Compare broad, accurate/biased regional,
+and accurate/biased point priors using the same 708 readings from the 40 s demo.
+The original runtime and policies are unchanged. Accurate-point belief and J
+reproduce the original; 21 targeted tests pass. Source-grid refinement fails for
+33 to 65, then passes for 65 to 129 (J changes below .10%). Accurate region reduces
+J by 2.74% versus the original on this single history; a biased point increases it
+51.77%. Distribution posteriors nevertheless concentrate away from the generator
+source. Coverage, source-input discretization and known-source path-selection
+limitations remain explicit. No general superiority, source recovery or closed-loop
+claim is established. See the [study review](docs/reviews/source-prior-fixed-evidence-v1.md).
+Configurations, copied evidence, code snapshots, logs, arrays, figures and hashes
+are saved locally; no slides, commits or remote pushes are made.
+
 ## 2026-09-29 — Submit the reviewed scanner with a usable quickstart
 
 From `1bdf3c6` on `codex/company-submission`, prepare the reviewed package for

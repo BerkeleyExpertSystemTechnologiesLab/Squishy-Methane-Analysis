@@ -1,0 +1,92 @@
+{
+  "experiment_id": "model_consistent_fixed_path_source_priors_v1",
+  "record": "outputs/2026-10-28-baseline-01/runs/demo.json",
+  "record_sha256": "9545e6c6f9495f082ca845eafecf2d5cdef82ff19160d6eb2f8481aff9cedf10",
+  "candidate_grid_orders": [
+    65,
+    129
+  ],
+  "accurate_center_yx": [
+    0.547945205479452,
+    0.15047021943573669
+  ],
+  "biased_center_yx": [
+    0.447945205479452,
+    0.3304702194357367
+  ],
+  "region_std_yx": [
+    0.06,
+    0.06
+  ],
+  "prior_definitions": "broad: uniform over FOV cell-center quadrature; regions: Gaussian density truncated only at FOV boundary, not hard-box support; points: delta at respective center",
+  "prior_availability_seconds": 0.0,
+  "accurate_prior_provenance": "Oracle-informed experimental condition; not a source detector output",
+  "source_input_convention": "Original point-sampled Gaussian injection unchanged; no renormalization across source locations. Report discrete integral variation.",
+  "snapshot_shape": [
+    20,
+    32
+  ],
+  "generator": "MatchedFieldGenerator: original discrete F, source injection, P0, Q, H, R; no positivity clipping",
+  "controls": [
+    {
+      "label": "matched_mean",
+      "seed": null
+    },
+    {
+      "label": "matched_seed_20261028",
+      "seed": 20261028
+    },
+    {
+      "label": "matched_seed_20261029",
+      "seed": 20261029
+    },
+    {
+      "label": "matched_seed_20261030",
+      "seed": 20261030
+    },
+    {
+      "label": "matched_seed_20261031",
+      "seed": 20261031
+    },
+    {
+      "label": "matched_seed_20261032",
+      "seed": 20261032
+    },
+    {
+      "label": "matched_seed_20261033",
+      "seed": 20261033
+    },
+    {
+      "label": "matched_seed_20261034",
+      "seed": 20261034
+    },
+    {
+      "label": "matched_seed_20261035",
+      "seed": 20261035
+    },
+    {
+      "label": "matched_seed_20261036",
+      "seed": 20261036
+    },
+    {
+      "label": "matched_seed_20261037",
+      "seed": 20261037
+    }
+  ],
+  "hold_fixed": [
+    "source position/rate/width",
+    "latent grid",
+    "wind",
+    "decay",
+    "all 708 observation positions, footprints and timestamps",
+    "original event/substep boundaries",
+    "five prior definitions"
+  ],
+  "inference_noise": "Unchanged in both controls. Mean control has zero realized initial/process/measurement perturbations; stochastic controls sample full P0,Q,R.",
+  "source_refinement": {
+    "mean_shift_fov_tolerance": 0.002,
+    "mass_radius_005_absolute_tolerance": 0.02
+  },
+  "metrics": "Primary: source mean error, directional displacement, mass within .05, 95% HPD membership. Secondary: prequential scores, post-reading latent MSE, final field coverage. Event-averaged MSE is not J/T.",
+  "scope": "Same path held fixed from historical known-source policy, no replan. One source/geometry, ten preregistered seeds; not a general calibration or physical realism claim."
+}

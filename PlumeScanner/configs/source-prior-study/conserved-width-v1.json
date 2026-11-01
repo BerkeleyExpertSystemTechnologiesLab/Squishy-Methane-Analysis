@@ -1,0 +1,173 @@
+{
+  "experiment_id": "conserved_discrete_source_width_v1",
+  "record": "outputs/2026-10-28-baseline-01/runs/demo.json",
+  "record_sha256": "9545e6c6f9495f082ca845eafecf2d5cdef82ff19160d6eb2f8481aff9cedf10",
+  "candidate_grid_orders": [
+    257,
+    513
+  ],
+  "accurate_center_yx": [
+    0.547945205479452,
+    0.15047021943573669
+  ],
+  "biased_center_yx": [
+    0.447945205479452,
+    0.3304702194357367
+  ],
+  "region_std_yx": [
+    0.06,
+    0.06
+  ],
+  "prior_definitions": "broad: uniform over FOV cell-center quadrature; regions: Gaussian density truncated only at FOV boundary, not hard-box support; points: delta at respective center",
+  "prior_availability_seconds": 0.0,
+  "accurate_prior_provenance": "Oracle-informed experimental condition; not a source detector output",
+  "source_input_convention": "Truth-only normalization of actual discrete spatial source-input mean on 12x16 grid. All inference source hypotheses preserve original peak convention.",
+  "snapshot_shape": [
+    20,
+    32
+  ],
+  "generator": "MatchedFieldGenerator: original discrete F, source injection, P0, Q, H, R; no positivity clipping",
+  "controls": [
+    {
+      "label": "matched_mean",
+      "seed": null
+    },
+    {
+      "label": "matched_seed_20261028",
+      "seed": 20261028
+    },
+    {
+      "label": "matched_seed_20261029",
+      "seed": 20261029
+    },
+    {
+      "label": "matched_seed_20261030",
+      "seed": 20261030
+    },
+    {
+      "label": "matched_seed_20261031",
+      "seed": 20261031
+    },
+    {
+      "label": "matched_seed_20261032",
+      "seed": 20261032
+    },
+    {
+      "label": "matched_seed_20261033",
+      "seed": 20261033
+    },
+    {
+      "label": "matched_seed_20261034",
+      "seed": 20261034
+    },
+    {
+      "label": "matched_seed_20261035",
+      "seed": 20261035
+    },
+    {
+      "label": "matched_seed_20261036",
+      "seed": 20261036
+    },
+    {
+      "label": "matched_seed_20261037",
+      "seed": 20261037
+    }
+  ],
+  "hold_fixed": [
+    "inference model and wind",
+    "true source position",
+    "path, footprint, timestamps",
+    "initial/process/measurement standard normal draws",
+    "decay, diffusion and all parameters except truth source_sigma/source_rate",
+    "five priors"
+  ],
+  "inference_noise": "Unchanged in both controls. Mean control has zero realized initial/process/measurement perturbations; stochastic controls sample full P0,Q,R.",
+  "source_refinement": {
+    "mean_shift_fov_tolerance": 0.002,
+    "mass_radius_005_absolute_tolerance": 0.02
+  },
+  "metrics": "Same source and final field diagnostics. Per-width paired 2x2 contrasts: shape-only, amount-only and joint vs matched; interaction = joint - shape - amount + baseline. Both distance and squared distance; no percentage causal attribution.",
+  "scope": "Fixed discrete grid and one source/path; matched plus three arms at four widths, each mean/noise control. Conserves injected source term, not evolving plume mass or physical methane emission.",
+  "scenarios": [
+    {
+      "label": "matched",
+      "factor": "matched",
+      "multiplier": 1.0
+    },
+    {
+      "label": "fixed_peak_0p5",
+      "factor": "fixed_peak",
+      "multiplier": 0.5
+    },
+    {
+      "label": "fixed_peak_0p75",
+      "factor": "fixed_peak",
+      "multiplier": 0.75
+    },
+    {
+      "label": "fixed_peak_1p25",
+      "factor": "fixed_peak",
+      "multiplier": 1.25
+    },
+    {
+      "label": "fixed_peak_1p5",
+      "factor": "fixed_peak",
+      "multiplier": 1.5
+    },
+    {
+      "label": "fixed_total_0p5",
+      "factor": "fixed_total",
+      "multiplier": 0.5
+    },
+    {
+      "label": "fixed_total_0p75",
+      "factor": "fixed_total",
+      "multiplier": 0.75
+    },
+    {
+      "label": "fixed_total_1p25",
+      "factor": "fixed_total",
+      "multiplier": 1.25
+    },
+    {
+      "label": "fixed_total_1p5",
+      "factor": "fixed_total",
+      "multiplier": 1.5
+    },
+    {
+      "label": "amount_only_0p5",
+      "factor": "amount_only",
+      "multiplier": 0.5
+    },
+    {
+      "label": "amount_only_0p75",
+      "factor": "amount_only",
+      "multiplier": 0.75
+    },
+    {
+      "label": "amount_only_1p25",
+      "factor": "amount_only",
+      "multiplier": 1.25
+    },
+    {
+      "label": "amount_only_1p5",
+      "factor": "amount_only",
+      "multiplier": 1.5
+    }
+  ],
+  "previous_matched_output": "outputs/2026-10-28-model-consistent-02",
+  "previous_source_output": "outputs/2026-10-28-model-consistent-refinement-01",
+  "factor_meaning": {
+    "fixed_peak": "Width changes at original peak rate: joint shape and integrated-amount change (old experiment).",
+    "fixed_total": "Width changes; peak rate divided by fixed-peak discrete input ratio, retaining baseline integrated input.",
+    "amount_only": "Baseline width; peak rate multiplied by fixed-peak discrete input ratio, matching old changed input."
+  },
+  "refinement_orders_if_needed": [],
+  "previous_mismatch_output": "outputs/2026-10-28-one-factor-mismatch-01",
+  "normalization_tolerance": 5e-14,
+  "summary_criteria": {
+    "large_error_fov": 0.05,
+    "original_like_x_shift_fov": 0.05,
+    "original_like_abs_y_shift_max": 0.02
+  }
+}

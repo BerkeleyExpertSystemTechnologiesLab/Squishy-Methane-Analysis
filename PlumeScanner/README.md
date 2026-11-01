@@ -80,7 +80,13 @@ Under `outputs/quickstart/inspection/demo/`, `physical.mp4` follows physical tim
 and `summary.mp4` shows one frame per completed scan. Playback never changes
 acquisition or inference. Open these in a video player; headless OpenCV has no GUI.
 
+For the source-assumption study and a simpler side-by-side visual demonstration,
+see [Source assumptions: explanation and demo](docs/source-assumptions-demo.md).
+It compares estimated maps from identical readings with correct and incorrect
+fixed source hints, and explains prior, posterior and injection in plain language.
+
 ## Controller API
+
 
 The three operations are `plan_next`, `ingest_readings` and `finish_scan`. An active
 path stays fixed until its receipt closes the scan. Evidence uses actual acquisition

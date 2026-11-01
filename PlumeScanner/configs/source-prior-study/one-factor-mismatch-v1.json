@@ -1,0 +1,172 @@
+{
+  "experiment_id": "one_factor_source_mismatch_v1",
+  "record": "outputs/2026-10-28-baseline-01/runs/demo.json",
+  "record_sha256": "9545e6c6f9495f082ca845eafecf2d5cdef82ff19160d6eb2f8481aff9cedf10",
+  "candidate_grid_orders": [
+    129,
+    257
+  ],
+  "accurate_center_yx": [
+    0.547945205479452,
+    0.15047021943573669
+  ],
+  "biased_center_yx": [
+    0.447945205479452,
+    0.3304702194357367
+  ],
+  "region_std_yx": [
+    0.06,
+    0.06
+  ],
+  "prior_definitions": "broad: uniform over FOV cell-center quadrature; regions: Gaussian density truncated only at FOV boundary, not hard-box support; points: delta at respective center",
+  "prior_availability_seconds": 0.0,
+  "accurate_prior_provenance": "Oracle-informed experimental condition; not a source detector output",
+  "source_input_convention": "Original point-sampled Gaussian injection unchanged; no renormalization across source locations. Report discrete integral variation.",
+  "snapshot_shape": [
+    20,
+    32
+  ],
+  "generator": "MatchedFieldGenerator: original discrete F, source injection, P0, Q, H, R; no positivity clipping",
+  "controls": [
+    {
+      "label": "matched_mean",
+      "seed": null
+    },
+    {
+      "label": "matched_seed_20261028",
+      "seed": 20261028
+    },
+    {
+      "label": "matched_seed_20261029",
+      "seed": 20261029
+    },
+    {
+      "label": "matched_seed_20261030",
+      "seed": 20261030
+    },
+    {
+      "label": "matched_seed_20261031",
+      "seed": 20261031
+    },
+    {
+      "label": "matched_seed_20261032",
+      "seed": 20261032
+    },
+    {
+      "label": "matched_seed_20261033",
+      "seed": 20261033
+    },
+    {
+      "label": "matched_seed_20261034",
+      "seed": 20261034
+    },
+    {
+      "label": "matched_seed_20261035",
+      "seed": 20261035
+    },
+    {
+      "label": "matched_seed_20261036",
+      "seed": 20261036
+    },
+    {
+      "label": "matched_seed_20261037",
+      "seed": 20261037
+    }
+  ],
+  "hold_fixed": [
+    "inference model and wind",
+    "source position and peak rate",
+    "path, footprint and all reading timestamps",
+    "initial/process/measurement underlying standard normal draws, checked at every event",
+    "five priors"
+  ],
+  "inference_noise": "Unchanged in both controls. Mean control has zero realized initial/process/measurement perturbations; stochastic controls sample full P0,Q,R.",
+  "source_refinement": {
+    "mean_shift_fov_tolerance": 0.002,
+    "mass_radius_005_absolute_tolerance": 0.02
+  },
+  "metrics": "Final source posterior mean/error/direction, paired changes vs matched seed, mass within .05, 95% HPD membership and final latent field MSE. No J/T or online policy comparison.",
+  "scope": "One source and fixed historically source-informed path. Four declared magnitudes per factor. Test sensitivity, not identify historical simulator cause; width changes integrated injection.",
+  "scenarios": [
+    {
+      "label": "matched",
+      "factor": "matched",
+      "multiplier": 1.0
+    },
+    {
+      "label": "wind_speed_0p5",
+      "factor": "wind_speed",
+      "multiplier": 0.5
+    },
+    {
+      "label": "wind_speed_0p75",
+      "factor": "wind_speed",
+      "multiplier": 0.75
+    },
+    {
+      "label": "wind_speed_1p25",
+      "factor": "wind_speed",
+      "multiplier": 1.25
+    },
+    {
+      "label": "wind_speed_1p5",
+      "factor": "wind_speed",
+      "multiplier": 1.5
+    },
+    {
+      "label": "source_width_0p5",
+      "factor": "source_width",
+      "multiplier": 0.5
+    },
+    {
+      "label": "source_width_0p75",
+      "factor": "source_width",
+      "multiplier": 0.75
+    },
+    {
+      "label": "source_width_1p25",
+      "factor": "source_width",
+      "multiplier": 1.25
+    },
+    {
+      "label": "source_width_1p5",
+      "factor": "source_width",
+      "multiplier": 1.5
+    },
+    {
+      "label": "half_life_0p5",
+      "factor": "half_life",
+      "multiplier": 0.5
+    },
+    {
+      "label": "half_life_0p75",
+      "factor": "half_life",
+      "multiplier": 0.75
+    },
+    {
+      "label": "half_life_1p25",
+      "factor": "half_life",
+      "multiplier": 1.25
+    },
+    {
+      "label": "half_life_1p5",
+      "factor": "half_life",
+      "multiplier": 1.5
+    }
+  ],
+  "previous_matched_output": "outputs/2026-10-28-model-consistent-02",
+  "previous_source_output": "outputs/2026-10-28-model-consistent-refinement-01",
+  "factor_meaning": {
+    "wind_speed": "Multiply truth velocity vector, preserve direction. Inference wind unchanged.",
+    "source_width": "Multiply truth source_sigma, preserve peak source_rate. Integrated injection changes; no mass normalization.",
+    "half_life": "Multiply truth half-life (baseline 6s); decay scales both deterministic persistence and process covariance per original model."
+  },
+  "summary_criteria": {
+    "large_error_fov": 0.05,
+    "original_like_x_shift_fov": 0.05,
+    "original_like_abs_y_shift_max": 0.02
+  },
+  "refinement_orders_if_needed": [
+    513
+  ]
+}
