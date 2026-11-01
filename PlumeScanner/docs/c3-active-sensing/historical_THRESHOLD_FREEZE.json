@@ -1,0 +1,7 @@
+{
+  "threshold": 5.827837837830141,
+  "rule": "max(log20,calibration allarms/allactualfutureprefix maximum+1e-9)",
+  "before_test": true,
+  "n_negative_bases": 24,
+  "note": "empirical calibration, not false-alarm guarantee"
+}

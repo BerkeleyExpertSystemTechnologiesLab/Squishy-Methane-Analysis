@@ -1,0 +1,48 @@
+{
+  "c2_release_parent": "3c93923493cc592eb5023268e78b21323f2fef0b",
+  "historical_model_files": [
+    {
+      "file": "src/plume_focus/active_rescan.py",
+      "sha256": "46400f4aa8b0a9f3ae11c52bbff6d15a3dec006eff6fabc0b743ebeb08d084e5",
+      "origin": "c93af1a56ef182ac01d5982885319d83a6b0dd67",
+      "sha256_lf_normalized": "79e672c577150df01f88ef03de93ce78aac8a7a022cc9dd2c58c87fdf2560cc8"
+    },
+    {
+      "file": "src/plume_focus/active_rescan_study.py",
+      "sha256": "0afc19d76fd89e452f4a73e7194ca2a59755d694717e7af2149d64293bf84b4a",
+      "origin": "c93af1a56ef182ac01d5982885319d83a6b0dd67",
+      "sha256_lf_normalized": "cba5c7655677a58cef7ca0facab080258703cdf622c7263f33d7a195202398a3"
+    },
+    {
+      "file": "src/plume_focus/bayes_two_stage.py",
+      "sha256": "dd50fbb44e38914b479507bb2847c3931e2b9894325cdce6519e9605d213b333",
+      "origin": "c93af1a56ef182ac01d5982885319d83a6b0dd67",
+      "sha256_lf_normalized": "dd50fbb44e38914b479507bb2847c3931e2b9894325cdce6519e9605d213b333"
+    },
+    {
+      "file": "tests/test_bayes_two_stage.py",
+      "sha256": "774b9510388254b34db0e521cd846f4c310a964de383e97d11e07e5d5f700af3",
+      "origin": "c93af1a56ef182ac01d5982885319d83a6b0dd67",
+      "sha256_lf_normalized": "774b9510388254b34db0e521cd846f4c310a964de383e97d11e07e5d5f700af3"
+    },
+    {
+      "file": "configs/active-rescan/protocol.json",
+      "sha256": "d42258278780be58d4f118eac3af548eacf1e4d826cc6df8c49ea0e0e22cb1a8",
+      "origin": "c93af1a56ef182ac01d5982885319d83a6b0dd67",
+      "sha256_lf_normalized": "d42258278780be58d4f118eac3af548eacf1e4d826cc6df8c49ea0e0e22cb1a8"
+    },
+    {
+      "file": "configs/bayes-two-stage/protocol.json",
+      "sha256": "8cfc187690f04f513cee489698858f8a05cf52f1978d552969dc2e95be19c8b7",
+      "origin": "c93af1a56ef182ac01d5982885319d83a6b0dd67",
+      "sha256_lf_normalized": "b3277d30d1fb89a3c3da2c0790226bccd78a28b94dc6696c5514c3de43995c52"
+    },
+    {
+      "file": "configs/active-rescan/locked_threshold.json",
+      "sha256": "bd68f7b3ee75ab92b5b1d5a412fb8be81c98ac37e475d8e7024db036de060d5a",
+      "origin": "c93af1a56ef182ac01d5982885319d83a6b0dd67",
+      "sha256_lf_normalized": "12e43d52e0e517bbe14c740c62f7f461001e854ff29f53ce4d56091364117806"
+    }
+  ],
+  "scope": "Source reuse, not a new performance replication."
+}

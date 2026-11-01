@@ -1,0 +1,50 @@
+{
+  "scope": "software acceptance, not a new scientific performance study",
+  "python": "3.13.5",
+  "platform": "Windows",
+  "acceptance_passed": 157,
+  "acceptance_failed": 0,
+  "new_interface_tests": 13,
+  "frozen_bayes_tests": 7,
+  "whole_inherited_suite_rerun": false,
+  "known_inherited_full_suite_issue": "test_recorded_qualification.py undefined report",
+  "original_scanner_quickstart": {
+    "full": 1,
+    "focus": 2,
+    "termination": "incomplete_full_scan_budget",
+    "public_replay": "passed",
+    "synthetic_J_over_T": 0.016568662718721257
+  },
+  "compileall": "passed",
+  "fixed_cli_fixture": {
+    "name": "fixed_north_74100",
+    "new_scientific_sample_count": 0,
+    "completed_actions": 2,
+    "stages": [
+      {
+        "stage": 1,
+        "started_at": 11.463333333333336,
+        "receipt_at": 13.385000000000003,
+        "n_readings": 3,
+        "charged_fee": 0.25
+      },
+      {
+        "stage": 2,
+        "started_at": 13.635000000000003,
+        "receipt_at": 14.390000000000004,
+        "n_readings": 3,
+        "charged_fee": 0.25
+      }
+    ],
+    "historical_posterior_already_concentrated": true
+  },
+  "receiver_acceptance": "pending",
+  "hardware_validation": "pending",
+  "new_interface_performance": "not evaluated",
+  "default_adoption": false,
+  "source_module_sha256": "31c750ea2cfd0d8192bb118bfb9bb46b9e28973ef15412cf00449c0524e653ba",
+  "environment_repairs": [
+    "missing cv2 in global environment; use isolated editable install",
+    "default pytest temp error; workspace-local basetemp passed"
+  ]
+}

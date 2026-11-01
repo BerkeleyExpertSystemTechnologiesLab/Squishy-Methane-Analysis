@@ -1,0 +1,7 @@
+{
+  "threshold": 4.04375784522529,
+  "protocol_sha256": "d42258278780be58d4f118eac3af548eacf1e4d826cc6df8c49ea0e0e22cb1a8",
+  "calibration_max_log_bf": 4.04375784422529,
+  "calibration_bases": 32,
+  "rule": "max(log(20), maximum_over_all_calibration_arms_and_prefixes + 1e-9)"
+}

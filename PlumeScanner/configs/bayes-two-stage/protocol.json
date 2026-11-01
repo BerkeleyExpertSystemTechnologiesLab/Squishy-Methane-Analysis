@@ -1,0 +1,169 @@
+{
+  "version": "finite_source_onset_two_stage_v1",
+  "config": {
+    "version": "finite_source_onset_two_stage_v1",
+    "scientific_baseline": "5cac633f47001d3aa455f8b6f3cc00b11c550ed3",
+    "release_baseline": "5cac633f47001d3aa455f8b6f3cc00b11c550ed3",
+    "reference_branch_sha": "1043f5856d795e4b36e4e9bc41da401b348b05a3",
+    "c2_source_sha": "3c93923493cc592eb5023268e78b21323f2fef0b",
+    "base_config": "configs/evidence-gated-focus/coarse-demo.json",
+    "lattice_shape": [
+      8,
+      12
+    ],
+    "model_shape": [
+      4,
+      6
+    ],
+    "old_source_yx": [
+      0.5,
+      0.15
+    ],
+    "old_strengths": [
+      0.0,
+      0.6,
+      1.0,
+      1.4,
+      1.8
+    ],
+    "wind_biases": [
+      -0.12,
+      0.0,
+      0.12
+    ],
+    "new_strengths": [
+      0.3,
+      0.6,
+      1.2
+    ],
+    "source_upwind_offset": 0.1,
+    "candidate_y_offsets": [
+      -0.1,
+      0.0,
+      0.1
+    ],
+    "nuisance_bounds": [
+      [
+        -1.0,
+        -0.12
+      ],
+      [
+        1.0,
+        0.12
+      ]
+    ],
+    "noise_std": 0.06,
+    "common_bias_std": 0.025,
+    "wind_bias_covariance_multiplier": 2.0,
+    "delivery_delay_seconds": 0.08,
+    "cadence_hz": 10.0,
+    "integration_seconds": 0.025,
+    "trigger_residual": 0.18,
+    "hotspot_exclusion_radius": 0.17,
+    "event_seconds": 2.5,
+    "action_budget_seconds": 12.0,
+    "common_window_seconds": 16.0,
+    "coverage_deadline_after_t0_seconds": 20.0,
+    "evaluation_step_seconds": 0.25,
+    "evaluation_shape": [
+      16,
+      24
+    ],
+    "threshold_rule": "max(log(20), maximum_over_all_calibration_arms_and_prefixes + 1e-9)",
+    "display_rule": "test_03: first scheduled second-north base; never replace with a successful case",
+    "splits": {
+      "dev": [
+        771000,
+        12
+      ],
+      "calibration": [
+        782000,
+        24
+      ],
+      "test": [
+        793000,
+        24
+      ]
+    },
+    "arm_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "route_order": [
+      "suspect_reference",
+      "reference_suspect",
+      "suspect_only",
+      "crosscut"
+    ],
+    "limits": {
+      "science_wall_seconds": 1200,
+      "workers": 1,
+      "paid_services": false
+    },
+    "success_criteria": "deliver auditable paired toy simulation, keep all cases, no required performance advantage",
+    "source_grid_y": [
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "source_grid_x": [
+      0.25,
+      0.45,
+      0.65
+    ],
+    "onset_grid_count": 7,
+    "forecast_draws": 4
+  },
+  "frozen_before_new_worlds": true,
+  "created_utc": "2026-11-01T21:58:01.405732+00:00",
+  "parent": "3a3ebe96f891dc785fa9290f84201dd58ce9a851",
+  "previous_failed_selector": "a5d86641eac104663d69ba6d16955c7f01d464cf untouched; not resumed",
+  "model": "finite conditional H0/H1 common-offset Bayes; exact moving Simpson exposure; global12source grid x7 onset grid over0..t0; amplitude/oldstrength/wind nuisance. Full history conditioning normalizes withinH then future evidence starts0 with equal H odds as v1. No source/world seed or future truth in selector.",
+  "truth": "same declared toy additive kernel/nuisance families; only onset now independently drawn U1.5..4.5 using separate seed+900000; no new source begins after t0; same actual-world stream perbase acrossarms",
+  "arms": {
+    "F": "fixed suspect then old-source-row reference, two actual receipts",
+    "O": "best committed pair under same bounded scenario tree",
+    "M": "adaptive A first action, best second committed at originalt0: matched-first ablation",
+    "A": "two-step scenario lookahead: mean of branchwise best seconds; after actualfirstreceipt recompute second using realnewdata"
+  },
+  "fairness": "same global estimator/trigger/prior/profile; same heavy first fee O/M/A; same secondfee all; A/M firstgeometry/time/observations exactly equal; allfees consume original12s, common absolute16s endpoint; no active-scan reroute; unchanged originalcontroller lifecycle, own standalone adapter",
+  "fee": "old frozen test03 prefix only, warmup1/formal2; ceil1.25max/.01; include condition/compile/audit/branchlookahead or secondselect. Prototype, not latencybound; artifact IO excluded",
+  "endpoints": "primary independenttest correct/false confirmations and restricted positive mean delay incl allnotconfirmed16s; secondary exact event-time integrated causal bank-map MSE on16x24 plushotspot/cost; information entropy score is only surrogate",
+  "sampling": "allworlds/newseeds predetermined; independent bases, no noise repetitions or candidate-as-sample inflation; preserve no_trigger/no_legal_t0/infeasible/softwareerror; index16mod17 budget.01/index18mod19 legalfalse fixed exogenous edges",
+  "calibration": "24new H0 bases; one common threshold max(log20,maximum actualfutureprefixBF allarms+1e-9), locked before24test; not riskcertificate",
+  "adequacy": "12dev: local3source/trigger-onset andglobal12source/7onset predict exactlysame Fnewobservations, same exact exposurelikelihood; report prequential NLL, no retuning. Technical checks block science if fail; model/quality failure retained, not automatic researchexpansion.",
+  "acceptance": "no required positive result. Candidate adoption signal: A no extra raw false/test vsF, no lost corrects, and >=.1s lower restricted delay OR extra correct without slowerdelay; Mcontrast isolates feedback; pairedbootstrap basewhole3negative/3positive strata sixkinds; empirical only, not deploymentpass",
+  "bootstrap": {
+    "repeats": 2000,
+    "seed": 8045001,
+    "unit": "independent base within sixdeclared kinds; allarms resampled together"
+  },
+  "controls": {
+    "spatial_cases": [
+      "test_00",
+      "test_03"
+    ],
+    "coarse": [
+      16,
+      24
+    ],
+    "fine": [
+      32,
+      48
+    ],
+    "scope": "spatial pairedMSE sensitivity only, no uniformbound; time integral exact for declared steady aftert0 model"
+  },
+  "limits": {
+    "scientific_wall_seconds": 1200,
+    "workers": 1,
+    "max_base_count": 60,
+    "max_primary_action_count": 480,
+    "forecast_draws": 4,
+    "component_count": 3795,
+    "optional_expansion": false,
+    "paid_services": false
+  },
+  "stop": "one frozen attempt; terminateonlyownedchild on1200s; retain missing byfixed order, no retry for gain/no newthreshold/world/candidate/learning. Complete thenstop; no push/shared/default/hardware/C3"
+}

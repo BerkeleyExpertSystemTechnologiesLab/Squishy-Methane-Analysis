@@ -1,0 +1,149 @@
+{
+  "summary": {
+    "F": {
+      "total": 24,
+      "positive": 12,
+      "negative": 12,
+      "correct": 7,
+      "false": 0,
+      "restricted_mean_delay": 7.911736111111111,
+      "mse_field": 0.006435110493490415,
+      "mse_hotspot": 0.00463356599748716,
+      "planning_fee": 0.20541666666666666,
+      "physical_seconds": 2.19513888888889,
+      "statuses": {
+        "confirmed": 7,
+        "no_feasible_route": 1,
+        "no_trigger": 4,
+        "unresolved": 12
+      }
+    },
+    "O": {
+      "total": 24,
+      "positive": 12,
+      "negative": 12,
+      "correct": 6,
+      "false": 0,
+      "restricted_mean_delay": 10.223472222222222,
+      "mse_field": 0.006907983550100932,
+      "mse_hotspot": 0.0060714210571427086,
+      "planning_fee": 2.0220833333333332,
+      "physical_seconds": 2.159375000000001,
+      "statuses": {
+        "confirmed": 6,
+        "no_feasible_route": 1,
+        "no_trigger": 4,
+        "unresolved": 13
+      }
+    },
+    "M": {
+      "total": 24,
+      "positive": 12,
+      "negative": 12,
+      "correct": 7,
+      "false": 0,
+      "restricted_mean_delay": 9.067430555555555,
+      "mse_field": 0.006762678207286083,
+      "mse_hotspot": 0.0052204663854498595,
+      "planning_fee": 2.0220833333333332,
+      "physical_seconds": 2.09513888888889,
+      "statuses": {
+        "confirmed": 7,
+        "no_feasible_route": 1,
+        "no_trigger": 4,
+        "unresolved": 12
+      }
+    },
+    "A": {
+      "total": 24,
+      "positive": 12,
+      "negative": 12,
+      "correct": 7,
+      "false": 0,
+      "restricted_mean_delay": 9.067430555555555,
+      "mse_field": 0.006570932233028269,
+      "mse_hotspot": 0.004930270554307525,
+      "planning_fee": 2.0220833333333332,
+      "physical_seconds": 2.1135416666666678,
+      "statuses": {
+        "confirmed": 7,
+        "no_feasible_route": 1,
+        "no_trigger": 4,
+        "unresolved": 12
+      }
+    }
+  },
+  "paired": {
+    "A_minus_M_mse": {
+      "mean": -0.00019174597425781318,
+      "ci95": [
+        -0.0004961861692501735,
+        4.3492336742132364e-05
+      ],
+      "n": 24,
+      "scope": "wholebase sixkind stratified descriptive percentile; not riskguarantee"
+    },
+    "A_minus_F_mse": {
+      "mean": 0.0001358217395378548,
+      "ci95": [
+        -8.820084763799472e-05,
+        0.0003776163824073965
+      ],
+      "n": 24,
+      "scope": "wholebase sixkind stratified descriptive percentile; not riskguarantee"
+    },
+    "A_minus_M_delay": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 12,
+      "scope": "wholebase sixkind stratified descriptive percentile; not riskguarantee"
+    },
+    "A_minus_F_delay": {
+      "mean": 1.1556944444444446,
+      "ci95": [
+        -3.0432812500000006,
+        5.066751736111097
+      ],
+      "n": 12,
+      "scope": "wholebase sixkind stratified descriptive percentile; not riskguarantee"
+    }
+  },
+  "numeric": {
+    "A_minus_F": {
+      "max_paired_spatial_change": 8.571759115318101e-07,
+      "empirical_screen": 1.7143518230636201e-06,
+      "scope": "only two preselected controls; not uniform errorbound; time integration exact within steady model"
+    },
+    "A_minus_M": {
+      "max_paired_spatial_change": 5.387239215490225e-08,
+      "empirical_screen": 1.077447843098045e-07,
+      "scope": "only two preselected controls; not uniform errorbound; time integration exact within steady model"
+    }
+  },
+  "threshold": 5.827837837830141,
+  "feedback_second_changed": 14,
+  "test_executable": 19,
+  "gained_A_vs_F": [
+    "test_03",
+    "test_22"
+  ],
+  "lost_A_vs_F": [
+    "test_10",
+    "test_23"
+  ],
+  "adequacy": {
+    "n": 11,
+    "local_mean_nll": -0.4796005324744469,
+    "global_mean_nll": -0.35569455544458517
+  },
+  "verdict": "no_demonstrated_overall_gain; feedback_map_difference_unresolved",
+  "main_worlds": 60,
+  "main_logical_rows": 240,
+  "actual_actions": 360,
+  "future_readings": 1078,
+  "source_claim": "same declared additive toy kernel, no field/hardware proof; no comparison to old study metrics across changed budget/estimator/onset",
+  "costs": "prototype profilingtau; sameheavy firstM/A, same second all. Rejected case planning fees retained in accounted_work, lastreceipt elapsed0doesnotmeanfreeplanning. Actualacceptedreceipts allwithin12s; predeclared.01s casecannotpayfees and isrejected, not deadlinecertified."
+}

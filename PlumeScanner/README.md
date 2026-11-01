@@ -6,7 +6,18 @@ timestamped readings and a supplied wind estimate guide where to look next. The
 eventual goal is plume reconstruction and strength estimation. This is a research
 prototype with synthetic demonstrations.
 
-## This branch: opt-in scan-order example
+## This branch: opt-in C3 two-stage sensing
+
+`shulun/c3-active-sensing` adds a finite Bayesian scan-design prototype and a
+receipt-gated service interface on top of the published C2 example. Run
+`python scripts/run-c3-demo.py` after installing `.[dev]`; see the
+[C3 installation, results and limitations](docs/c3-active-sensing/README.md).
+The frozen study did not establish an overall advantage over a simple fixed
+rule. The new full-history interface has software checks and one fixed synthetic
+demo, not a new performance study. Native defaults and shared slides are unchanged.
+
+## Inherited C2 scan-order example
+
 
 `shulun/scan-order-study` adds Shulun's C2 P0-V fixed-support B versus L_up
 comparison to the team's scanner at baseline

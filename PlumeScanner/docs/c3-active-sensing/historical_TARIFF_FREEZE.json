@@ -1,0 +1,34 @@
+{
+  "fees": {
+    "F": 0.18,
+    "heavy": 2.36,
+    "second": 0.07
+  },
+  "measurements": [
+    {
+      "rep": 0,
+      "conditioning": 0.1270315000001574,
+      "fixed_compile": 0.0007498000049963593,
+      "first_lookahead": 2.0376613000116777,
+      "second_select": 0.045436899992637336
+    },
+    {
+      "rep": 1,
+      "conditioning": 0.12149700000009034,
+      "fixed_compile": 0.0005692999984603375,
+      "first_lookahead": 1.6820840000000317,
+      "second_select": 0.05195209999510553
+    },
+    {
+      "rep": 2,
+      "conditioning": 0.13686739999684505,
+      "fixed_compile": 0.0007953000022098422,
+      "first_lookahead": 1.743971000003512,
+      "second_select": 0.04618489999847952
+    }
+  ],
+  "warmup_rep": 0,
+  "source": "old frozen test03 history; no new quality evaluation",
+  "scope": "full conditioning/compile/audit and first tree; second worst declared select/compile; artifact IO excluded",
+  "note": "same heavy first fee for O/M/A, same second fee for allarms; declared prototype tariffs not hardware/allworld delay bounds"
+}
