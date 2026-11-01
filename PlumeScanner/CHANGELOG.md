@@ -13,6 +13,20 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
+## 2026-11-01 — Three-estimator paired information comparison
+
+Derive explicit candidate/fixed-default/true-amount paired contrasts from the
+frozen matched histories; no new inference or evidence is generated. Candidate
+checkpoint MSE is .66%/1.58% above true-amount MSE at low/high input, recovering
+98.62%/94.99% of the observed reduction from supplying true amount. Nominally,
+fixed and true-amount controls are identical and candidate error is .89% higher.
+The true-amount control is not a guaranteed per-realization lower bound. Clarify
+that the fixed-default uncertain-location control is not the original production
+baseline. All 103 source artifact hashes stay unchanged; pairing, method order,
+nominal equality and independent summaries are checked. Save paired differences,
+configuration, producer and comparison figure locally. See the
+[review](docs/reviews/three-estimator-comparison-v1.md). No remote upload.
+
 ## 2026-11-01 — Matched joint source location and amount inference
 
 Implement and execute a separate fixed-path comparison with explicit cell-integrated

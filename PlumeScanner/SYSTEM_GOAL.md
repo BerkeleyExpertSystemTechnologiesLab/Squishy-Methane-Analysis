@@ -20,6 +20,14 @@ agree to roundoff. Production inference/policy and original evidence are unchang
 This bounded comparison is complete. Independent geometries/paths, source-activity
 inference and the effect on subsequent scan decisions remain proposed, not active.
 
+The separate [three-estimator paired analysis](docs/reviews/three-estimator-comparison-v1.md)
+now explicitly measures the gap to knowing true amount: candidate mean checkpoint
+MSE is .66%/1.58% higher at low/high input, while nominally it is .89% higher.
+The fixed-default and true-amount nominal controls are identical. All frozen
+inputs are unchanged; no additional inference is run. This analysis is complete.
+The fixed-default uncertain-location control is not the entire historical runtime
+baseline, and oracle realized error is not a universal lower bound.
+
 ## Explicit source-input audit (2026-11-01)
 
 The [source-input audit](docs/reviews/source-input-audit-v1.md) is implemented and
