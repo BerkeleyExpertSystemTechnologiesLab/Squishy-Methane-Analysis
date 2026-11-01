@@ -52,26 +52,6 @@ cannot update: the field maps update, but this demo does not animate a source
 posterior learning its way from the wrong hint to the correct source. The maps
 show posterior/predictive means, not the complete uncertainty distribution.
 
-## Worksheet mapping
-
-| Worksheet question | Answer for this work |
-| --- | --- |
-| Section 1 Q1: overarching question | How can a sequential point sensor reconstruct a changing plume and choose useful next measurements? My work checks whether the reconstructed map is reliable enough to support those decisions. |
-| Section 1 Q2: sensor capabilities/limits | The existing software assumes sequential scalar readings with a footprint and acquisition/delivery times. Scans take time, so the map is not an instantaneous camera image. Physical sensitivity, units, calibration and actual mechanical timing still require instrument specifications. |
-| Section 1 Q3: system loop | Source/wind assumptions and previous readings predict a map; a new reading updates it; a policy chooses the next scan. This experiment holds the last step fixed to isolate inference. |
-| Section 2 Q1: component goal | Reconstruct the plume map and its uncertainty from timestamped readings, while accounting for potentially incorrect source information. |
-| Section 2 Q3: reusable work | Reuse the existing scanner, recorded evidence, physical path and Gaussian field model. Added source-location comparisons and controlled generators are opt-in research tools. See the file map below. |
-| Section 2 Q5: revised inputs/outputs | Inputs: readings, position, footprint, timing, wind and declared source information. Output: estimated signal map and uncertainty for the scanning component. Simulator truth is evaluation-only. |
-| Section 2 Q6: team interface | Source-information team supplies an estimated location/region and ideally uncertainty. Hardware/interface team supplies readings and execution metadata. We return field estimates to the scanning policy. Interface details remain to be agreed. |
-| Section 2 Q6a: independent start | Replay the existing synthetic history and use controlled correct/incorrect source hints as stand-ins. These are constructed inputs, not outputs from another team's detector. Missing-hint and delayed-data interfaces remain separate tests. |
-| Section 2 Q7: first test | Hold readings and path fixed; compare correct and incorrect fixed source hints. Inspect truth versus reconstructed maps and the saved time-integrated field error. If maps/errors were effectively unchanged, this would weaken the claim that source location matters in this fixture. |
-| Section 2 Q8: next steps | Agree what source information is available; test whether uncertainty or adjustable source amount reduces reconstruction error; check different source locations before closed-loop evaluation. |
-
-This is a presentation-focused mapping, not a completed worksheet. Section 1 Q4
-(foundational-paper workflow), Section 2 Q2 (the student's original proposal), and
-Section 2 Q4 (paper/dataset evidence) require their own referenced answers. Do not
-invent a retrospective initial proposal or infer physical specifications from
-the synthetic configuration.
 
 ## Run the visual demo
 
