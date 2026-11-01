@@ -78,7 +78,6 @@ only the plotting dependencies. Playback shows 40 simulation seconds in about
 20 seconds; it does not alter measurement timing.
 
 What to point at:
-
 1. Left: simulated truth, available only to the evaluator.
 2. Middle: the map inferred with a correct fixed source hint.
 3. Right: the map inferred with an offset fixed source hint.
@@ -89,32 +88,6 @@ filter evolve, injection at the assumed source and sparse sequential readings
 both influence the estimates. The correct-hint map is not perfect because other
 model discrepancies remain. The full scan takes about 33.6 seconds; the video
 must not be presented as an instant full-scene measurement.
-
-## Suggested three-page presentation
-
-**1. Problem and role**
-
-- We use sequential readings to estimate a changing methane map.
-- My question: can incorrect source information distort that map?
-- I am testing the estimation step before changing scanning decisions.
-
-**2. Explain the loop and show the demo**
-
-- Prior = what we expect before a reading.
-- Posterior = what we estimate after using the reading.
-- Injection = new simulated signal added near the assumed source.
-- Same readings; correct versus incorrect source hints; compare the maps.
-
-**3. Finding and next step**
-
-- The same sensor readings can produce different maps under different source assumptions.
-- In this saved example, the incorrect fixed hint increased time-averaged map
-  error by about 52%; this is one synthetic example, not a general performance claim.
-- Next: test how to use uncertain source information without trusting it too strongly.
-- Team question: what source information can we obtain, and how reliable is it?
-
-Put the detailed model-consistency and width/amount plots in backup. They explain
-follow-up diagnosis after the audience understands the map-reconstruction task.
 
 ## Evidence and code map
 
@@ -129,13 +102,3 @@ follow-up diagnosis after the audience understands the map-reconstruction task.
   [its review](reviews/one-factor-source-mismatch-v1.md).
 - Conserved-width controls: `scripts/conserved-width-source-control.py` and
   [its review](reviews/conserved-source-width-v1.md).
-- Presentation observer: `scripts/demo-source-assumptions.py`.
-
-The numerical findings are from the frozen October 28 local runs. Their archived
-configs refer to ignored local evidence and SHA-256 hashes; cloning the code does
-not download those artifacts. The visual demo above is self-contained. To rerun
-a research study with newly generated evidence, copy its config, replace the
-record path and SHA-256 with those of the new record, and record new provenance;
-do not edit the archived configs or silently describe a new record as the frozen
-one. Dependent refinements also need new parent-output paths. Code and protocols
-are versioned; generated videos, arrays and chat/worksheet documents stay local.
