@@ -1,0 +1,17 @@
+{
+  "schema": "scan_order_demo_v1",
+  "variant": "b00_L",
+  "base_config": "configs/evidence-gated-focus/coarse-demo.json",
+  "world_seed_start": 2136000,
+  "noise_seed_start": 4391000,
+  "action_budget_seconds": 8.0,
+  "evaluation_horizon_seconds": 12.0,
+  "evaluation_step_seconds": 0.1,
+  "evaluation_shape": [32, 48],
+  "simulated_noise_std": 0.0,
+  "planning_fee_seconds": {"B": 0.13, "M": 0.15, "L_up": 0.14, "R_up": 0.15},
+  "quadrature_reference_routes": ["B", "M", "L_up", "R_up"],
+  "fee_provenance": "P0-V frozen declared tariffs; not a hardware or runtime latency bound",
+  "original_experiment_baseline": "5cac633f47001d3aa455f8b6f3cc00b11c550ed3",
+  "local_source_commit": "f888fd4a4fcd56ac3638937dbf94443e8795ecae"
+}

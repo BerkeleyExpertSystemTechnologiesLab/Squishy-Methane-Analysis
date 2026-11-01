@@ -1,0 +1,56 @@
+{
+  "schema": "scan_order_release_provenance_v1",
+  "release_baseline": "5cac633f47001d3aa455f8b6f3cc00b11c550ed3",
+  "historical_experiment_baseline": "5cac633f47001d3aa455f8b6f3cc00b11c550ed3",
+  "local_source_commit": "f888fd4a4fcd56ac3638937dbf94443e8795ecae",
+  "source_role": "Exact original modules and two original test files; only the portable adapter, CLI and release tests/docs are new",
+  "historical_planning_tariff_seconds": {
+    "M": 0.15,
+    "B": 0.13,
+    "C": 0.15,
+    "F": 0.14
+  },
+  "raw_results_not_shipped": true,
+  "imported_files": [
+    {
+      "path": "src/plume_focus/c2_p0v.py",
+      "sha256_original_bytes": "8df952482cbd18a27bf7f5008a511388accfdc42d97ee2185b21faaf27d936f4",
+      "sha256_utf8_lf": "8df952482cbd18a27bf7f5008a511388accfdc42d97ee2185b21faaf27d936f4"
+    },
+    {
+      "path": "src/plume_focus/c2_p0.py",
+      "sha256_original_bytes": "2d37bb1a99490e8dc74042914bdde72d453e2e06fec0a0473784be2b364a7697",
+      "sha256_utf8_lf": "7c46c99ee8ed60a1c591cad29196eafc26a4807e747782b1ff78742aa6d2c4d9"
+    },
+    {
+      "path": "src/plume_focus/c2_r2_dynamic.py",
+      "sha256_original_bytes": "23fa17d7b25dadb47d374df2b597f8beb620f34f9b58d523cad5a2ceb1f32893",
+      "sha256_utf8_lf": "50582f1dac10d1a35f60a06c64f6a829093d27b274550973dd46fa2aed99c923"
+    },
+    {
+      "path": "src/plume_focus/c2_r2_mechanics.py",
+      "sha256_original_bytes": "7276e5f7dea59a529162d2600693c7bb4a4b73dd382b874e5b0a0b3d0a4904f7",
+      "sha256_utf8_lf": "8c6d20840599602a1c3285abfe38c4e74e1789d78744310421a37a2a55a23601"
+    },
+    {
+      "path": "src/plume_focus/ordered_column_scan.py",
+      "sha256_original_bytes": "6a280f4b4ab1baa53c9b53bc009e2d518496749c19dbced0f349c5de97111030",
+      "sha256_utf8_lf": "8874cb5892a58efe3ddd4456a92d8d78c704e028cbb5e200058a60ac4a9facff"
+    },
+    {
+      "path": "src/plume_focus/c2_scan_validation.py",
+      "sha256_original_bytes": "b7520249212eabc784440d812690101ac018ba648c187dbed6a292f09ce50c05",
+      "sha256_utf8_lf": "c5e815c668530b20749ba63b86c6bd2b5b30e0172a283ae24c86e911263746cc"
+    },
+    {
+      "path": "tests/test_c2_r2.py",
+      "sha256_original_bytes": "a993308a29c2cd5f7e906179b2f610990bf21e734a38b6eedca143d6a2dc79b5",
+      "sha256_utf8_lf": "0f299cedb7b936180fbd6b28aa69084f530209acd98dc09b1a51cda974a1f1ed"
+    },
+    {
+      "path": "tests/test_c2_ordered_column_scan.py",
+      "sha256_original_bytes": "23f9b517ba4debb151d570c23856bdb1f21727ca6cca898af2dd0cab569b14c9",
+      "sha256_utf8_lf": "e5ef5387fa9719d2b21f71d35efed14dea2ef4498866349a6e943acb6c88f802"
+    }
+  ]
+}

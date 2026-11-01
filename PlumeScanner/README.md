@@ -6,6 +6,48 @@ timestamped readings and a supplied wind estimate guide where to look next. The
 eventual goal is plume reconstruction and strength estimation. This is a research
 prototype with synthetic demonstrations.
 
+## This branch: opt-in scan-order example
+
+`shulun/scan-order-study` adds Shulun's C2 P0-V fixed-support B versus L_up
+comparison to the team's scanner at baseline
+`5cac633f47001d3aa455f8b6f3cc00b11c550ed3` (also the historical experiment
+baseline). The physical compiler, estimator, gate and default quickstart remain
+unchanged. The [experiment and installation guide](docs/scan-order-study.md)
+records the exact source provenance, frozen synthetic inputs and limitations.
+
+**Windows PowerShell quickstart** (Python 3.10+ installed as `python`):
+
+```powershell
+git clone --filter=blob:none --sparse --single-branch --branch shulun/scan-order-study https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis.git
+cd Squishy-Methane-Analysis
+git sparse-checkout set PlumeScanner
+cd PlumeScanner
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
+.\.venv\Scripts\python.exe scripts/run-scan-order-demo.py
+.\.venv\Scripts\python.exe -m pytest -q tests/test_scan_order_demo.py tests/test_c2_r2.py tests/test_c2_ordered_column_scan.py tests/test_scanner_demo.py tests/test_sensing_core.py tests/test_evidence_gate.py tests/test_scanner_calibration.py tests/test_sensing_adapters.py
+```
+
+On macOS/Linux use `python3` for environment creation and `.venv/bin/python`
+for subsequent commands. No activation or private files are required.
+The terminal prints both routes, paid action durations, both reconstruction MSEs
+and `gain = MSE(B) - MSE(L_up)`; positive favors L_up, negative favors B.
+Generated evidence is in `outputs/scan-order-demo/RESULTS.json` and neighboring
+route/reading JSON files. To repeat, add `--output outputs/scan-order-demo-2`.
+B remains default; L_up is an explicitly invoked research option.
+
+This is one preselected synthetic `b00_L` example with original planning fees
+inside an 8 s action budget and causal MSE over a common 12 s window. It is
+**not** a full 24-base study reproduction or hardware/field validation, and its
+gain is not the historical study's mean percentage. See the guide for tests,
+output files, time/coordinate definitions, an inherited full-suite symlink-test
+issue and unsupported claims.
+
+## Original team quickstart and API
+
+The retained baseline instructions below describe the original branch. Use the
+branch-specific clone command above to keep this research example available.
+
 This package lives in `PlumeScanner/` on the company repository's
 [`plume_scanner_new` branch](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/tree/plume_scanner_new).
 Run commands from that package directory. The Python package name is `plume_focus`.

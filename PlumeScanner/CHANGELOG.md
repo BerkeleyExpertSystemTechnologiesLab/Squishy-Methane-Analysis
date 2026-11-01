@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-01 — Publish an opt-in C2 P0-V single-case example
+
+Package original fixed-column research modules from local source commit
+`f888fd4a4fcd56ac3638937dbf94443e8795ecae` on the direct team baseline
+`5cac633f47001d3aa455f8b6f3cc00b11c550ed3`, with a portable preselected
+`b00_L` adapter, configuration, executable demo and invariant tests. Fresh
+route-specific observations and paid planning time preserve the original
+single-action comparison boundary. Keep all team defaults and the original
+quickstart. This release supplies a single-case example, not the historical
+24-base study or a hardware/general-superiority claim. Provenance, verification
+commands and limitations are in [the branch guide](docs/scan-order-study.md).
+
 Broad project checkpoints, newest first. This is the maintained summary of what
 changed, why it matters, and what was actually established. Detailed evidence
 stays in the linked reviews; current work and completion gates stay in

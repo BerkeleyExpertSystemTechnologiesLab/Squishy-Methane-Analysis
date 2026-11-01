@@ -4,6 +4,15 @@ Last updated: 2026-09-29
 
 Overall status: `active`
 
+## Opt-in research branch release (2026-11-01)
+
+`shulun/scan-order-study` packages the original C2 P0-V B/L_up comparison as
+one independently runnable, preselected synthetic example. Both actions start
+from the same history/pose/region and pay the frozen planning fees before their
+own exposure schedules. See [the branch guide](docs/scan-order-study.md).
+No default, gate, model or production controller change; no full-study,
+real-time, hardware or field-validation claim follows from this release.
+
 ## Completed company submission (2026-09-29)
 
 The user supplied the company repository and explicitly requested a new
