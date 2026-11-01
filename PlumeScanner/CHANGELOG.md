@@ -13,24 +13,35 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
-## 2026-11-01 — Worksheet-aligned explanation and visual source-hint demo
+## 2026-11-01 — Baseline and experiment interface documentation
 
-Prepare the requested source-prior study code for the separate
-`codex/source-prior-fixed-evidence` branch. Add a plain-language explanation of
-the component's inputs/outputs, prior/posterior/injection, and worksheet mapping.
-An observer replays the same 708 readings into two fixed source-location
-assumptions and renders truth plus two estimated maps, with a shared scale and
-causal delivered-reading trace. Optional fresh-demo generation makes the visual
-example runnable without the ignored October evidence. No production inference
-or scan policy changes. Generated evidence/media and worksheet files stay local.
+Document the source-assumption branch against the immutable `plume_scanner_new`
+reference `5cac633f47001d3aa455f8b6f3cc00b11c550ed3`. Identify the baseline policy,
+field estimator, simulator and added control experiments. Record synthetic units,
+coordinate conventions, distinct spatial resolutions, acquisition/availability
+semantics and provisional motion/detector timing. Describe the unresolved voltage
+calibration, gas-to-RGB registration, Cartesian mapping and hardware timing inputs.
+Update clone instructions to the current `source_prior_fixed_evidence` branch.
+Verification passes for 32 relative documentation links, the unchanged reference
+configuration hash, the 708-reading fixture's acquisition/availability separation,
+and both quickstart CLI help commands. Numerical configuration, model and policy
+are unchanged.
 
-27 targeted source/control/demo tests pass; compilation and whitespace checks
-pass. The 81-frame H.264 video decodes at 4 fps (20.25 s playback for a 40 s
-simulation); its final fields match the frozen point-prior results within
-1.67e-16. Saved numerical frames, copied record, producer/config hashes and media
-hashes are verified. This illustrates a known single-fixture map difference, not
-a new scientific result, source-search method or closed-loop improvement.
-See [the explanation and reproduction instructions](docs/source-assumptions-demo.md).
+## 2026-11-01 — Visual source-hint replay
+
+Add a plain-language explanation of reconstruction inputs/outputs and source
+assumptions. An observer replays the same 708 readings into two fixed
+source-location assumptions and renders truth plus two estimated maps, with a
+shared scale and causal delivered-reading trace. Optional fresh-demo generation
+makes the visual example runnable without archived October evidence. Generated
+evidence and media stay local; production inference and scan policy are unchanged.
+
+27 targeted source/control/demo tests passed at implementation. The 81-frame
+H.264 video decodes at 4 fps (20.25 s playback for a 40 s simulation); final fields
+match the frozen point-prior results within 1.67e-16. Numerical frames, copied
+record, producer/config hashes and media hashes are verified. This illustrates a
+single-fixture map difference without establishing general localization or
+closed-loop benefit. See the [experiment guide](docs/source-assumptions-demo.md).
 
 ## 2026-10-28 — Conserved-input source-width and amount controls
 
@@ -46,8 +57,7 @@ Do not attribute a universal percentage of error to either factor.
 40 targeted tests pass. Source-mean/radius-mass refinement passes for all histories;
 4 histories (6 prior-specific HPD verdicts) remain unresolved at the HPD boundary.
 Configuration, all truth/evidence, posterior arrays, paired contrasts, code/logs
-and hashes are saved locally. Production inference is unchanged; no slides or
-remote push. See the [review](docs/reviews/conserved-source-width-v1.md).
+and hashes are saved locally. Production inference is unchanged. See the [review](docs/reviews/conserved-source-width-v1.md).
 
 ## 2026-10-28 — One-factor source-location mismatch controls
 
@@ -65,7 +75,7 @@ unresolved 95% HPD membership after 513-grid refinement. Preserve failures and
 report coverage bounds; do not claim global refinement or calibrated uncertainty.
 See the [review](docs/reviews/one-factor-source-mismatch-v1.md). Save configurations,
 truth/evidence, exact likelihoods, posteriors, paired summaries, code/logs/figures
-and hashes locally; production policies unchanged, no slides or remote pushes.
+and hashes locally; production policies unchanged.
 
 ## 2026-10-28 — Model-consistent fixed-path source-prior control
 
@@ -80,7 +90,7 @@ likelihood refinement to 257 passes all frozen summary checks and agrees with
 direct filtering. Saved configs, generated evidence/truth, traces, source arrays,
 code, logs and hashes remain local. See the
 [control review](docs/reviews/model-consistent-source-priors-v1.md). Production
-models/policies and historical evidence are unchanged; no slides or remote push.
+models/policies and historical evidence are unchanged.
 
 ## 2026-10-28 — Local fixed-evidence source-location prior comparison
 
@@ -96,7 +106,7 @@ source. Coverage, source-input discretization and known-source path-selection
 limitations remain explicit. No general superiority, source recovery or closed-loop
 claim is established. See the [study review](docs/reviews/source-prior-fixed-evidence-v1.md).
 Configurations, copied evidence, code snapshots, logs, arrays, figures and hashes
-are saved locally; no slides, commits or remote pushes are made.
+are saved locally.
 
 ## 2026-09-29 — Submit the reviewed scanner with a usable quickstart
 

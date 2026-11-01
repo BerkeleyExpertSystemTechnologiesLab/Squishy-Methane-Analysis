@@ -90,4 +90,4 @@ common RNG alignment, and reproducibility, alongside the existing generator,
 affine-likelihood, bank and calibration tests. Preserve original evidence SHA-256.
 Save every generated reading history, truth array, truth/inference parameters,
 likelihood statistics, posterior grid weights, final means/scores, refinement
-history, code/environment, logs, figures and file manifests. No slides or pushes.
+history, code/environment, logs, figures and file manifests. Generated artifacts remain local.

@@ -6,9 +6,12 @@ timestamped readings and a supplied wind estimate guide where to look next. The
 eventual goal is plume reconstruction and strength estimation. This is a research
 prototype with synthetic demonstrations.
 
-This package lives in `PlumeScanner/` on the company repository's
-[`plume_scanner_new` branch](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/tree/plume_scanner_new).
-Run commands from that package directory. The Python package name is `plume_focus`.
+This research branch, `source_prior_fixed_evidence`, extends the scanner from
+[`plume_scanner_new` at `5cac633`](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/tree/5cac633f47001d3aa455f8b6f3cc00b11c550ed3/PlumeScanner).
+The [source-assumption experiment guide](docs/source-assumptions-demo.md) identifies
+the baseline, synthetic input/output quantities, timing and spatial assumptions,
+and added comparisons. The baseline controller and scan policy are unchanged.
+Run commands from `PlumeScanner/`. The Python package name is `plume_focus`.
 
 ## Install
 
@@ -19,13 +22,13 @@ also installs pytest. Matplotlib is optional through `.[plots]`.
 Fetch this project without downloading the repository's other research datasets:
 
 ```sh
-git clone --filter=blob:none --sparse --single-branch --branch plume_scanner_new https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis.git
+git clone --filter=blob:none --sparse --single-branch --branch source_prior_fixed_evidence https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis.git
 cd Squishy-Methane-Analysis
 git sparse-checkout set PlumeScanner
 cd PlumeScanner
 ```
 
-For an existing checkout, switch to `plume_scanner_new` and enter `PlumeScanner/`.
+For an existing checkout, switch to `source_prior_fixed_evidence` and enter `PlumeScanner/`.
 Then create an environment and install the package.
 
 **Windows PowerShell** (activation is optional):
@@ -81,7 +84,7 @@ and `summary.mp4` shows one frame per completed scan. Playback never changes
 acquisition or inference. Open these in a video player; headless OpenCV has no GUI.
 
 For the source-assumption study and a simpler side-by-side visual demonstration,
-see [Source assumptions: explanation and demo](docs/source-assumptions-demo.md).
+see [Source-assumption experiments](docs/source-assumptions-demo.md).
 It compares estimated maps from identical readings with correct and incorrect
 fixed source hints, and explains prior, posterior and injection in plain language.
 

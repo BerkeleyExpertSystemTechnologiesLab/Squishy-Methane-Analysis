@@ -2,8 +2,7 @@
 
 Implemented and executed on `codex/source-prior-fixed-evidence`, based on HEAD
 `5cac633f47001d3aa455f8b6f3cc00b11c550ed3` plus preserved local study work.
-No production model, policy or historical evidence changed. No slides, commits
-or remote pushes. The [protocol](../specs/model-consistent-source-priors-v1.md)
+No production model, policy or historical evidence changed. The [protocol](../specs/model-consistent-source-priors-v1.md)
 and frozen configurations define this evaluator-only control.
 
 ## Outcome

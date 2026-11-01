@@ -4,22 +4,24 @@ Last updated: 2026-11-01
 
 Overall status: `active`
 
-## Presentation and code-sharing checkpoint (2026-11-01)
+## Source-assumption reference and visual replay (2026-11-01)
 
-The worksheet-aligned explanation and visual observer are complete; see
-[source assumptions](docs/source-assumptions-demo.md). The demo holds all 708
-readings fixed and contrasts two fixed source hints, showing the reconstructed
-maps rather than beginning with source-posterior error plots. Terminology and
-team interfaces are explicit. Current user authorization includes uploading the
-study code to GitHub on its separate working branch; generated media stay local.
-27 targeted tests pass and decoded media reproduce the frozen final fields
-within 1.67e-16. The numerical research claims remain unchanged. No joint
-location/amplitude experiment or new scan policy starts from this checkpoint.
+The [experiment guide](docs/source-assumptions-demo.md) identifies the exact
+`plume_scanner_new` baseline revision, policy, estimator, simulator, configuration,
+and source-assumption extensions. It distinguishes synthetic scalar readings
+from raw voltage, normalized coordinates from physical Cartesian mapping, and
+sampling lattice, footprint, reconstruction grid and evaluation mesh. Hardware
+calibration, RGB registration and measured acquisition/motion timing remain open.
+
+The visual observer holds all 708 readings fixed and contrasts two fixed source
+hints. It saves reconstructed maps, causal reading traces and provenance locally.
+27 targeted tests passed at implementation; decoded media reproduce frozen final
+fields within 1.67e-16. The numerical research claims remain unchanged. Joint
+location/amplitude inference and closed-loop evaluation remain proposed work.
 
 ## Local source-prior study (2026-10-28)
 
-Xilin requested a first fixed-evidence comparison before preparing slides.
-The [study](docs/reviews/source-prior-fixed-evidence-v1.md) is implemented and run
+The fixed-evidence [study](docs/reviews/source-prior-fixed-evidence-v1.md) is implemented and run
 on the original 40 s/708-reading history, with broad, accurate/biased regional and
 accurate/biased point priors. Production policies are unchanged. Exact original
 baseline checks and 21 targeted tests pass; 65-to-129 source-grid J refinement
@@ -50,7 +52,7 @@ ambiguity. Amount-only reduction can create large boundary shifts; it does not
 identify the original demo's error direction. Joint location/amplitude inference,
 original-simulator operator comparison and independent grids/sources remain proposed. Source-activity
 inference and closed-loop comparisons remain separate work. Artifacts stay local,
-and no slides or remote submission are produced in this study.
+with production behavior unchanged.
 
 ## Completed company submission (2026-09-29)
 

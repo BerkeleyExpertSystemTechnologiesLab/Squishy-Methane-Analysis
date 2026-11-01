@@ -1,9 +1,15 @@
-# Squishy Methane Analysis — Plume Scanner
+# Squishy Methane Analysis — Source-Assumption Experiments
 
-This branch, `plume_scanner_new`, contains the reviewed active-scanning prototype
-in [`PlumeScanner/`](PlumeScanner/). It chooses sequential point measurements to
-reconstruct a changing plume under scanner motion and acquisition-time constraints.
-The repository's other research projects are preserved from company `main`.
+This branch, `source_prior_fixed_evidence`, adds controlled source-assumption
+experiments to the existing scanner in [`PlumeScanner/`](PlumeScanner/).
+The question is how incorrect information about a methane source changes the
+map reconstructed from sequential measurements.
+
+The baseline is [`plume_scanner_new` at `5cac633`](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/tree/5cac633f47001d3aa455f8b6f3cc00b11c550ed3/PlumeScanner).
+The experiments reuse its synthetic measurements, timing, scan path and Gaussian
+field estimator; they do not replace its scan policy. See the
+[experiment guide](PlumeScanner/docs/source-assumptions-demo.md) for the exact
+configuration, input/output contract, simulation assumptions and comparisons.
 
 The scanner is a research demonstrator. The current candidate remains opt-in;
 synthetic reconstruction results are mixed, and calibrated gas strength,
@@ -14,7 +20,7 @@ hardware performance and leak-detection guarantees are not established.
 Use a sparse checkout to avoid downloading the repository's unrelated datasets:
 
 ```sh
-git clone --filter=blob:none --sparse --single-branch --branch plume_scanner_new https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis.git
+git clone --filter=blob:none --sparse --single-branch --branch source_prior_fixed_evidence https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis.git
 cd Squishy-Methane-Analysis
 git sparse-checkout set PlumeScanner
 cd PlumeScanner

@@ -2,8 +2,7 @@
 
 Implemented and executed on `codex/source-prior-fixed-evidence` with starting HEAD
 `5cac633f47001d3aa455f8b6f3cc00b11c550ed3`, preserving previous uncommitted studies.
-Production model/policies and historical evidence remain unchanged. No slides,
-commits or remote pushes. See the [protocol](../specs/one-factor-source-mismatch-v1.md).
+Production model/policies and historical evidence remain unchanged. See the [protocol](../specs/one-factor-source-mismatch-v1.md).
 
 ## Main finding
 

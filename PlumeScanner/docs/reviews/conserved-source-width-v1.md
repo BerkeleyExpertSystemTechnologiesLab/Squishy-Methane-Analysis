@@ -2,8 +2,7 @@
 
 Implemented and run on `codex/source-prior-fixed-evidence`, starting HEAD
 `5cac633f47001d3aa455f8b6f3cc00b11c550ed3`, preserving previous uncommitted studies.
-Production inference/policies and original evidence are unchanged. No slides,
-commits or remote pushes. See the [protocol](../specs/conserved-source-width-v1.md).
+Production inference/policies and original evidence are unchanged. See the [protocol](../specs/conserved-source-width-v1.md).
 
 ## Answer to the experiment question
 

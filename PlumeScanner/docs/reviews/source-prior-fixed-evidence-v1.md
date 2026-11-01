@@ -2,7 +2,7 @@
 
 Implemented and executed locally on `codex/source-prior-fixed-evidence`, starting
 from `5cac633f47001d3aa455f8b6f3cc00b11c550ed3`. No production policy changed;
-no commits or remote pushes were made. This is an exploratory estimator study,
+this is an exploratory estimator study,
 not evidence of general superiority or a source-localization success.
 
 ## Question and protocol
@@ -66,7 +66,7 @@ pixels, synthetic/model mismatch, and no added noise despite assumed sigma=.05.
 - Separate 65 to 129 followup: J changed 0.081–0.097%, PASS at the same tolerance.
 - J stability does not establish source posterior convergence. Effective support
   changes from about one to two cells and mean location shifts about .006 FOV.
-- Reviewed comparison, source-posterior and final-field figures. No slides created.
+- Reviewed comparison, source-posterior and final-field figures.
 
 ## Limits and next discriminating experiment
 

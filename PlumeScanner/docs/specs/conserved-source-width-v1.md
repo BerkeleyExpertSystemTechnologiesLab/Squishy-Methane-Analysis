@@ -89,4 +89,4 @@ Reproduce previous source posteriors at shared available grids within 1e-10.
 Save configuration, original evidence hash, generated observations/latent truth,
 normalization factors, exact likelihoods, posterior arrays, paired summaries,
 refinement results, code/environment, plots and logs with SHA-256 manifests.
-No slides, production-policy changes, commits or remote pushes.
+Production policies remain unchanged.
