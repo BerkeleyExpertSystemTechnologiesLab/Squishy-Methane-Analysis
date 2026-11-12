@@ -21,10 +21,21 @@ covariance and per-tick process innovations; change one transport/decay paramete
 at a time. Nine conditions and 117 histories compare nominal fixed/joint inference
 and a correct-dynamics information control. Save causal scores, actual mixture
 uncertainty, amount intervals/edge mass and refinement membership diagnostics.
-55 targeted tests pass; small-grid smoke execution completes, with unresolved
-quadrature explicitly retained. Full execution and scientific conclusions remain
-pending. Runtime/policy and historical artifacts are unchanged. See the
-[protocol](docs/specs/source-amount-nuisance-v1.md); results stay local.
+104 targeted tests and all nine disk audits pass; saved final filters replay
+exactly. Execute all 117 histories with three methods. Wind .5/1.5 shifts inferred
+amount to 1.147/.867 Q0; half-life .5/1.5 shifts it to .665/1.246 Q0 despite true
+input remaining 1 Q0. Half-life .5 improves monitoring J/T 8.35% while all eight
+amount intervals exclude truth. Wind .5 retains 0/8 source predictive membership
+at +12 s despite a 1.90% map gain. Nominal joint J/T is .67% worse. Better maps
+do not establish correct strength or general uncertainty calibration.
+
+Preserve 37 original method/history numerical failures; 24 condition/history
+pairs refined to 513/256 close every unchanged criterion. Three reviewed figures,
+a worked mean-control map, paired summaries, code/config snapshots and hashes
+remain local. Smoke results retain their engineering-only status. Runtime/policy
+and historical artifacts are unchanged. See the
+[review](docs/reviews/source-amount-nuisance-v1.md) and
+[protocol](docs/specs/source-amount-nuisance-v1.md). No remote upload.
 
 ## 2026-11-01 — Reconstruction, independent scenes and same-policy loop validation
 

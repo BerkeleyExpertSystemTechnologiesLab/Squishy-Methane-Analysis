@@ -6,7 +6,7 @@ Overall status: `active`
 
 ## Source amount under wind/decay mismatch (2026-11-12)
 
-User-authorized local diagnostic is in progress from `f93b2a4`. The frozen
+User-authorized local diagnostic is completed from `f93b2a4` (producer `0828b9e`). The frozen
 [protocol](docs/specs/source-amount-nuisance-v1.md) holds true Q0, width, the
 708-reading schedule and discrete process innovations fixed, varying wind or
 half-life separately. Compare nominal fixed amount, nominal joint location/amount,
@@ -15,12 +15,24 @@ histories are declared, with new evaluation positions/seeds and retained mean
 controls. Parameter information is confined to the explicit diagnostic control;
 source-relative targets are evaluator-only. No policy or production changes.
 
-Implementation and 55 targeted tests pass; the small-grid smoke execution is an
-engineering check only and has unresolved quadrature membership, so it is not
-scientific evidence. Full 129/64 and 257/128 runs with selective 513/256 and
-1025/512 fallback remain to execute. Three figures, paired summaries and a review
-are pending. All artifacts stay local; no GitHub upload is requested. New local
-commits use the user's existing Git identity without coauthor or tool signatures.
+117 histories and all three methods are executed. True Q0 stays fixed, but
+evaluation mean inferred amount becomes 1.147/.867 under .5/1.5 wind and
+.665/1.246 under .5/1.5 half-life. Half-life .5 reduces joint monitoring J/T 8.35%
+while all 8 amount intervals exclude true Q0. Wind .5 reduces J/T 1.90% but +12 s
+source-footprint predictive membership remains 0/8 (correct dynamics: 8/8).
+Map improvement does not establish amount recovery or general calibration.
+Nominal joint J/T worsens .67%; small rankings remain descriptive.
+
+104 targeted tests and all nine disk audits pass; final filter states replay
+exactly. Retain the 37 initial method/history refinement failures: rerunning 24
+condition/history pairs at 513/256 closes every unchanged numerical criterion.
+No 1025 fallback was needed. Three reviewed figures, one mean-control map,
+machine-readable summaries and the [review](docs/reviews/source-amount-nuisance-v1.md)
+are complete. Smoke evidence stays engineering-only. Production policy and
+historical results are unchanged; no scanning/physical-strength claim is added.
+Artifacts stay local; no GitHub upload is requested. Commits use the user's
+existing identity without coauthor or tool signatures. This step is complete;
+wind/amount inference and external-data work remain separately scoped.
 
 ## Reconstruction and independent-scene validation (2026-11-01)
 
