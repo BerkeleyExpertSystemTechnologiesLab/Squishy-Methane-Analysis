@@ -7,10 +7,10 @@ from pathlib import Path
 import shutil
 import subprocess
 
-from plume_focus.full_fov_execution import decode_config
+from plume_focus.full_fov_execution import decode_config, run_full_fov, verify_replay
 from plume_focus.source_amount_nuisance import (
     NuisanceEnvironment, dynamics_pair, refinement_checks, run_level,
-    save_json, select_histories, sha256,
+    save_json, select_histories, sha256, reading_schedule_sha256, ARCHIVED_SCHEDULE_SHA256,
 )
 
 
@@ -63,6 +63,8 @@ def main():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--jobs", type=int, default=2)
     parser.add_argument("--smoke", action="store_true")
+    parser.add_argument("--fresh-schedule", action="store_true",
+                        help="Regenerate and verify the archived physical schedule without local archive files")
     args = parser.parse_args()
     cfg = json.loads(args.config.read_text())
     if cfg["true_amount"] != 1 or cfg["amount_support"] != [.25, 1.75]:
@@ -77,17 +79,32 @@ def main():
         cfg["scenes"] = cfg["scenes"][:2]
         for scene in cfg["scenes"]:
             scene["seeds"] = scene["seeds"][:2]
-    if sha256(cfg["record"]) != cfg["record_sha256"]:
+    if not args.fresh_schedule and sha256(cfg["record"]) != cfg["record_sha256"]:
         raise ValueError("Archived schedule hash mismatch")
     args.output.mkdir(parents=True)
     if list(args.output.iterdir()):
         raise FileExistsError("Use a new empty output destination")
+    if args.fresh_schedule:
+        record = run_full_fov(decode_config(json.loads(Path(cfg["baseline_config"]).read_text())))
+        verify_replay(record)
+        physical_hash = reading_schedule_sha256(record)
+        if physical_hash != ARCHIVED_SCHEDULE_SHA256:
+            raise ValueError("Regenerated acquisition schedule differs from the frozen 708-reading contract")
+        fresh_record = args.output / "fresh-schedule.json"
+        save_json(fresh_record, record)
+        cfg["archived_record_sha256"] = cfg["record_sha256"]
+        cfg["record"] = str(fresh_record)
+        cfg["record_sha256"] = sha256(fresh_record)
+        cfg["schedule_origin"] = "regenerated baseline, physical acquisition contract verified"
+        cfg["physical_schedule_sha256"] = physical_hash
     save_json(args.output / "config.json", cfg)
     producers = [args.config, Path(__file__), Path("src/plume_focus/source_amount_nuisance.py"),
                  Path("src/plume_focus/source_amount_validation.py"), Path("src/plume_focus/source_input.py"),
                  Path("docs/specs/source-amount-nuisance-v1.md"), Path(cfg["baseline_config"]), Path(cfg["record"])]
     for producer in producers:
-        shutil.copy2(producer, args.output / producer.name)
+        destination = args.output / producer.name
+        if producer.resolve() != destination.resolve():
+            shutil.copy2(producer, destination)
     save_json(args.output / "provenance.json", dict(
         head=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         branch=subprocess.check_output(["git", "branch", "--show-current"], text=True).strip(),

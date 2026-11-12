@@ -13,6 +13,21 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
+## 2026-11-12 — Portable research submission
+
+Prepare the source-input and joint-amount research dependencies together with the
+wind/decay diagnostic for review against `source_prior_fixed_evidence`. Remove the
+new unit tests' dependency on ignored archived output. Add an explicit fresh-
+schedule entry which regenerates the baseline and verifies the exact physical
+708-reading contract, recording new file hashes and original archive lineage.
+105 targeted tests, portable smoke execution and all three smoke disk audits pass
+in a clean worktree. Full regression has 648 passes and two existing failures,
+independently reproduced at target `0e68de1`: a frozen benchmark manifest hash
+mismatch and an undefined variable in a recorded qualification test. Preserve
+these failures explicitly in submission validation. Archived scientific evidence
+and default controller/policy behavior are unchanged. Generated arrays and media
+stay local; source publication is ready for a lab PR.
+
 ## 2026-11-12 — Source amount under nuisance mismatch diagnostic
 
 Add a separately named, fixed-path experiment to distinguish true amount recovery

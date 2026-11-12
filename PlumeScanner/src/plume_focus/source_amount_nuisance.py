@@ -16,6 +16,21 @@ from plume_focus.source_amount_validation import (
 from plume_focus.source_input import gaussian_source_input
 
 METHODS = ("fixed", "joint", "correct_dynamics")
+ARCHIVED_SCHEDULE_SHA256 = "01d7eb58bb9ecd82994af62ca990526a413896e48e0ba68edeb33fc86c36d09a"
+
+
+def reading_schedule_sha256(record):
+    """Physical acquisition contract, independent of simulated values and file formatting."""
+    keys = ("position_yx", "acquired_at_seconds", "available_at_seconds", "footprint", "integration_seconds")
+    readings = []
+    for event in record["events"]:
+        if event["operation"] != "ingest_readings":
+            continue
+        if len(event["readings"]) != 1:
+            raise ValueError("Expected singleton reading schedule")
+        readings.append({key: event["readings"][0][key] for key in keys})
+    return hashlib.sha256(json.dumps(readings, sort_keys=True, separators=(",", ":"),
+                                    allow_nan=False).encode()).hexdigest()
 
 
 def save_json(path, value):

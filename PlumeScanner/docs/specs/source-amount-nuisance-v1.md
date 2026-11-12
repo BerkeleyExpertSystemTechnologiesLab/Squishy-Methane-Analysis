@@ -91,3 +91,15 @@ real-time feasibility remain untested.
 Deliver three figures (reconstruction/forecast error, inferred amount, predictive
 coverage), machine-readable paired summaries, a worked mean-control map, and a
 review explaining which source-strength claims survive nuisance mismatch.
+
+## Publication reproduction entry (added after frozen execution)
+
+`--fresh-schedule` regenerates the unchanged baseline's schedule rather than
+requiring the ignored historical record. The canonical SHA-256 of ordered
+position/acquisition/availability/footprint/integration fields must be
+`01d7eb58bb9ecd82994af62ca990526a413896e48e0ba68edeb33fc86c36d09a`.
+Baseline reading values are not reused as nuisance evidence. The generated
+record/configuration receive new file hashes, with the archived hash retained as
+lineage. This entry does not alter the frozen record, conditions, priors, scoring
+or inference; `--smoke` remains an engineering-only reduced experiment. Unit tests
+construct a short synthetic schedule and require no historical output files.

@@ -7,9 +7,9 @@ predictive calibration. This is a bounded synthetic mechanism diagnostic.
 
 ## Question, protocol and provenance
 
-The user authorized the next B3 test: keep true input correct and perturb wind or
-decay separately, asking whether the location/amount estimator misattributes the
-error. Starting code was `f93b2a430f21f30179c58e0afb058d2a54c07499`;
+The B3 question is whether location/amount inference misattributes wind or decay
+error when true input remains correct. Starting code was
+`f93b2a430f21f30179c58e0afb058d2a54c07499`;
 implementation/execution producer is `0828b9e`. The
 [protocol](../specs/source-amount-nuisance-v1.md) and
 [configuration](../../configs/source-prior-study/source-amount-nuisance-v1.json)
@@ -196,9 +196,12 @@ PYTHONPATH=src OPENBLAS_NUM_THREADS=1 \
   --study outputs/nuisance-new --output outputs/nuisance-new-audit
 ```
 
-A fresh clone alone lacks the ignored historical schedule/evidence; retain the
-local archive. No PR or remote upload is needed for this authorized experiment.
-Commits use the existing Xilin Yan identity without tool/coauthor attribution.
+A fresh clone lacks the ignored historical schedule/evidence. The publication
+entry `--fresh-schedule` regenerates the baseline record and checks that its
+physical acquisition schedule exactly matches the frozen 708-reading contract.
+For the fresh-checkout command, see the [README](../../README.md#source-amount-and-nuisance-diagnostics).
+The generated record has a new file hash; the archived experiment and its hashes
+remain unchanged. Unit tests use constructed fixtures, without archive inputs.
 
 ## Scientific scope
 

@@ -88,6 +88,48 @@ see [Source-assumption experiments](docs/source-assumptions-demo.md).
 It compares estimated maps from identical readings with correct and incorrect
 fixed source hints, and explains prior, posterior and injection in plain language.
 
+## Source amount and nuisance diagnostics
+
+The opt-in research estimators compare fixed source amount, joint location/amount
+inference and an information control on identical timed readings. The
+[nuisance study](docs/reviews/source-amount-nuisance-v1.md) tests whether incorrect
+wind or decay is mistaken for a change in source amount. Its result tables retain
+nominal regressions and uncertainty failures; better reconstruction does not
+establish physical strength recovery or better scan selection.
+
+From a fresh checkout, an engineering smoke run needs no private archive:
+
+```sh
+python scripts/diagnose-source-amount-nuisance.py \
+  --config configs/source-prior-study/source-amount-nuisance-v1.json \
+  --output outputs/nuisance-smoke --fresh-schedule --smoke --jobs 2
+```
+
+Use the installed environment's Python (`.venv/bin/python` or
+`.venv\Scripts\python.exe`). `--fresh-schedule` regenerates the baseline record and
+verifies its physical acquisition contract against the archived 708-reading
+schedule. Simulated baseline reading values are replaced by the diagnostic's own
+paired measurements. The regenerated record has its own file hash and provenance;
+the historical archive and frozen configuration are preserved.
+
+The small-grid `--smoke` run only checks execution and may retain unresolved
+quadrature. To run the declared nine-condition study, omit `--smoke` and choose
+a fresh output directory. Archived-record reproduction remains available by
+omitting `--fresh-schedule` when the local archive is present. Tests construct
+their own input fixtures and do not require that archive.
+
+Optional plots require Matplotlib (`python -m pip install -e '.[plots]'`):
+
+```sh
+python scripts/summarize-source-amount-nuisance.py \
+  --study outputs/nuisance-smoke --output outputs/nuisance-smoke/figures
+python scripts/audit-source-amount-nuisance.py \
+  --study outputs/nuisance-smoke --output outputs/nuisance-smoke-audit
+```
+
+Generated runs, array archives and figures stay local. See the study review for
+full results, noise assumptions, numerical checks and physical limitations.
+
 ## Controller API
 
 
@@ -133,9 +175,19 @@ the adapter. The [API guide](docs/sensing-core.md) covers messages and causal ch
 .\.venv\Scripts\python.exe -m compileall -q src scripts examples tests
 ```
 
-The submission passes **554 tests with five platform skips**, including the new
-demo CLI. The reviewed scanner checkpoint replayed 104 frozen study executions
-with unchanged reconstruction loss. Tests need no external footage. Symlink
+The original scanner submission passed **554 tests with five platform skips**.
+The source-amount publication passes **105 targeted tests**; its complete suite
+has **648 passing tests and two failures**, both reproduced on the unchanged
+`source_prior_fixed_evidence` target (`0e68de1`) in the same environment:
+
+- `test_benchmark.py::test_manifests_are_deterministic_disjoint_and_correctly_sized`
+  has a frozen manifest-hash mismatch.
+- `test_recorded_qualification.py::test_v2_checker_rejects_symlinked_evidence_snapshot`
+  references undefined `report` after checking the expected rejection.
+
+These existing failures remain visible. The reviewed scanner checkpoint replayed
+104 frozen study executions with unchanged reconstruction loss. Tests need no
+external footage or ignored scientific archives. Symlink
 tests skip where that capability is unavailable. If the system temporary directory
 is restricted, use a fresh workspace directory with `--basetemp outputs/pytest-local`.
 

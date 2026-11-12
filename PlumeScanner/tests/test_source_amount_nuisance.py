@@ -8,10 +8,12 @@ import pytest
 
 from plume_focus.full_fov_execution import decode_config
 from plume_focus.signal_belief import observation_weights
+from plume_focus.sensing_contracts import SensorReading
 from plume_focus.source_amount_validation import ClockAffineFilter, bounded_posterior
 from plume_focus.source_amount_nuisance import (
     METHODS, NuisanceEnvironment, amount_diagnostics, dynamics_pair,
     refinement_checks, run_level, sensor_noise,
+    reading_schedule_sha256,
 )
 
 ROOT = Path(__file__).parents[1]
@@ -23,9 +25,17 @@ def fixture_config():
                forecast_horizons_seconds=[.125, .25],
                uncertainty_times_seconds=[.125, .25, .375, .5])
     cfg["scenes"] = [dict(name="test", split="evaluation", source_yx=[.3, .4], seeds=[None, 123])]
-    record = json.loads((ROOT / cfg["record"]).read_text())
-    record["events"] = [e for e in record["events"] if e["at_seconds"] <= .17]
     run = decode_config(json.loads((ROOT / cfg["baseline_config"]).read_text()))
+    # Unit fixtures are constructed here; scientific archive files are not a test dependency.
+    events = []
+    for i, position in enumerate(((.2, .3), (.5, .6), (.7, .4))):
+        acquired = (i + 1) * .05
+        available = acquired + cfg["clock_tick_seconds"]
+        reading = SensorReading("test-scan", f"test-{i}", position, acquired, available,
+                                0., run.capabilities.footprint, .025)
+        events.append(dict(operation="ingest_readings", at_seconds=available,
+                           readings=[reading.to_dict()]))
+    record = dict(events=events)
     model = replace(run.model, grid_shape=(3, 4))
     return cfg, record, run, model
 
@@ -91,6 +101,15 @@ def test_amount_interval_and_edge_mass_use_actual_mixture():
     assert d["amount_edge_mass"] == pytest.approx(.1 / 1.5, abs=.006)
     fixed = amount_diagnostics(bounded_posterior(np.array([1.]), np.array([1.]), fixed=1.))
     assert fixed["amount_interval95"] == [1., 1.]
+
+
+def test_physical_schedule_hash_tracks_timing_but_not_observed_values():
+    _, record, _, _ = fixture_config()
+    changed = copy.deepcopy(record)
+    changed["events"][0]["readings"][0]["value"] = 100.
+    assert reading_schedule_sha256(changed) == reading_schedule_sha256(record)
+    changed["events"][0]["readings"][0]["available_at_seconds"] += .0125
+    assert reading_schedule_sha256(changed) != reading_schedule_sha256(record)
 
 
 def test_delivered_evidence_cannot_change_earlier_scores_and_matched_controls_equal(tmp_path):

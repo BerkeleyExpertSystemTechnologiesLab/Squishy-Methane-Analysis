@@ -4,6 +4,23 @@ Last updated: 2026-11-12
 
 Overall status: `active`
 
+## Research submission preparation (2026-11-12)
+
+Package the source-input audit, joint amount estimator, heldout validation and
+wind/decay diagnostic for review against `source_prior_fixed_evidence`. The
+publication entry regenerates and checks the baseline's physical 708-reading
+schedule; tests now construct their own small schedules, so a clean checkout
+requires no ignored archive for unit tests or the engineering smoke run. Archived
+configurations/evidence are preserved. Full study numerical conclusions are not
+inferred from the reduced smoke run. Runtime policy remains opt-in and unchanged.
+Personal backup and a lab research PR are authorized; generated arrays/media stay
+local. Clean-worktree verification passes 105 targeted tests, the portable smoke
+run and its three disk audits. The full suite has 648 passes and two failures,
+both reproduced independently at unchanged target `0e68de1`: frozen benchmark
+manifest hash and an undefined `report` in the recorded qualification test.
+These unrelated failures remain explicit in the research submission. Source
+publication is ready for a lab PR; no merge or candidate promotion is performed.
+
 ## Source amount under wind/decay mismatch (2026-11-12)
 
 User-authorized local diagnostic is completed from `f93b2a4` (producer `0828b9e`). The frozen
@@ -30,8 +47,8 @@ No 1025 fallback was needed. Three reviewed figures, one mean-control map,
 machine-readable summaries and the [review](docs/reviews/source-amount-nuisance-v1.md)
 are complete. Smoke evidence stays engineering-only. Production policy and
 historical results are unchanged; no scanning/physical-strength claim is added.
-Artifacts stay local; no GitHub upload is requested. Commits use the user's
-existing identity without coauthor or tool signatures. This step is complete;
+Generated artifacts stay local; source publication is handled in the separate
+submission stage above. This diagnostic step is complete;
 wind/amount inference and external-data work remain separately scoped.
 
 ## Reconstruction and independent-scene validation (2026-11-01)
