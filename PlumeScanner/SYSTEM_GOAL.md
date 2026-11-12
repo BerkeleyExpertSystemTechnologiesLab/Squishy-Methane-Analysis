@@ -19,7 +19,9 @@ run and its three disk audits. The full suite has 648 passes and two failures,
 both reproduced independently at unchanged target `0e68de1`: frozen benchmark
 manifest hash and an undefined `report` in the recorded qualification test.
 These unrelated failures remain explicit in the research submission. Source
-publication is ready for a lab PR; no merge or candidate promotion is performed.
+publication is complete as [PR #16](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/pull/16)
+from `xilin/source-amount-nuisance` to `source_prior_fixed_evidence`, under Xilin-Yan.
+The research remains under review; no merge or candidate promotion is performed.
 
 ## Source amount under wind/decay mismatch (2026-11-12)
 

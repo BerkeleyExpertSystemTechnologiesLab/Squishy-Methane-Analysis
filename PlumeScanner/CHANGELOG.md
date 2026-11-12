@@ -26,7 +26,9 @@ independently reproduced at target `0e68de1`: a frozen benchmark manifest hash
 mismatch and an undefined variable in a recorded qualification test. Preserve
 these failures explicitly in submission validation. Archived scientific evidence
 and default controller/policy behavior are unchanged. Generated arrays and media
-stay local; source publication is ready for a lab PR.
+stay local. Source is submitted for review in
+[PR #16](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/pull/16),
+targeting `source_prior_fixed_evidence`; no merge or candidate promotion is made.
 
 ## 2026-11-12 — Source amount under nuisance mismatch diagnostic
 
