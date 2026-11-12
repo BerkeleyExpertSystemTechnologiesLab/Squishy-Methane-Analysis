@@ -1,8 +1,27 @@
 # Plume Focus Living System Goal
 
-Last updated: 2026-10-29
+Last updated: 2026-11-12
 
 Overall status: `active`
+
+## Local known-source check with B1 (2026-11-12)
+
+Engineering composition is complete in the isolated candidate. The
+[source-activity adapter](docs/source-activity-refresh.md) turns a caller's
+observation window into a measured-evidence request for a declared source.
+The existing ingress updates the B1 belief and preserves raw evidence for the
+caller. The native gate, coverage obligation and receipt govern the scan.
+91 focused tests pass. Independent review and a real receiver decision with
+measured timing are open. Comparative research claims remain open.
+
+## Local fresh-measurement request capability (2026-11-12)
+
+The opt-in [request API](docs/evidence-refresh.md) connects a consumer's need for
+fresh scalar observations to the existing physical FULL plan and execution
+receipt. It returns accepted evidence or the timing or coverage reason that
+prevents fulfillment. The known-source candidate uses this entry point for a
+source-cell observation with an explicit freshness window.
+Receiver use, measured timing and benefit relative to normal scanning remain open.
 
 ## Local prerequisite/code review (2026-10-29)
 

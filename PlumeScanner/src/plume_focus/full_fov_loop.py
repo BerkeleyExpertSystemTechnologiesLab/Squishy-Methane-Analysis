@@ -86,7 +86,7 @@ class FullFovSession(RequiredMessage):
 
 @dataclass(frozen=True)
 class FullFovPlan(PhysicalPlan):
-    mode: Literal["FULL", "FOCUS", "NONE"]
+    mode: Literal["FULL", "FOCUS", "REFRESH", "NONE"]
     reason: str
     gate_max_mean: float
     threshold: float
@@ -98,7 +98,7 @@ class FullFovPlan(PhysicalPlan):
 
     def __post_init__(self):
         super().__post_init__()
-        if self.mode not in ("FULL", "FOCUS", "NONE") or not self.reason:
+        if self.mode not in ("FULL", "FOCUS", "REFRESH", "NONE") or not self.reason:
             raise ValueError("Explicit action mode and reason required.")
         finite("gate mean", self.gate_max_mean, minimum=-float('inf'))
         finite("threshold", self.threshold)
@@ -117,7 +117,7 @@ class FullFovPlan(PhysicalPlan):
 
     @property
     def status(self):
-        return {"FULL":"full_scan", "FOCUS":"focused_scan", "NONE":"no_legal_action"}[self.mode]
+        return {"FULL":"full_scan", "FOCUS":"focused_scan", "REFRESH":"sector_refresh", "NONE":"no_legal_action"}[self.mode]
 
 
 class FullFovController(AcquisitionController):

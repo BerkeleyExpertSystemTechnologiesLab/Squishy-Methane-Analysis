@@ -50,6 +50,12 @@ class SensingController(AcquisitionController):
         from plume_focus.evidence_gated_loop import EvidenceGatedScanner, EvidenceGatedSession
         if isinstance(session, EvidenceGatedSession):
             return EvidenceGatedScanner(session)
+        from plume_focus.source_activity_forgetting import SourceActivityForgettingScanner, SourceActivityForgettingSession
+        if isinstance(session, SourceActivityForgettingSession):
+            return SourceActivityForgettingScanner(session)
+        from plume_focus.source_activity import SourceActivityScanner, SourceActivitySession
+        if isinstance(session, SourceActivitySession):
+            return SourceActivityScanner(session)
         from plume_focus.calibrated_scanner import CalibrationSession, CalibratedScanner
         if isinstance(session, CalibrationSession):
             return CalibratedScanner(session)

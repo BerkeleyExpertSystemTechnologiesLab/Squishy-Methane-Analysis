@@ -122,6 +122,11 @@ Coordinates are normalized `(y, x)` FOV fractions; time is seconds from the sess
 origin. Motor mapping, sensor retrieval calibration and hardware control belong to
 the adapter. The [API guide](docs/sensing-core.md) covers messages and causal checks.
 
+To request fresh measured evidence for specific physical cells by a deadline,
+see the [opt-in request API](docs/evidence-refresh.md). For a declared source,
+the [source-activity adapter](docs/source-activity-refresh.md) uses the same
+measurements to update the two-model comparison.
+
 ## Verify changes
 
 ```powershell

@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-11-12 — Known-source check with the B1 belief
+
+Add `SourceActivityRefreshScanner` as an explicit candidate on
+`codex/source-activity-refresh-20261112` from `bba1653`. The caller can request
+fresh evidence at the declared source, use native FULL planning and inspect
+both accepted measurements and the aggregate two-model weight. The single
+native ingress handles all observations and the original gate and receipt
+rules still apply. See the [adapter guide](docs/source-activity-refresh.md).
+
+91 focused tests pass, including six composition tests. External review,
+receiver acceptance, hardware timing and comparative performance remain open.
+
+## 2026-11-12 — Fresh-measurement requests from a scanner consumer
+
+Add the opt-in `EvidenceRefreshScanner` on `codex/evidence-refresh-20261112` from
+`bba1653`. A consumer supplies physical cells, a freshness cutoff and a delivery
+deadline. The request reuses accepted evidence where possible and can advance
+a native FULL at a READY boundary within the declared session budget. Streaming
+and batch estimates are distinct. Actual acceptance times govern fulfillment.
+See the [request API and adapter example](docs/evidence-refresh.md).
+
+Verification covers 6 request cases and 22 existing evidence-gate tests. The
+request cases exercise actual path opening, early evidence and receipt closure,
+late acceptance, infeasible windows and preservation of partial coverage.
+Hardware timing, receiver acceptance and policy performance remain open.
+
 ## 2026-10-29 — Audit source, observation, evaluation and replay prerequisites
 
 From company submission `5cac633` on local `codex/comprehensive-audit-20261029`,

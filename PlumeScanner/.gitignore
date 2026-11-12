@@ -19,3 +19,4 @@ data/recorded/assets/**
 build/
 dist/
 *.egg-info/
+truth-cache/

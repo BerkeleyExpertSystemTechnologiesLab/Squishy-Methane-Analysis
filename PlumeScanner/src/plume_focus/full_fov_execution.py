@@ -181,6 +181,12 @@ def decode_config(value):
     if value.get('message_type')=='CalibrationRunConfig':
         from plume_focus.calibration_execution import CalibrationRunConfig
         return CalibrationRunConfig.from_dict(value)
+    if value.get('message_type')=='SourceActivityRunConfig':
+        from plume_focus.source_activity_execution import SourceActivityRunConfig
+        return SourceActivityRunConfig.from_dict(value)
+    if value.get('message_type')=='SourceActivityForgettingRunConfig':
+        from plume_focus.source_activity_forgetting import SourceActivityForgettingRunConfig
+        return SourceActivityForgettingRunConfig.from_dict(value)
     return FullFovRunConfig.from_dict(value)
 
 
