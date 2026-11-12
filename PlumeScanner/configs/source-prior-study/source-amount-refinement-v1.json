@@ -1,0 +1,11 @@
+{
+  "experiment_id": "source_amount_numeric_refinement_v1",
+  "purpose": "Resolve only the histories failing the frozen 129-to-257 numerical checks; no scientific parameter changes.",
+  "selection": "Union of failed history indices, retaining all three methods for each selected history.",
+  "source_order": 513,
+  "amount_order": 256,
+  "prior": "Same uniform source density across the entire FOV; true positions are not inserted.",
+  "evidence": "Reuse immutable fixed-clock truth and the exact saved path/noise keys; check generated readings against the original fine histories.",
+  "criteria": "Unchanged from source-amount-validation-v1.json. Compare 257/128 with 513/256 per selected history/method. Retain every failure.",
+  "uncertainty": "This numerical pass refines MSE/source/amount summaries only; no assertion that all CDF endpoints have converged. Original uncertainty diagnostics remain separately labeled."
+}

@@ -1,0 +1,9 @@
+{
+  "analysis_id": "source_amount_uncertainty_audit_v1",
+  "declared_before_final_validation_outcomes": true,
+  "times_seconds": [40.0, 46.0, 52.0],
+  "evaluation_only_footprints": ["true source position", "same y, x=min(1,source_x+0.1)"],
+  "whole_field_statistics": ["mean squared error", "mean exact mixture variance", "mean squared standardized error", "95th percentile squared standardized error", "maximum squared standardized error"],
+  "cdf": "actual finite source/amount Gaussian mixture, full declared amount quadrature",
+  "notes": "Supplement the five original global validation footprints, which may miss narrow plumes. Source-relative positions are evaluator-only and never supplied as observations or to belief/policy. No outcome-driven point selection or changed success criteria; no Gaussian 95% interpretation of moment ratios."
+}

@@ -13,6 +13,114 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
+## 2026-11-12 — Portable research submission
+
+Prepare the source-input and joint-amount research dependencies together with the
+wind/decay diagnostic for review against `source_prior_fixed_evidence`. Remove the
+new unit tests' dependency on ignored archived output. Add an explicit fresh-
+schedule entry which regenerates the baseline and verifies the exact physical
+708-reading contract, recording new file hashes and original archive lineage.
+105 targeted tests, portable smoke execution and all three smoke disk audits pass
+in a clean worktree. Full regression has 648 passes and two existing failures,
+independently reproduced at target `0e68de1`: a frozen benchmark manifest hash
+mismatch and an undefined variable in a recorded qualification test. Preserve
+these failures explicitly in submission validation. Archived scientific evidence
+and default controller/policy behavior are unchanged. Generated arrays and media
+stay local. Source is submitted for review in
+[PR #16](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/pull/16),
+targeting `source_prior_fixed_evidence`; no merge or candidate promotion is made.
+
+## 2026-11-12 — Source amount under nuisance mismatch diagnostic
+
+Add a separately named, fixed-path experiment to distinguish true amount recovery
+from compensation for wind/decay errors. Freeze Q0, width, schedule, initial
+covariance and per-tick process innovations; change one transport/decay parameter
+at a time. Nine conditions and 117 histories compare nominal fixed/joint inference
+and a correct-dynamics information control. Save causal scores, actual mixture
+uncertainty, amount intervals/edge mass and refinement membership diagnostics.
+104 targeted tests and all nine disk audits pass; saved final filters replay
+exactly. Execute all 117 histories with three methods. Wind .5/1.5 shifts inferred
+amount to 1.147/.867 Q0; half-life .5/1.5 shifts it to .665/1.246 Q0 despite true
+input remaining 1 Q0. Half-life .5 improves monitoring J/T 8.35% while all eight
+amount intervals exclude truth. Wind .5 retains 0/8 source predictive membership
+at +12 s despite a 1.90% map gain. Nominal joint J/T is .67% worse. Better maps
+do not establish correct strength or general uncertainty calibration.
+
+Preserve 37 original method/history numerical failures; 24 condition/history
+pairs refined to 513/256 close every unchanged criterion. Three reviewed figures,
+a worked mean-control map, paired summaries, code/config snapshots and hashes
+remain local. Smoke results retain their engineering-only status. Runtime/policy
+and historical artifacts are unchanged. See the
+[review](docs/reviews/source-amount-nuisance-v1.md) and
+[protocol](docs/specs/source-amount-nuisance-v1.md). No remote upload.
+
+## 2026-11-01 — Reconstruction, independent scenes and same-policy loop validation
+
+Add an opt-in fixed-clock source-mixture model with path-independent truth/noise,
+causal full-time scoring and actual mixture uncertainty. Execute 126 histories
+across two matched field grids, including 96 heldout combinations at four new
+source positions. Heldout joint J/T improves 12–14% low and 8–9% high but worsens
+.57–.97% nominal; nominal forecasts also worsen. At high input, +12 s source-point
+95% membership changes 0/16 to 15/16 on both grids. Counts remain descriptive.
+
+Preserve all 54 initial numerical failures; 513 checks and one final 1025-source
+oracle pass close the unchanged criteria. All 18 scientific checks pass. The
+24 same-policy closed executions and saved JSON replays verify exactly. Crossed
+measurement replay separates belief gains from negligible/mixed path effects;
+acquisition improvement remains `not_demonstrated`. 116 targeted tests pass.
+Configs, evidence, truth, fields, diagnostics, code snapshots, decoded moving
+media and hashes remain local. Hardware calibration, real-time latency and
+allocation convergence are not established; production policy is unchanged.
+See the [review](docs/reviews/source-amount-validation-v1.md). No remote upload.
+
+## 2026-11-01 — Three-estimator paired information comparison
+
+Derive explicit candidate/fixed-default/true-amount paired contrasts from the
+frozen matched histories; no new inference or evidence is generated. Candidate
+checkpoint MSE is .66%/1.58% above true-amount MSE at low/high input, recovering
+98.62%/94.99% of the observed reduction from supplying true amount. Nominally,
+fixed and true-amount controls are identical and candidate error is .89% higher.
+The true-amount control is not a guaranteed per-realization lower bound. Clarify
+that the fixed-default uncertain-location control is not the original production
+baseline. All 103 source artifact hashes stay unchanged; pairing, method order,
+nominal equality and independent summaries are checked. Save paired differences,
+configuration, producer and comparison figure locally. See the
+[review](docs/reviews/three-estimator-comparison-v1.md). No remote upload.
+
+## 2026-11-01 — Matched joint source location and amount inference
+
+Implement and execute a separate fixed-path comparison with explicit cell-integrated
+source input at .5/1/1.5 reference amount: 33 histories, including ten paired seeds
+per amount and three deterministic controls. Compare fixed nominal amount, joint
+location/amount, and true-amount location inference using identical readings.
+Joint inference reduces mean checkpoint map MSE by 31.95%/22.79% at low/high
+input, but increases it .89% nominal. Low-input source error falls .1409 to .0134
+FOV; high-input maps improve without better localization. Preserve the negative
+nominal result and this asymmetry. This metric is not physical-time J/T.
+
+49 targeted tests pass. Direct/affine calculations and shared realized noise agree
+to roundoff; 129/129 to 257/257 quadrature passes all 99 frozen checks after an
+initial 46/99 pass. Exact mixture forecast diagnostics, fields, source/amount
+posteriors, configs, implementation snapshots, figures and hashes remain local.
+The source-informed path, one geometry, synthetic units and matched Gaussian
+model limit the claim; production policy and historical evidence are unchanged.
+See the [review](docs/reviews/joint-source-amount-v1.md). No remote upload.
+
+## 2026-11-01 — Explicit source amount and input representation audit
+
+Add opt-in point-normalized and cell-integrated Gaussian source inputs with an
+explicit synthetic in-FOV total. The separate audit checks 96 named profiles and
+4,624 interior grid-alignment profiles, preserving the historical peak-rate formula.
+At half width on 12x16, legacy input/continuous-integral ratios range .129–2.640;
+normalization removes total variation, and integrated cell masses agree under
+refinement to roundoff. Source centroid errors remain, including boundary
+counterexamples where integration has a worse center-based first moment.
+49 targeted tests pass; maximum relative total and cell-refinement discrepancies
+are 7.77e-16 and 2.71e-16. Baseline vector/configuration are unchanged. This
+defines controlled inputs for a later joint location/amount experiment; it does
+not run inference or establish reconstruction or physical-emission accuracy.
+See the [audit review](docs/reviews/source-input-audit-v1.md).
+
 ## 2026-11-01 — Baseline and experiment interface documentation
 
 Document the source-assumption branch against the immutable `plume_scanner_new`

@@ -1,0 +1,25 @@
+{
+  "experiment_id": "source_input_representation_audit_v1",
+  "baseline_revision": "5cac633f47001d3aa455f8b6f3cc00b11c550ed3",
+  "baseline_config": "configs/evidence-gated-focus/coarse-demo.json",
+  "baseline_configuration_hash": "2c43534d49a0596c3fbeae372c90d01333d3a42492ffc1e82ae924b02b276446",
+  "grid_shapes": [[12, 16], [24, 32], [48, 64], [96, 128]],
+  "width_multipliers": [0.5, 1.0, 1.5, 2.0],
+  "phase_coordinates": {"minimum": 0.35, "maximum": 0.65, "count_per_axis": 17},
+  "named_sources_yx": {
+    "reference_source": [0.547945205479452, 0.15047021943573669],
+    "coarse_cell_center": [0.5416666666666666, 0.15625],
+    "coarse_cell_corner": [0.5, 0.125],
+    "interior": [0.5, 0.5],
+    "near_boundary": [0.02, 0.02],
+    "fov_corner": [0.0, 0.0]
+  },
+  "total_rate_definition": "Match the spatial mean of the legacy injection at the baseline grid, width and source; retain that same synthetic in-FOV input per second across every new profile.",
+  "new_source_input_ids": ["point_sampled_fov_normalized_v1", "cell_integrated_fov_normalized_v1"],
+  "boundary_convention": "New profiles condition the Gaussian input on the unit FOV; normalization redistributes truncated outside input inside the FOV. This is a declared synthetic convention, not a physical boundary model.",
+  "checks": {
+    "relative_total_tolerance": 5e-13,
+    "coarse_fine_relative_mass_l1_tolerance": 1e-12
+  },
+  "scope": "Source-input audit only. No transport, observation, estimator, scan-policy, physical calibration or joint inference result. Grid shapes above 24x32 are input-only quadrature probes, not full-covariance filtering runs."
+}

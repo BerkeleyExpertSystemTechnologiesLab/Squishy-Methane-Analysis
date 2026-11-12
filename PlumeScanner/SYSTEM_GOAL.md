@@ -1,8 +1,118 @@
 # Plume Focus Living System Goal
 
-Last updated: 2026-11-01
+Last updated: 2026-11-12
 
 Overall status: `active`
+
+## Research submission preparation (2026-11-12)
+
+Package the source-input audit, joint amount estimator, heldout validation and
+wind/decay diagnostic for review against `source_prior_fixed_evidence`. The
+publication entry regenerates and checks the baseline's physical 708-reading
+schedule; tests now construct their own small schedules, so a clean checkout
+requires no ignored archive for unit tests or the engineering smoke run. Archived
+configurations/evidence are preserved. Full study numerical conclusions are not
+inferred from the reduced smoke run. Runtime policy remains opt-in and unchanged.
+Personal backup and a lab research PR are authorized; generated arrays/media stay
+local. Clean-worktree verification passes 105 targeted tests, the portable smoke
+run and its three disk audits. The full suite has 648 passes and two failures,
+both reproduced independently at unchanged target `0e68de1`: frozen benchmark
+manifest hash and an undefined `report` in the recorded qualification test.
+These unrelated failures remain explicit in the research submission. Source
+publication is complete as [PR #16](https://github.com/BerkeleyExpertSystemTechnologiesLab/Squishy-Methane-Analysis/pull/16)
+from `xilin/source-amount-nuisance` to `source_prior_fixed_evidence`, under Xilin-Yan.
+The research remains under review; no merge or candidate promotion is performed.
+
+## Source amount under wind/decay mismatch (2026-11-12)
+
+User-authorized local diagnostic is completed from `f93b2a4` (producer `0828b9e`). The frozen
+[protocol](docs/specs/source-amount-nuisance-v1.md) holds true Q0, width, the
+708-reading schedule and discrete process innovations fixed, varying wind or
+half-life separately. Compare nominal fixed amount, nominal joint location/amount,
+and correct-dynamics fixed amount on identical evidence. Nine conditions and 117
+histories are declared, with new evaluation positions/seeds and retained mean
+controls. Parameter information is confined to the explicit diagnostic control;
+source-relative targets are evaluator-only. No policy or production changes.
+
+117 histories and all three methods are executed. True Q0 stays fixed, but
+evaluation mean inferred amount becomes 1.147/.867 under .5/1.5 wind and
+.665/1.246 under .5/1.5 half-life. Half-life .5 reduces joint monitoring J/T 8.35%
+while all 8 amount intervals exclude true Q0. Wind .5 reduces J/T 1.90% but +12 s
+source-footprint predictive membership remains 0/8 (correct dynamics: 8/8).
+Map improvement does not establish amount recovery or general calibration.
+Nominal joint J/T worsens .67%; small rankings remain descriptive.
+
+104 targeted tests and all nine disk audits pass; final filter states replay
+exactly. Retain the 37 initial method/history refinement failures: rerunning 24
+condition/history pairs at 513/256 closes every unchanged numerical criterion.
+No 1025 fallback was needed. Three reviewed figures, one mean-control map,
+machine-readable summaries and the [review](docs/reviews/source-amount-nuisance-v1.md)
+are complete. Smoke evidence stays engineering-only. Production policy and
+historical results are unchanged; no scanning/physical-strength claim is added.
+Generated artifacts stay local; source publication is handled in the separate
+submission stage above. This diagnostic step is complete;
+wind/amount inference and external-data work remain separately scoped.
+
+## Reconstruction and independent-scene validation (2026-11-01)
+
+The [validation study](docs/reviews/source-amount-validation-v1.md) is implemented
+and executed locally from `bf0500b`: 126 fixed-path histories on two matched grids,
+including 96 heldout location/amount/seed combinations, plus 24 same-policy closed
+executions. Joint J/T improves 12–14% low and 8–9% high on heldout scenes; nominal
+J/T worsens .57–.97% and nominal forecasts worsen 5–12%. Source-footprint +12 s
+central-95% membership improves from 0/16 high to 15/16 on both grids, without a
+general calibration claim. All 18 frozen scientific checks pass. Preserve the
+original 54 numerical failures: 513-level checks close all but one development
+oracle forecast; a 1025 full-history oracle pass closes the remainder without
+relaxing criteria. Source-relative targets are evaluator-only.
+
+Closed-loop J/T improves 27.87% low and 19.73% high, worsening .37% nominal.
+Low/nominal measurement histories are identical. High-input crossed replay shows
+only -.0308% path value under the common joint estimator, +.2709% under fixed,
+with mixed individual signs and no allocation-convergence verification.
+Acquisition improvement remains `not_demonstrated`; better beliefs are the
+supported contribution. All 24 saved JSON histories replay plans/arrays exactly;
+116 targeted tests pass and the moving demo decodes. All data, configurations,
+producer snapshots and hashes are local. No remote upload, baseline policy change
+or slide preparation. This bounded stage is complete; hardware calibration,
+independent physical-model validation and improved allocation remain proposed,
+not active work.
+
+## Matched location/amount inference comparison (2026-11-01)
+
+The [joint location/amount comparison](docs/reviews/joint-source-amount-v1.md) is
+implemented and executed locally, from starting revision `96ccb71`, without any
+remote upload. Three amounts (.5/1/1.5 Q0), 33 matched histories and three estimators
+hold the source geometry, noise, wind, footprint and 708-reading schedule fixed.
+Joint inference improves mean checkpoint map MSE 31.95% low and 22.79% high,
+but worsens it .89% nominal. Low-input source displacement is largely removed;
+high-input map gains coexist with slightly worse location error. Ten paired seeds
+per amount do not establish generalization or physical calibration. The checkpoint
+mean is not J/T. 49 targeted tests pass; all 99 final quadrature-refinement checks
+pass after retaining the initial failure. Direct reference checks and paired noise
+agree to roundoff. Production inference/policy and original evidence are unchanged.
+This bounded comparison is complete. Independent geometries/paths, source-activity
+inference and the effect on subsequent scan decisions remain proposed, not active.
+
+The separate [three-estimator paired analysis](docs/reviews/three-estimator-comparison-v1.md)
+now explicitly measures the gap to knowing true amount: candidate mean checkpoint
+MSE is .66%/1.58% higher at low/high input, while nominally it is .89% higher.
+The fixed-default and true-amount nominal controls are identical. All frozen
+inputs are unchanged; no additional inference is run. This analysis is complete.
+The fixed-default uncertain-location control is not the entire historical runtime
+baseline, and oracle realized error is not a universal lower bound.
+
+## Explicit source-input audit (2026-11-01)
+
+The [source-input audit](docs/reviews/source-input-audit-v1.md) is implemented and
+executed: point-normalized and cell-integrated alternatives define a fixed synthetic
+in-FOV input amount without changing historical source formulas. Grid alignment
+can strongly change the legacy discrete amount, especially for narrow sources.
+96 named and 4,624 phase profiles satisfy frozen normalization/integrated-cell
+refinement checks; 49 targeted tests pass. Center-based spatial representation
+errors and boundary limitations remain explicit. No new field/measurement
+histories or inference results are produced by the audit itself. Its proposed
+matched location/amount comparison is now completed separately above.
 
 ## Source-assumption reference and visual replay (2026-11-01)
 
@@ -16,8 +126,8 @@ calibration, RGB registration and measured acquisition/motion timing remain open
 The visual observer holds all 708 readings fixed and contrasts two fixed source
 hints. It saves reconstructed maps, causal reading traces and provenance locally.
 27 targeted tests passed at implementation; decoded media reproduce frozen final
-fields within 1.67e-16. The numerical research claims remain unchanged. Joint
-location/amplitude inference and closed-loop evaluation remain proposed work.
+fields within 1.67e-16. Joint location/amount inference is now tested in the
+separate matched comparison above; closed-loop evaluation remains proposed work.
 
 ## Local source-prior study (2026-10-28)
 
@@ -49,8 +159,9 @@ persists and interacts nonadditively with amount. 143 histories, 55 exact prior
 reproductions, 40 passing tests, identical realized noise and input conservation
 within 2.22e-16. Location/radius-mass checks pass; 4 histories retain HPD boundary
 ambiguity. Amount-only reduction can create large boundary shifts; it does not
-identify the original demo's error direction. Joint location/amplitude inference,
-original-simulator operator comparison and independent grids/sources remain proposed. Source-activity
+identify the original demo's error direction. Joint location/amount inference is
+now tested separately above; original-simulator operator comparison and independent
+grids/sources remain proposed. Source-activity
 inference and closed-loop comparisons remain separate work. Artifacts stay local,
 with production behavior unchanged.
 
