@@ -1,8 +1,26 @@
 # Plume Focus Living System Goal
 
-Last updated: 2026-11-01
+Last updated: 2026-11-12
 
 Overall status: `active`
+
+## Source amount under wind/decay mismatch (2026-11-12)
+
+User-authorized local diagnostic is in progress from `f93b2a4`. The frozen
+[protocol](docs/specs/source-amount-nuisance-v1.md) holds true Q0, width, the
+708-reading schedule and discrete process innovations fixed, varying wind or
+half-life separately. Compare nominal fixed amount, nominal joint location/amount,
+and correct-dynamics fixed amount on identical evidence. Nine conditions and 117
+histories are declared, with new evaluation positions/seeds and retained mean
+controls. Parameter information is confined to the explicit diagnostic control;
+source-relative targets are evaluator-only. No policy or production changes.
+
+Implementation and 55 targeted tests pass; the small-grid smoke execution is an
+engineering check only and has unresolved quadrature membership, so it is not
+scientific evidence. Full 129/64 and 257/128 runs with selective 513/256 and
+1025/512 fallback remain to execute. Three figures, paired summaries and a review
+are pending. All artifacts stay local; no GitHub upload is requested. New local
+commits use the user's existing Git identity without coauthor or tool signatures.
 
 ## Reconstruction and independent-scene validation (2026-11-01)
 

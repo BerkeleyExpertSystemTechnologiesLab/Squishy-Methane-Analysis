@@ -13,6 +13,19 @@ timezone; September entries use America/Los_Angeles, with UTC document dates
 noted where different. No substantial June checkpoint was found in the inspected
 records; that does not establish that no work exists elsewhere.
 
+## 2026-11-12 — Source amount under nuisance mismatch diagnostic
+
+Add a separately named, fixed-path experiment to distinguish true amount recovery
+from compensation for wind/decay errors. Freeze Q0, width, schedule, initial
+covariance and per-tick process innovations; change one transport/decay parameter
+at a time. Nine conditions and 117 histories compare nominal fixed/joint inference
+and a correct-dynamics information control. Save causal scores, actual mixture
+uncertainty, amount intervals/edge mass and refinement membership diagnostics.
+55 targeted tests pass; small-grid smoke execution completes, with unresolved
+quadrature explicitly retained. Full execution and scientific conclusions remain
+pending. Runtime/policy and historical artifacts are unchanged. See the
+[protocol](docs/specs/source-amount-nuisance-v1.md); results stay local.
+
 ## 2026-11-01 — Reconstruction, independent scenes and same-policy loop validation
 
 Add an opt-in fixed-clock source-mixture model with path-independent truth/noise,
